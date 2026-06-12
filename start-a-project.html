@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start a Project — Filippo Gerbino</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="quote.css" />
+</head>
+<body class="quote-page">
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <a href="index.html" class="nav-logo">F<span class="gold">.</span></a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#portfolio">Work</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="start-a-project.html" class="nav-cta">Start a Project</a>
+    </div>
+    <div class="available-badge">
+      <span class="available-dot"></span>
+      <span class="available-text mono">Available</span>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main class="quote-main">
+    <div class="quote-container">
+
+      <div class="quote-header">
+        <p class="section-eyebrow mono">// Start a Project</p>
+        <h1 class="quote-title">Let's build<br/><em>your soundtrack.</em></h1>
+        <p class="quote-subtitle">A few quick questions — I'll come back with a real quote, not a template.</p>
+      </div>
+
+      <!-- PROGRESS BAR -->
+      <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+        <span class="progress-label mono" id="progressLabel">Step 1 of 5</span>
+      </div>
+
+      <!-- FORM -->
+      <form id="quoteForm" class="quote-form">
+
+        <!-- STEP 1: What do you need? -->
+        <div class="step active" data-step="1">
+          <h2 class="step-title">What do you need?</h2>
+          <p class="step-hint mono">Select all that apply.</p>
+          <div class="choice-grid multi">
+            <label class="choice-item">
+              <input type="checkbox" name="needs" value="Main Theme" />
+              <span class="choice-label">
+                <span class="choice-icon">🎬</span>
+                <strong>Main Theme</strong>
+                <small>The centrepiece of your game's identity</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="needs" value="In-Game Loops" />
+              <span class="choice-label">
+                <span class="choice-icon">🔁</span>
+                <strong>In-Game Loops</strong>
+                <small>Biome, exploration, ambient music</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="needs" value="Combat / Boss Music" />
+              <span class="choice-label">
+                <span class="choice-icon">⚔️</span>
+                <strong>Combat / Boss Music</strong>
+                <small>Battle tracks and boss encounters</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="needs" value="Cinematic / Cutscenes" />
+              <span class="choice-label">
+                <span class="choice-icon">🎞️</span>
+                <strong>Cinematic / Cutscenes</strong>
+                <small>Scored to picture, narrative moments</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="needs" value="Trailer Music" />
+              <span class="choice-label">
+                <span class="choice-icon">📣</span>
+                <strong>Trailer Music</strong>
+                <small>Announcement, launch, or teaser</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="needs" value="UI / Stings" />
+              <span class="choice-label">
+                <span class="choice-icon">🔔</span>
+                <strong>UI / Stings</strong>
+                <small>Menu music, sound branding, jingles</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="needs" value="Full OST" />
+              <span class="choice-label">
+                <span class="choice-icon">💿</span>
+                <strong>Full OST</strong>
+                <small>Everything — start to finish</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="checkbox" name="needs" value="Other" />
+              <span class="choice-label">
+                <span class="choice-icon">✏️</span>
+                <strong>Something else</strong>
+                <small>Tell me at the end</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 2: How many minutes? -->
+        <div class="step" data-step="2">
+          <h2 class="step-title">How many minutes of music?</h2>
+          <p class="step-hint mono">Approximate is fine — we'll refine it together.</p>
+          <div class="slider-wrap">
+            <div class="slider-value-display">
+              <span class="slider-number" id="sliderDisplay">15</span>
+              <span class="slider-unit mono">minutes</span>
+            </div>
+            <input type="range" id="minutesSlider" name="minutes" min="1" max="120" value="15" step="1" class="custom-slider" />
+            <div class="slider-labels mono">
+              <span>1 min</span>
+              <span>30</span>
+              <span>60</span>
+              <span>90</span>
+              <span>120 min</span>
+            </div>
+            <div class="slider-context mono" id="sliderContext">A few tracks — great for a jam or vertical slice.</div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Vibe / Instrumentation -->
+        <div class="step" data-step="3">
+          <h2 class="step-title">What's the vibe?</h2>
+          <p class="step-hint mono">Pick the closest match — or mix and tell me more later.</p>
+          <div class="choice-grid single">
+            <label class="choice-item">
+              <input type="radio" name="vibe" value="Full Orchestral" />
+              <span class="choice-label">
+                <span class="choice-icon">🎻</span>
+                <strong>Full Orchestral</strong>
+                <small>Strings, brass, woodwinds, choir — the works</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="vibe" value="Intimate & Acoustic" />
+              <span class="choice-label">
+                <span class="choice-icon">🪕</span>
+                <strong>Intimate & Acoustic</strong>
+                <small>Small ensemble, solo instruments, folk elements</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="vibe" value="Hybrid Orchestral" />
+              <span class="choice-label">
+                <span class="choice-icon">⚡</span>
+                <strong>Hybrid Orchestral</strong>
+                <small>Orchestra meets synths, electronic textures</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="vibe" value="Dark & Atmospheric" />
+              <span class="choice-label">
+                <span class="choice-icon">🌑</span>
+                <strong>Dark & Atmospheric</strong>
+                <small>Heavy brass, haunting choir, desolate textures</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="vibe" value="Epic & Cinematic" />
+              <span class="choice-label">
+                <span class="choice-icon">🏔️</span>
+                <strong>Epic & Cinematic</strong>
+                <small>Big, dramatic, built for trailers and boss fights</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="vibe" value="Not sure yet" />
+              <span class="choice-label">
+                <span class="choice-icon">💬</span>
+                <strong>Not sure yet</strong>
+                <small>Let's figure it out together</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 4: Implementation -->
+        <div class="step" data-step="4">
+          <h2 class="step-title">Do you need implementation?</h2>
+          <p class="step-hint mono">How do you want to receive the audio?</p>
+          <div class="choice-grid single">
+            <label class="choice-item">
+              <input type="radio" name="implementation" value="Just the tracks" />
+              <span class="choice-label">
+                <span class="choice-icon">🎵</span>
+                <strong>Just the tracks</strong>
+                <small>Stereo masters — I'll handle the rest</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="implementation" value="Stems" />
+              <span class="choice-label">
+                <span class="choice-icon">🎚️</span>
+                <strong>Stems only</strong>
+                <small>Separated layers for your audio engine</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="implementation" value="FMOD implementation" />
+              <span class="choice-label">
+                <span class="choice-icon">⚙️</span>
+                <strong>FMOD implementation</strong>
+                <small>Adaptive music, triggers, full integration</small>
+              </span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="implementation" value="Not sure" />
+              <span class="choice-label">
+                <span class="choice-icon">💬</span>
+                <strong>Not sure yet</strong>
+                <small>We can figure this out together</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 5: Budget + contact -->
+        <div class="step" data-step="5">
+          <h2 class="step-title">What's your budget range?</h2>
+          <p class="step-hint mono">Helps me tailor the proposal. All ranges are welcome.</p>
+          <div class="choice-grid single budget-grid">
+            <label class="choice-item">
+              <input type="radio" name="budget" value="Under $500" />
+              <span class="choice-label"><strong>Under $500</strong><small>Game jams, short promos</small></span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="budget" value="$500 – $2,000" />
+              <span class="choice-label"><strong>$500 – $2,000</strong><small>Indie titles, vertical slices</small></span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="budget" value="$2,000 – $5,000" />
+              <span class="choice-label"><strong>$2,000 – $5,000</strong><small>Full indie releases</small></span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="budget" value="$5,000+" />
+              <span class="choice-label"><strong>$5,000+</strong><small>Larger productions, full OST + live</small></span>
+            </label>
+            <label class="choice-item">
+              <input type="radio" name="budget" value="Let's discuss" />
+              <span class="choice-label"><strong>Let's discuss</strong><small>I'd rather talk it through</small></span>
+            </label>
+          </div>
+
+          <div class="contact-fields">
+            <p class="section-eyebrow mono" style="margin-top:2.5rem;">// Your details</p>
+            <div class="form-row" style="margin-top:1rem;">
+              <div class="form-group">
+                <label for="q-name" class="mono">// Name</label>
+                <input type="text" id="q-name" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="q-email" class="mono">// Email</label>
+                <input type="email" id="q-email" name="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-group" style="margin-top:1rem;">
+              <label for="q-extra" class="mono">// Anything else?</label>
+              <textarea id="q-extra" name="extra" placeholder="Game concept, reference tracks, deadline, anything that helps..." rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAV BUTTONS -->
+        <div class="step-nav">
+          <button type="button" class="btn-ghost" id="prevBtn" style="visibility:hidden">← Back</button>
+          <button type="button" class="btn-primary" id="nextBtn">Next →</button>
+          <button type="submit" class="btn-primary large hidden" id="submitBtn">Get My Custom Quote</button>
+        </div>
+
+      </form>
+
+      <!-- SUCCESS -->
+      <div class="quote-success hidden" id="quoteSuccess">
+        <div class="success-icon">✓</div>
+        <h2>Quote request sent.</h2>
+        <p>I'll review your brief and get back to you within 48 hours with a tailored proposal.</p>
+        <a href="index.html" class="btn-ghost" style="margin-top:1.5rem;">← Back to portfolio</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">F<span class="gold">.</span></div>
+      <p class="footer-copy mono">© 2025 Filippo Gerbino — Composer & Orchestrator</p>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/filippo__g/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@GerbinoScores" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="quote.js"></script>
+</body>
+</html>

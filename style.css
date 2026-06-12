@@ -66,6 +66,7 @@ img { max-width: 100%; display: block; }
   justify-content: space-between;
   padding: 1.5rem 3rem;
   transition: background 0.4s var(--ease-out), backdrop-filter 0.4s;
+  gap: 1rem;
 }
 
 .nav.scrolled {
@@ -940,6 +941,22 @@ img { max-width: 100%; display: block; }
 
 .btn-sending { display: none; }
 .btn-sending.visible { display: inline; }
+
+.form-email-alt {
+  font-size: 0.72rem;
+  color: var(--mist);
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-top: 0.75rem;
+  opacity: 0.7;
+}
+
+.form-email-alt a {
+  color: var(--gold);
+  transition: opacity 0.2s;
+}
+
+.form-email-alt a:hover { opacity: 0.75; }
 
 .form-success {
   display: flex;
