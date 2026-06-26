@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Start a Project — Filippo Gerbino</title>
+  <meta name="description" content="Start a project with Filippo Gerbino — game and film composer. Get a custom quote for your soundtrack." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Start a Project — Filippo Gerbino" />
+  <meta property="og:description" content="Tell me about your game. I'll come back with a real quote, not a template." />
+  <meta property="og:image" content="https://filippogerbino.com/preview-social.jpg" />
+  <meta property="og:url" content="https://filippogerbino.com/start-a-project.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0A0A0F" />
+  <meta name="author" content="Filippo Gerbino" />
+  <link rel="canonical" href="https://filippogerbino.com/start-a-project.html" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -28,7 +38,7 @@
       <span class="available-dot"></span>
       <span class="available-text mono">Available</span>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+    <button class="nav-hamburger" id="hamburger" aria-label="menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -319,7 +329,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">F<span class="gold">.</span></div>
-      <p class="footer-copy mono">© 2025 Filippo Gerbino — Composer & Orchestrator</p>
+      <p class="footer-copy mono">© <span id="footerYear">2026</span> Filippo Gerbino — Composer &amp; Orchestrator</p>
       <div class="footer-links">
         <a href="https://www.instagram.com/filippo__g/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.youtube.com/@GerbinoScores" target="_blank" rel="noopener">YouTube</a>
@@ -327,6 +337,47 @@
     </div>
   </footer>
 
+  <script>
+    // Footer year
+    var fy = document.getElementById('footerYear');
+    if (fy) fy.textContent = new Date().getFullYear();
+
+    // Mobile menu (this page doesn't load script.js)
+    (function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks  = document.querySelector('.nav-links');
+      if (!hamburger || !navLinks) return;
+
+      function setMenu(open) {
+        navLinks.dataset.open = open ? '1' : '0';
+        hamburger.classList.toggle('is-open', open);
+        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        Object.assign(navLinks.style, {
+          display:        open ? 'flex' : 'none',
+          position:       'fixed',
+          top:            '70px',
+          left:           '0',
+          right:          '0',
+          flexDirection:  'column',
+          background:     'rgba(10,10,15,0.97)',
+          padding:        '2rem',
+          borderBottom:   '1px solid rgba(201,168,76,0.15)',
+          gap:            '1.5rem',
+          backdropFilter: 'blur(20px)',
+          zIndex:         '99',
+        });
+      }
+
+      hamburger.addEventListener('click', function () {
+        setMenu(navLinks.dataset.open !== '1');
+      });
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (navLinks.dataset.open === '1') setMenu(false);
+        });
+      });
+    })();
+  </script>
   <script src="quote.js"></script>
 </body>
 </html>

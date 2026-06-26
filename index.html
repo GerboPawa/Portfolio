@@ -4,16 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Filippo Gerbino — Composer & Orchestrator</title>
+  <meta name="description" content="Filippo Gerbino is a game and film composer, orchestrator, and producer. Specialized in full orchestral scores and immersive game audio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Filippo Gerbino — Composer & Orchestrator" />
+  <meta property="og:description" content="Composition, orchestration, production, mix, and master. Everything your game needs under one roof." />
+  <meta property="og:image" content="https://filippogerbino.com/preview-social.jpg" />
+  <meta property="og:url" content="https://filippogerbino.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0A0A0F" />
+  <link rel="canonical" href="https://filippogerbino.com/" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <meta name="author" content="Filippo Gerbino" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="quote.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://filippogerbino.com/#filippo",
+        "name": "Filippo Gerbino",
+        "jobTitle": "Composer & Orchestrator",
+        "description": "Game and film composer, orchestrator and producer specialised in full orchestral scores and immersive game audio.",
+        "url": "https://filippogerbino.com/",
+        "image": "https://filippogerbino.com/preview-social.jpg",
+        "sameAs": [
+          "https://www.instagram.com/filippo__g/",
+          "https://www.youtube.com/@GerbinoScores"
+        ],
+        "knowsAbout": [
+          "Film scoring",
+          "Game audio",
+          "Orchestration",
+          "Music production",
+          "Mixing and mastering"
+        ]
+      },
+      {
+        "@type": "VideoObject",
+        "name": "Book of the Dead — Cinematic Rescore",
+        "description": "A full original rescore of Unity's Book of the Dead (2018) by Filippo Gerbino, written and produced to match the cinematic on screen.",
+        "thumbnailUrl": "https://i.ytimg.com/vi/d8BKK9SVm9c/maxresdefault.jpg",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/d8BKK9SVm9c",
+        "contentUrl": "https://youtu.be/d8BKK9SVm9c",
+        "creator": { "@id": "https://filippogerbino.com/#filippo" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
@@ -28,14 +77,14 @@
       <span class="available-dot"></span>
       <span class="available-text mono">Available</span>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="menu">
+    <button class="nav-hamburger" id="hamburger" aria-label="menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <canvas id="scoreCanvas"></canvas>
+    <canvas id="scoreCanvas" aria-hidden="true"></canvas>
     <div class="hero-content">
       <p class="hero-eyebrow mono">Orchestral Composer · Game Audio</p>
       <h1 class="hero-title">
@@ -98,7 +147,7 @@
             </div>
             <div class="stat-block">
               <span class="stat-num">∞</span>
-              <span class="stat-label">Live musicians<br/>on call</span>
+              <span class="stat-label">Session musicians<br/>on call</span>
             </div>
           </div>
 
@@ -110,7 +159,7 @@
           <div class="about-tags reveal reveal-delay-3">
             <span class="tag">Conservatorio</span>
             <span class="tag">Cubase 15</span>
-            <span class="tag">Live Orchestra</span>
+            <span class="tag">Session Musicians</span>
             <span class="tag">FMOD</span>
             <span class="tag">Stems delivery</span>
           </div>
@@ -189,7 +238,7 @@
     </div>
     <div class="video-wrapper-full reveal">
       <iframe
-        src="https://www.youtube.com/embed/bK5C4RWc6UE"
+        src="https://www.youtube.com/embed/bK5C4RWc6UE" loading="lazy"
         title="Filippo Gerbino — Who I am"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -206,7 +255,7 @@
 
       <div class="tracks-list" id="tracksList">
 
-        <div class="track-item" data-src="audio/track-01.ogg">
+        <div class="track-item" tabindex="0" role="button" data-src="audio/track-01.mp3" data-src-ogg="audio/track-01.ogg">
           <div class="track-play-btn">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -226,7 +275,7 @@
           </div>
         </div>
 
-        <div class="track-item" data-src="audio/track-02.ogg">
+        <div class="track-item" tabindex="0" role="button" data-src="audio/track-02.mp3" data-src-ogg="audio/track-02.ogg">
           <div class="track-play-btn">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -246,7 +295,7 @@
           </div>
         </div>
 
-        <div class="track-item" data-src="audio/track-03.ogg">
+        <div class="track-item" tabindex="0" role="button" data-src="audio/track-03.mp3" data-src-ogg="audio/track-03.ogg">
           <div class="track-play-btn">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -266,7 +315,7 @@
           </div>
         </div>
 
-        <div class="track-item" data-src="audio/track-04.ogg">
+        <div class="track-item" tabindex="0" role="button" data-src="audio/track-04.mp3" data-src-ogg="audio/track-04.ogg">
           <div class="track-play-btn">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -286,7 +335,7 @@
           </div>
         </div>
 
-        <div class="track-item" data-src="audio/track-05.ogg">
+        <div class="track-item" tabindex="0" role="button" data-src="audio/track-05.mp3" data-src-ogg="audio/track-05.ogg">
           <div class="track-play-btn">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -306,7 +355,7 @@
           </div>
         </div>
 
-        <div class="track-item" data-src="audio/track-06.ogg">
+        <div class="track-item" tabindex="0" role="button" data-src="audio/track-06.mp3" data-src-ogg="audio/track-06.ogg">
           <div class="track-play-btn">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -326,7 +375,7 @@
           </div>
         </div>
 
-        <div class="track-item" data-src="audio/track-07.ogg">
+        <div class="track-item" tabindex="0" role="button" data-src="audio/track-07.mp3" data-src-ogg="audio/track-07.ogg">
           <div class="track-play-btn">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -346,7 +395,7 @@
           </div>
         </div>
 
-        <div class="track-item" data-src="audio/track-08.ogg">
+        <div class="track-item" tabindex="0" role="button" data-src="audio/track-08.mp3" data-src-ogg="audio/track-08.ogg">
           <div class="track-play-btn">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -367,6 +416,30 @@
         </div>
 
       </div>
+
+      <!-- RESCORING PIECE / CINEMATIC SCORING -->
+      <div class="rescoring-piece reveal">
+        <p class="rescoring-label mono">// Cinematic Scoring</p>
+        <h3 class="rescoring-title">Same picture.<br/><em>Different soul.</em></h3>
+        <p class="rescoring-sub">
+          A full rescore of Unity's <em>Book of the Dead</em> (2018) — atonal and unsettling,
+          written and produced to hit every cut, breath and shadow on screen. Proof that the
+          right score can carry a cinematic on its own.
+        </p>
+        <div class="video-wrapper-full">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/d8BKK9SVm9c" loading="lazy"
+            title="Filippo Gerbino — Book of the Dead Rescore"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <a href="https://youtu.be/d8BKK9SVm9c" target="_blank" rel="noopener" class="rescoring-watch mono">
+          Watch on YouTube <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -498,8 +571,8 @@
         </div>
         <div class="service-card reveal reveal-delay-2">
           <div class="service-icon">🎻</div>
-          <h3>Live Recording</h3>
-          <p>Real players, my network. Strings, brass, woodwinds, voices — recorded and produced.</p>
+          <h3>Session Recording</h3>
+          <p>Real players, my network. Strings, brass, woodwinds, voices — individual session musicians recorded and produced.</p>
         </div>
         <div class="service-card reveal reveal-delay-3">
           <div class="service-icon">🎹</div>
@@ -568,7 +641,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">F<span class="gold">.</span></div>
-      <p class="footer-copy mono">© 2025 Filippo Gerbino — Composer & Orchestrator</p>
+      <p class="footer-copy mono">© <span id="footerYear">2026</span> Filippo Gerbino — Composer &amp; Orchestrator</p>
       <div class="footer-links">
         <a href="https://www.instagram.com/filippo__g/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.youtube.com/@GerbinoScores" target="_blank" rel="noopener">YouTube</a>

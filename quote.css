@@ -80,6 +80,79 @@
 }
 
 /* ============================================
+   RESCORING PIECE (inside Portfolio)
+   ============================================ */
+.rescoring-piece {
+  margin-top: 3.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.rescoring-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.rescoring-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.rescoring-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.rescoring-sub {
+  color: var(--mist);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  max-width: 560px;
+  margin-bottom: 1.75rem;
+}
+
+.rescoring-sub em {
+  font-style: italic;
+  color: var(--parchment);
+}
+
+.rescoring-piece .video-wrapper-full {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding-bottom: 56.25%;
+  border-radius: 4px;
+}
+
+.rescoring-watch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mist);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.rescoring-watch:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.06);
+}
+
+/* ============================================
    TESTIMONIALS CAROUSEL
    ============================================ */
 .testimonials {

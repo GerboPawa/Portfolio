@@ -2,20 +2,34 @@
    COMPOSER PORTFOLIO — script.js
    ============================================ */
 
-// ─── NAV SCROLL ───────────────────────────────────────────────────────────────
+// ─── GLOBAL PREFS ─────────────────────────────────────────────────────────────
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Keep the footer copyright year current automatically
+const footerYear = document.getElementById('footerYear');
+if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+// ─── NAV SCROLL + SCROLL PROGRESS ─────────────────────────────────────────────
 const nav = document.getElementById('nav');
+const scrollProgress = document.getElementById('scrollProgress');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+  if (scrollProgress) {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    scrollProgress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }
+}, { passive: true });
 
 // ─── HAMBURGER (MOBILE) ────────────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => {
-  const open = navLinks.dataset.open === '1';
-  navLinks.dataset.open = open ? '0' : '1';
+
+function setMenu(open) {
+  navLinks.dataset.open = open ? '1' : '0';
+  hamburger.classList.toggle('is-open', open);
+  hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
   Object.assign(navLinks.style, {
-    display:        open ? 'none' : 'flex',
+    display:        open ? 'flex' : 'none',
     position:       'fixed',
     top:            '70px',
     left:           '0',
@@ -27,6 +41,17 @@ hamburger.addEventListener('click', () => {
     gap:            '1.5rem',
     backdropFilter: 'blur(20px)',
     zIndex:         '99',
+  });
+}
+
+hamburger.addEventListener('click', () => {
+  setMenu(navLinks.dataset.open !== '1');
+});
+
+// Close the mobile menu after tapping a link
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (navLinks.dataset.open === '1') setMenu(false);
   });
 });
 
@@ -45,7 +70,10 @@ const STAFF_LINES  = 5;
 const LINE_SPACING = 14;
 const STAFF_GAP    = 100;
 
+let isHeroVisible = true;
+
 function drawScore() {
+  if (!isHeroVisible) return; // pause when hero is off-screen
   sCtx.clearRect(0, 0, scoreCanvas.width, scoreCanvas.height);
   sCtx.strokeStyle = 'rgba(201, 168, 76, 0.5)';
   sCtx.lineWidth   = 0.7;
@@ -97,9 +125,18 @@ function drawScore() {
       sCtx.restore();
     }
   }
-  requestAnimationFrame(drawScore);
+  if (!reduceMotion) requestAnimationFrame(drawScore);
 }
 drawScore();
+
+// Pause canvas animation when hero scrolls out of view
+if (!reduceMotion) {
+  const heroObserver = new IntersectionObserver((entries) => {
+    isHeroVisible = entries[0].isIntersecting;
+    if (isHeroVisible) drawScore(); // restart loop when hero re-enters
+  }, { threshold: 0 });
+  heroObserver.observe(document.getElementById('hero'));
+}
 
 // ─── SCROLL REVEAL ────────────────────────────────────────────────────────────
 const revealObserver = new IntersectionObserver((entries) => {
@@ -149,7 +186,21 @@ function spawnNote() {
   ctaNotes.appendChild(el);
   setTimeout(() => el.remove(), (dur + del) * 1000 + 500);
 }
-setInterval(spawnNote, 600);
+
+// Only run the note animation while the contact section is on screen
+let noteTimer = null;
+if (!reduceMotion && ctaNotes) {
+  const ctaSection = document.getElementById('contact');
+  const ctaObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      if (!noteTimer) noteTimer = setInterval(spawnNote, 600);
+    } else if (noteTimer) {
+      clearInterval(noteTimer);
+      noteTimer = null;
+    }
+  }, { threshold: 0 });
+  ctaObserver.observe(ctaSection);
+}
 
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -359,7 +410,29 @@ function seekFromClick(item, clientX) {
 
 // ── Wire up each track ────────────────────────────────────────────────────────
 document.querySelectorAll('.track-item').forEach(item => {
-  const src = item.dataset.src;
+  // MP3/OGG smart src: prefer MP3 (Safari/iOS), fall back to OGG
+  const canPlayOgg = audio.canPlayType('audio/ogg; codecs="vorbis"') !== '';
+  const src = canPlayOgg
+    ? (item.dataset.srcOgg || item.dataset.src)
+    : item.dataset.src; // data-src is now MP3
+
+  function triggerPlayPause() {
+    if (currentItem === item) {
+      if (audio.paused) {
+        audio.play();
+        setPlaying(item, true);
+      } else {
+        audio.pause();
+        setPlaying(item, false);
+      }
+    } else {
+      if (currentItem) resetItem(currentItem);
+      currentItem = item;
+      audio.src = src;
+      audio.play().catch(err => console.info('Audio:', err));
+      setPlaying(item, true);
+    }
+  }
 
   // Waveform: seek on click / drag
   const waveEl = item.querySelector('.track-waveform');
@@ -386,26 +459,17 @@ document.querySelectorAll('.track-item').forEach(item => {
     if (currentItem === item) seekFromClick(item, e.touches[0].clientX);
   }, { passive: true });
 
-  // Play / pause via row click (excluding waveform — handled above)
+  // Play / pause via row click
   item.addEventListener('click', e => {
-    if (waveEl.contains(e.target)) return; // handled by waveform listeners
+    if (waveEl.contains(e.target)) return;
+    triggerPlayPause();
+  });
 
-    if (currentItem === item) {
-      // toggle
-      if (audio.paused) {
-        audio.play();
-        setPlaying(item, true);
-      } else {
-        audio.pause();
-        setPlaying(item, false);
-      }
-    } else {
-      // switch to new track
-      if (currentItem) resetItem(currentItem);
-      currentItem = item;
-      audio.src = src;
-      audio.play().catch(err => console.info('Audio:', err));
-      setPlaying(item, true);
+  // ── Keyboard accessibility (point 5) ──────────────────────────────────────
+  item.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault(); // prevent page scroll on spacebar
+      triggerPlayPause();
     }
   });
 });
