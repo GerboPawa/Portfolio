@@ -17,6 +17,9 @@ const budgetWarning = document.getElementById('budgetWarning');
 const budgetWarnTxt = document.getElementById('budgetWarningText');
 const contactFields = document.getElementById('contactFields');
 
+// ── i18n helper (falls back to the key if i18n.js isn't loaded) ───────────────
+const T = (key, vars) => (window.i18n ? window.i18n.t(key, vars) : key);
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function getMinutes() {
   return parseInt(document.getElementById('minutesSlider').value) || 15;
@@ -33,7 +36,7 @@ function shake(el) {
 function updateProgress() {
   const pct = (currentStep / TOTAL_STEPS) * 100;
   progressBar.style.setProperty('--progress', pct + '%');
-  progressLbl.textContent = `Step ${currentStep} of ${TOTAL_STEPS}`;
+  progressLbl.textContent = T('q.step', { n: currentStep, total: TOTAL_STEPS });
 }
 
 // ── Budget logic ──────────────────────────────────────────────────────────────
@@ -74,9 +77,7 @@ function evaluateBudget(radio) {
     const mins    = getMinutes();
     const minCost = mins * RATE_PER_MIN;
     budgetWarning.classList.remove('hidden');
-    budgetWarnTxt.textContent =
-      `For ~${mins} min of music my rate starts at $${minCost.toLocaleString()}. ` +
-      `This range isn't a fit right now — but feel free to reach out directly if you'd like to discuss.`;
+    budgetWarnTxt.textContent = T('q.budgetWarn', { mins: mins, cost: minCost.toLocaleString() });
     contactFields.classList.add('hidden');
     submitBtn.classList.add('hidden');
     submitBtn.disabled = true;
@@ -154,19 +155,19 @@ const sliderDisp = document.getElementById('sliderDisplay');
 const sliderCtx  = document.getElementById('sliderContext');
 
 const contexts = [
-  [1,   3,   'A jingle or short sting — perfect.'],
-  [4,   10,  'A handful of tracks — ideal for a game jam.'],
-  [11,  20,  'A solid indie vertical slice.'],
-  [21,  40,  'Full small-to-mid indie game OST.'],
-  [41,  70,  'Substantial OST — a real release.'],
-  [71,  120, 'Full-scale production. Let\'s talk details.'],
+  [1,   3,   'q.slider.1'],
+  [4,   10,  'q.slider.2'],
+  [11,  20,  'q.slider.3'],
+  [21,  40,  'q.slider.4'],
+  [41,  70,  'q.slider.5'],
+  [71,  120, 'q.slider.6'],
 ];
 
 function updateSlider() {
   const v = parseInt(slider.value);
   sliderDisp.textContent = v;
   const ctx = contexts.find(([mn, mx]) => v >= mn && v <= mx);
-  if (ctx) sliderCtx.textContent = ctx[2];
+  if (ctx) sliderCtx.textContent = T(ctx[2]);
 }
 
 slider.addEventListener('input', updateSlider);
@@ -181,7 +182,7 @@ form.addEventListener('submit', async (e) => {
   if (isBudgetTooLow(selectedBudget)) return;
 
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending…';
+  submitBtn.textContent = T('q.sending');
 
   const needs   = [...form.querySelectorAll('input[name="needs"]:checked')].map(i => i.value).join(', ');
   const minutes = slider.value;
@@ -221,8 +222,8 @@ ${extra || '(none)'}
     }
   } catch {
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Get My Custom Quote';
-    alert('Something went wrong — please email filippo.gerbino.mail@gmail.com directly.');
+    submitBtn.textContent = T('q.submit');
+    alert(T('q.error'));
   }
 });
 
@@ -238,27 +239,14 @@ styleEl.textContent = `
 }`;
 document.head.appendChild(styleEl);
 
-// ── Nav hamburger ─────────────────────────────────────────────────────────────
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.querySelector('.nav-links');
-if (hamburger) {
-  hamburger.addEventListener('click', () => {
-    const open = navLinks.dataset.open === '1';
-    navLinks.dataset.open = open ? '0' : '1';
-    Object.assign(navLinks.style, {
-      display:        open ? 'none' : 'flex',
-      position:       'fixed',
-      top:            '70px', left: '0', right: '0',
-      flexDirection:  'column',
-      background:     'rgba(10,10,15,0.97)',
-      padding:        '2rem',
-      borderBottom:   '1px solid rgba(201,168,76,0.15)',
-      gap:            '1.5rem',
-      backdropFilter: 'blur(20px)',
-      zIndex:         '99',
-    });
-  });
-}
+// ── Language switch: re-render dynamic strings on change ──────────────────────
+window.addEventListener('langchange', () => {
+  updateProgress();
+  updateSlider();
+  // refresh budget warning text if it's currently shown
+  const sel = form.querySelector('input[name="budget"]:checked');
+  if (sel && isBudgetTooLow(sel)) evaluateBudget(sel);
+});
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 showStep(1);
