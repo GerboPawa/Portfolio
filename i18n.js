@@ -191,6 +191,22 @@
     'q.successTitle': 'Richiesta inviata.',
     'q.successBody':  'Leggo il tuo brief e ti rispondo entro 48 ore con una proposta su misura.',
     'q.backPortfolio': '← Torna al portfolio',
+
+    // privacy page
+    'meta.title3':     'Privacy — Filippo Gerbino',
+    'privacy.eyebrow': '// Privacy',
+    'privacy.title':   'Privacy',
+    'privacy.updated': 'Ultimo aggiornamento — giugno 2026',
+    'privacy.intro':   'Questo sito è gestito da Filippo Gerbino. Ecco esattamente cosa succede ai tuoi dati — in breve e in modo onesto.',
+    'privacy.h1':      'Form di contatto e preventivo',
+    'privacy.p1':      'Quando usi il form di contatto o il configuratore di preventivo, i dati che inserisci (nome, email, messaggio) mi arrivano tramite Formspree solo per poterti rispondere. Non vengono mai venduti, condivisi o usati per marketing.',
+    'privacy.h2':      'Video incorporati',
+    'privacy.p2':      'Le pagine con video di YouTube caricano contenuti da YouTube, che può impostare cookie quando premi play. Dove possibile i video usano la modalità privacy di YouTube (senza cookie).',
+    'privacy.h3':      'Statistiche',
+    'privacy.p3':      'Uso uno strumento di statistiche rispettoso della privacy che conta le visite in forma anonima, senza cookie e senza tracciarti su altri siti. Non viene raccolto alcun dato personale.',
+    'privacy.h4':      'I tuoi diritti',
+    'privacy.p4':      'Puoi chiedermi in qualsiasi momento di vedere o cancellare i dati che mi hai inviato — scrivi a <a href="mailto:filippo.gerbino.mail@gmail.com">filippo.gerbino.mail@gmail.com</a>.',
+    'footer.privacy':  'Privacy',
   };
 
   // ── Placeholder overrides ────────────────────────────────────────────────

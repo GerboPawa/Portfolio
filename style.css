@@ -734,7 +734,7 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   gap: 0.25rem;
   font-size: 0.7rem;
-  color: rgba(201, 168, 76, 0.6);
+  color: rgba(201, 168, 76, 0.85);
   letter-spacing: 0.04em;
 }
 
@@ -1055,7 +1055,7 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.04em;
   text-align: center;
   margin-top: 0.75rem;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .form-email-alt a {

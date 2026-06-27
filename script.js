@@ -55,6 +55,18 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
+// Close the mobile menu on Escape or an outside click
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks.dataset.open === '1') setMenu(false);
+});
+document.addEventListener('click', (e) => {
+  if (navLinks.dataset.open === '1' &&
+      !navLinks.contains(e.target) &&
+      !hamburger.contains(e.target)) {
+    setMenu(false);
+  }
+});
+
 // ─── SCORE CANVAS (HERO BACKGROUND) ──────────────────────────────────────────
 const scoreCanvas = document.getElementById('scoreCanvas');
 const sCtx        = scoreCanvas.getContext('2d');
@@ -340,8 +352,54 @@ window.addEventListener('resize', () => {
     document.querySelectorAll('.track-item').forEach((item, i) => {
       initTrackWaveform(item, i);
     });
+    // Re-decode the real waveform for whatever is currently loaded
+    if (currentItem) loadRealWaveform(currentItem);
   }, 150);
 });
+
+// ── Real waveform: decode the actual audio and replace the synthetic shape ────
+// Lazy — only runs when a track is first played, so page load stays light.
+let sharedAudioCtx = null;
+
+function computePeaks(audioBuffer, numBars) {
+  const ch    = audioBuffer.getChannelData(0); // first channel is enough
+  const block = Math.max(1, Math.floor(ch.length / numBars));
+  const peaks = new Float32Array(numBars);
+  let max = 0;
+  for (let i = 0; i < numBars; i++) {
+    let peak = 0;
+    const start = i * block;
+    const end   = Math.min(start + block, ch.length);
+    for (let j = start; j < end; j++) {
+      const v = Math.abs(ch[j]);
+      if (v > peak) peak = v;
+    }
+    peaks[i] = peak;
+    if (peak > max) max = peak;
+  }
+  // normalise to 0..1 with a small floor so silence still shows a sliver
+  for (let i = 0; i < numBars; i++) {
+    peaks[i] = Math.max(0.04, max > 0 ? peaks[i] / max : 0.04);
+  }
+  return peaks;
+}
+
+async function loadRealWaveform(item) {
+  const state = trackStates.get(item);
+  if (!state || state.realLoaded) return;
+  state.realLoaded = true; // claim it early to avoid duplicate fetches
+  try {
+    sharedAudioCtx = sharedAudioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const res     = await fetch(item.dataset.src); // MP3 — decodable everywhere
+    const bytes   = await res.arrayBuffer();
+    const decoded = await sharedAudioCtx.decodeAudioData(bytes);
+    state.waveData = computePeaks(decoded, state.waveData.length);
+    renderWaveform(item.querySelector('.waveform-canvas'), state.waveData, state.progress, state.isPlaying);
+  } catch (err) {
+    state.realLoaded = false; // let it retry on the next play
+    console.info('Waveform decode skipped:', err);
+  }
+}
 
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -431,6 +489,7 @@ document.querySelectorAll('.track-item').forEach(item => {
       audio.src = src;
       audio.play().catch(err => console.info('Audio:', err));
       setPlaying(item, true);
+      loadRealWaveform(item); // swap the synthetic waveform for the real one
     }
   }
 
@@ -465,11 +524,16 @@ document.querySelectorAll('.track-item').forEach(item => {
     triggerPlayPause();
   });
 
-  // ── Keyboard accessibility (point 5) ──────────────────────────────────────
+  // ── Keyboard accessibility ────────────────────────────────────────────────
   item.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault(); // prevent page scroll on spacebar
       triggerPlayPause();
+    } else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') &&
+               currentItem === item && audio.duration) {
+      e.preventDefault(); // seek ±5s with the arrow keys
+      const delta = e.key === 'ArrowRight' ? 5 : -5;
+      audio.currentTime = Math.max(0, Math.min(audio.duration, audio.currentTime + delta));
     }
   });
 });
