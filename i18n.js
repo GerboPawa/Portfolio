@@ -46,6 +46,7 @@
     'about.single':  'Scrivo, orchestro, registro, mixo e masterizzo — da solo. Quando il progetto chiede musicisti veri, li porto in studio.',
     'about.tagSession': 'Turnisti',
     'about.tagStems':   'Consegna stems',
+    'about.portraitCap': 'Dal vivo al pianoforte · Conservatorio',
 
     // pipeline
     'pipe.comp':      'Composizione',
