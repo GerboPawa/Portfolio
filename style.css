@@ -950,6 +950,59 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================
+   IMPLEMENTATION / ADAPTIVE AUDIO
+   ============================================ */
+.implementation { background: var(--ink); }
+
+.impl-sub {
+  color: var(--mist);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 620px;
+  margin-bottom: 1rem;
+}
+
+.impl-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-top: 2.5rem;
+  max-width: 900px;
+}
+
+.impl-item { margin: 0; }
+
+.impl-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.impl-item .video-wrapper-full {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding-bottom: 56.25%;
+  border-radius: 4px;
+}
+
+.impl-cap {
+  color: var(--mist);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-top: 1.2rem;
+  max-width: 620px;
+}
+
+/* When the second (vertical) demo is added, two side by side on wide screens */
+@media (min-width: 900px) {
+  .impl-grid.two { grid-template-columns: 1fr 1fr; max-width: 100%; }
+  .impl-grid.two .impl-cap { max-width: 100%; }
+}
+
+/* ============================================
    SERVICES
    ============================================ */
 .services { background: var(--void); }

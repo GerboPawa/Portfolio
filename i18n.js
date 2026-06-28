@@ -90,6 +90,13 @@
     'rescore.sub':   'Un rescore integrale di <em>Book of the Dead</em> di Unity (2018) — atonale e inquietante, scritto e prodotto per seguire ogni stacco, respiro e ombra sullo schermo. La prova che la musica giusta può reggere da sola una cinematica.',
     'rescore.watch': 'Guarda su YouTube <span aria-hidden="true">↗</span>',
 
+    // implementation / adaptive audio
+    'impl.eyebrow': '// Implementazione',
+    'impl.title':   'Musica che<br/><em>reagisce.</em>',
+    'impl.sub':     'Non consegno solo le tracce — le costruisco in sistemi adattivi in FMOD, così la musica segue il giocatore in tempo reale. Ecco come funziona.',
+    'impl.hTag':    '// Horizontal re-sequencing',
+    'impl.hDesc':   'La musica passa tra sezioni musicali complete — esplorazione, tensione, combattimento — con transizioni a tempo quando cambia lo stato del gioco.',
+
     // projects
     'projects.eyebrow': '// Progetti',
     'projects.title':   'Giochi pubblicati.<br/><em>Colonne sonore consegnate.</em>',
