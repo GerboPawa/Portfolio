@@ -599,3 +599,52 @@ audio.addEventListener('loadedmetadata', () => {
 
   resetAuto();
 })();
+
+// ─── IMPLEMENTATION VIDEO — clickable chapter timestamps ──────────────────────
+(function () {
+  const section = document.getElementById('implementation');
+  const frame   = document.getElementById('implPlayer');
+  const wrap    = document.querySelector('.impl-chapters');
+  if (!section || !frame || !wrap) return;
+
+  const chips  = Array.from(wrap.querySelectorAll('.impl-chip'));
+  const videoId = wrap.dataset.implId;
+  let player = null;
+
+  // YouTube IFrame API ready hook (single consumer on this page)
+  window.onYouTubeIframeAPIReady = function () {
+    player = new YT.Player('implPlayer');
+  };
+
+  function loadAPI() {
+    if (window.YT || document.getElementById('yt-iframe-api')) return;
+    const tag = document.createElement('script');
+    tag.id  = 'yt-iframe-api';
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  }
+
+  // Load the API only when the section is near the viewport
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { loadAPI(); obs.disconnect(); }
+  }, { rootMargin: '300px' });
+  obs.observe(section);
+
+  function seek(sec) {
+    if (player && typeof player.seekTo === 'function') {
+      player.seekTo(sec, true);
+      player.playVideo();
+    } else {
+      // API not ready yet — fall back to reloading the embed at the timestamp
+      frame.src = `https://www.youtube-nocookie.com/embed/${videoId}?start=${sec}&autoplay=1&enablejsapi=1`;
+    }
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      loadAPI();
+      seek(parseInt(chip.dataset.seek, 10) || 0);
+      chips.forEach(c => c.classList.toggle('active', c === chip));
+    });
+  });
+})();

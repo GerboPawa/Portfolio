@@ -988,6 +988,39 @@ img { max-width: 100%; display: block; }
   border-radius: 4px;
 }
 
+.impl-chapters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.impl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--mist);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.impl-chip:hover { border-color: var(--gold); color: var(--white); }
+
+.impl-chip.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.08);
+}
+
+.impl-chip-t { color: var(--gold); }
+
 .impl-cap {
   color: var(--mist);
   font-size: 0.85rem;
