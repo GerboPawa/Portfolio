@@ -95,7 +95,7 @@
     'impl.title':   'Musica che<br/><em>reagisce.</em>',
     'impl.sub':     'Non consegno solo le tracce — le costruisco in sistemi adattivi in FMOD, così la musica segue il giocatore in tempo reale. Ecco come funziona.',
     'impl.hTag':    '// Horizontal re-sequencing',
-    'impl.hDesc':   'La musica passa tra sezioni musicali complete — esplorazione, tensione, combattimento — con transizioni a tempo quando cambia lo stato del gioco.',
+    'impl.hDesc':   'La musica passa tra sezioni musicali complete — esplorazione, combattimento, morte — con transizioni a tempo quando cambia lo stato del gioco.',
 
     // projects
     'projects.eyebrow': '// Progetti',
