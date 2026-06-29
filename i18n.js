@@ -40,7 +40,7 @@
     // about
     'about.eyebrow': '// Chi',
     'about.title':   'Formazione classica.<br/><em>Disinvoltura digitale.</em>',
-    'about.stat1':   'Diplomi in pianoforte<br/>Conservatorio',
+    'about.stat1':   'Pianista Classico<br/>Conservatorio',
     'about.stat2':   'Studio.<br/>Pipeline completa.',
     'about.stat3':   'Turnisti<br/>a disposizione',
     'about.single':  'Scrivo, orchestro, registro, mixo e masterizzo — da solo. Quando il progetto chiede musicisti veri, li porto in studio.',
@@ -110,7 +110,7 @@
     'train.eyebrow': '// Formazione',
     'train.l1': 'Scoring per Film',
     'train.l2': 'Composizione Classica',
-    'train.l3': 'Pianoforte · 2 Diplomi',
+    'train.l3': 'Pianoforte Classico',
 
     // testimonials
     'testi.eyebrow': '// Testimonianze',
