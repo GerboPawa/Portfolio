@@ -441,7 +441,7 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
-  align-items: start;
+  align-items: center;
 }
 
 .about-body {
@@ -528,14 +528,15 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   position: relative;
   background: var(--ink);
+  aspect-ratio: 16 / 10;
 }
 
 .about-portrait img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-  object-position: 50% 38%;
+  object-position: 50% 28%;
 }
 
 .about-portrait-cap {
@@ -1033,6 +1034,15 @@ img { max-width: 100%; display: block; }
 @media (min-width: 900px) {
   .impl-grid.two { grid-template-columns: 1fr 1fr; max-width: 100%; }
   .impl-grid.two .impl-cap { max-width: 100%; }
+}
+
+/* Cinematic rescore as its own section (was nested in Work) */
+.rescore-section { background: var(--ink); }
+
+.rescore-section .rescoring-piece {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 /* ============================================

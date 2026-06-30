@@ -71,9 +71,9 @@
   <nav class="nav" id="nav">
     <div class="nav-logo">F<span class="gold">.</span></div>
     <div class="nav-links">
-      <a href="#about" data-i18n="nav.about">About</a>
-      <a href="#portfolio" data-i18n="nav.work">Work</a>
+      <a href="#implementation" data-i18n="nav.work">Work</a>
       <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#about" data-i18n="nav.about">About</a>
       <a href="start-a-project.html" class="nav-cta" data-i18n="nav.cta">Start a Project</a>
     </div>
     <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
@@ -103,7 +103,7 @@
         Everything your game needs — under one roof.
       </p>
       <div class="hero-actions">
-        <a href="#portfolio" class="btn-primary" data-i18n="hero.listen">Listen</a>
+        <a href="#implementation" class="btn-primary" data-i18n="hero.listen">Listen</a>
         <a href="start-a-project.html" class="btn-ghost" data-i18n="hero.start">Start a project</a>
       </div>
     </div>
@@ -135,131 +135,77 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
-  <section class="about section" id="about">
+  <!-- IMPLEMENTATION / ADAPTIVE AUDIO -->
+  <section class="implementation section" id="implementation">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-left">
-          <p class="section-eyebrow mono reveal" data-i18n="about.eyebrow">// Who</p>
-          <h2 class="section-title reveal" data-i18n="about.title">Classically trained.<br/><em>Digitally fluent.</em></h2>
+      <p class="section-eyebrow mono reveal" data-i18n="impl.eyebrow">// Implementation</p>
+      <h2 class="section-title reveal" data-i18n="impl.title">Music that<br/><em>reacts.</em></h2>
+      <p class="impl-sub reveal" data-i18n="impl.sub">
+        I don't just hand over tracks — I build them into adaptive systems in FMOD, so the
+        score follows the player in real time. Here's how it works.
+      </p>
 
-          <div class="stat-row reveal reveal-delay-1">
-            <div class="stat-block">
-              <span class="stat-num">𝄞</span>
-              <span class="stat-label" data-i18n="about.stat1">Classical Pianist<br/>Conservatorio</span>
-            </div>
-            <div class="stat-block">
-              <span class="stat-num">1</span>
-              <span class="stat-label" data-i18n="about.stat2">Studio.<br/>Full pipeline.</span>
-            </div>
-            <div class="stat-block">
-              <span class="stat-num">∞</span>
-              <span class="stat-label" data-i18n="about.stat3">Session musicians<br/>on call</span>
-            </div>
+      <div class="impl-grid">
+        <figure class="impl-item reveal">
+          <p class="impl-tag mono" data-i18n="impl.hTag">// Horizontal re-sequencing</p>
+          <div class="video-wrapper-full">
+            <iframe
+              id="implPlayer"
+              src="https://www.youtube-nocookie.com/embed/AJOIJgnCPFo?enablejsapi=1" loading="lazy"
+              title="Filippo Gerbino — Horizontal re-sequencing in FMOD"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
           </div>
-
-          <p class="about-single reveal reveal-delay-2" data-i18n="about.single">
-            I write, orchestrate, record, mix and master — solo.
-            When the project needs real players, I bring them in.
-          </p>
-
-          <div class="about-tags reveal reveal-delay-3">
-            <span class="tag">Conservatorio</span>
-            <span class="tag">Cubase 15</span>
-            <span class="tag" data-i18n="about.tagSession">Session Musicians</span>
-            <span class="tag">FMOD</span>
-            <span class="tag" data-i18n="about.tagStems">Stems delivery</span>
+          <div class="impl-chapters mono" data-impl-id="AJOIJgnCPFo">
+            <button type="button" class="impl-chip" data-seek="0">
+              <span class="impl-chip-t">0:00</span><span data-i18n="impl.c1">Exploration</span>
+            </button>
+            <button type="button" class="impl-chip" data-seek="35">
+              <span class="impl-chip-t">0:35</span><span data-i18n="impl.c2">Combat</span>
+            </button>
+            <button type="button" class="impl-chip" data-seek="58">
+              <span class="impl-chip-t">0:58</span><span data-i18n="impl.c3">Death</span>
+            </button>
           </div>
-        </div>
-
-        <div class="about-right">
-          <figure class="about-portrait reveal">
-            <img src="filippo-piano.jpg" alt="Filippo Gerbino at the piano"
-                 loading="lazy" width="999" height="666" />
-            <figcaption class="about-portrait-cap mono" data-i18n="about.portraitCap">Live at the piano · Conservatorio</figcaption>
-          </figure>
-          <div class="pipeline-card">
-            <p class="pipeline-label mono">// Pipeline</p>
-            <div class="pipeline-steps">
-              <div class="pipeline-step">
-                <div class="step-icon">♩</div>
-                <div>
-                  <strong data-i18n="pipe.comp">Composition</strong>
-                  <p data-i18n="pipe.compDesc">Themes, motifs, leitmotifs — built around your world.</p>
-                </div>
-              </div>
-              <div class="pipeline-step">
-                <div class="step-icon">𝄞</div>
-                <div>
-                  <strong data-i18n="pipe.orch">Orchestration</strong>
-                  <p data-i18n="pipe.orchDesc">Full written parts. Ready for live players or samples.</p>
-                </div>
-              </div>
-              <div class="pipeline-step">
-                <div class="step-icon">⏺</div>
-                <div>
-                  <strong data-i18n="pipe.prod">Production</strong>
-                  <p data-i18n="pipe.prodDesc">Virtual + live sessions. Real instruments when it matters.</p>
-                </div>
-              </div>
-              <div class="pipeline-step">
-                <div class="step-icon">⚡</div>
-                <div>
-                  <strong>Mix & Master</strong>
-                  <p data-i18n="pipe.mixDesc">Stereo or stems. Optimised for engine or streaming.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <figcaption class="impl-cap" data-i18n="impl.hDesc">
+            The score moves between full musical sections — exploration, combat, death —
+            transitioning on the beat as the game state changes.
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- SOUND IDENTITY -->
-  <section class="style-section section" id="style">
+  <!-- CINEMATIC RESCORING -->
+  <section class="rescore-section section" id="rescore">
     <div class="container">
-      <p class="section-eyebrow mono reveal" data-i18n="sound.eyebrow">// Sound</p>
-      <h2 class="section-title center reveal" data-i18n="sound.title">What your world<br/><em>could sound like.</em></h2>
-      <div class="refs-grid">
-        <div class="ref-card reveal reveal-delay-1">
-          <div class="ref-game" data-i18n="ref1.title">High Fantasy</div>
-          <div class="ref-desc" data-i18n="ref1.desc">Epic orchestration, thematic leitmotifs, immersive world-building. Music that makes the world feel like it existed before the player arrived.</div>
+      <div class="rescoring-piece reveal">
+        <p class="rescoring-label mono" data-i18n="rescore.label">// Cinematic Scoring</p>
+        <h3 class="rescoring-title" data-i18n="rescore.title">Same picture.<br/><em>Different soul.</em></h3>
+        <p class="rescoring-sub" data-i18n="rescore.sub">
+          A full rescore of Unity's <em>Book of the Dead</em> (2018) — atonal and unsettling,
+          written and produced to hit every cut, breath and shadow on screen. Proof that the
+          right score can carry a cinematic on its own.
+        </p>
+        <div class="video-wrapper-full">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/d8BKK9SVm9c" loading="lazy"
+            title="Filippo Gerbino — Book of the Dead Rescore"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
-        <div class="ref-card reveal reveal-delay-2">
-          <div class="ref-game" data-i18n="ref2.title">Dark & Ancient</div>
-          <div class="ref-desc" data-i18n="ref2.desc">Heavy brass, haunting choirs, intimate strings. For desolate landscapes, forgotten gods, and worlds on the edge of collapse.</div>
-        </div>
-        <div class="ref-card reveal reveal-delay-3">
-          <div class="ref-game" data-i18n="ref3.title">Cinematic Drama</div>
-          <div class="ref-desc" data-i18n="ref3.desc">Narrative-driven scoring built around character and emotion. Themes that evolve, remember, and pay off.</div>
-        </div>
-        <div class="ref-card reveal reveal-delay-4">
-          <div class="ref-game" data-i18n="ref4.title">Action & Tension</div>
-          <div class="ref-desc" data-i18n="ref4.desc">Driving rhythms, aggressive brass, percussive urgency. Combat music that pushes the player forward without breaking immersion.</div>
-        </div>
+        <a href="https://youtu.be/d8BKK9SVm9c" target="_blank" rel="noopener" class="rescoring-watch mono" data-i18n="rescore.watch">
+          Watch on YouTube <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- INTRO VIDEO -->
-  <section class="showreel section" id="showreel">
-    <div class="container">
-      <p class="section-eyebrow mono reveal">// Intro</p>
-      <h2 class="section-title reveal" data-i18n="intro.title">Before you<br/><em>hit play.</em></h2>
-    </div>
-    <div class="video-wrapper-full reveal">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/bK5C4RWc6UE" loading="lazy"
-        title="Filippo Gerbino — Who I am"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
+  <!-- PORTFOLIO / TRACKS -->
   <section class="portfolio section" id="portfolio">
     <div class="container">
       <p class="section-eyebrow mono reveal" data-i18n="work.eyebrow">// Work</p>
@@ -428,72 +374,86 @@
         </div>
 
       </div>
-
-      <!-- RESCORING PIECE / CINEMATIC SCORING -->
-      <div class="rescoring-piece reveal">
-        <p class="rescoring-label mono" data-i18n="rescore.label">// Cinematic Scoring</p>
-        <h3 class="rescoring-title" data-i18n="rescore.title">Same picture.<br/><em>Different soul.</em></h3>
-        <p class="rescoring-sub" data-i18n="rescore.sub">
-          A full rescore of Unity's <em>Book of the Dead</em> (2018) — atonal and unsettling,
-          written and produced to hit every cut, breath and shadow on screen. Proof that the
-          right score can carry a cinematic on its own.
-        </p>
-        <div class="video-wrapper-full">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/d8BKK9SVm9c" loading="lazy"
-            title="Filippo Gerbino — Book of the Dead Rescore"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <a href="https://youtu.be/d8BKK9SVm9c" target="_blank" rel="noopener" class="rescoring-watch mono" data-i18n="rescore.watch">
-          Watch on YouTube <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-
     </div>
   </section>
 
-  <!-- IMPLEMENTATION / ADAPTIVE AUDIO -->
-  <section class="implementation section" id="implementation">
+  <!-- ABOUT -->
+  <section class="about section" id="about">
     <div class="container">
-      <p class="section-eyebrow mono reveal" data-i18n="impl.eyebrow">// Implementation</p>
-      <h2 class="section-title reveal" data-i18n="impl.title">Music that<br/><em>reacts.</em></h2>
-      <p class="impl-sub reveal" data-i18n="impl.sub">
-        I don't just hand over tracks — I build them into adaptive systems in FMOD, so the
-        score follows the player in real time. Here's how it works.
-      </p>
+      <div class="about-grid">
+        <div class="about-left">
+          <p class="section-eyebrow mono reveal" data-i18n="about.eyebrow">// Who</p>
+          <h2 class="section-title reveal" data-i18n="about.title">Classically trained.<br/><em>Digitally fluent.</em></h2>
 
-      <div class="impl-grid">
-        <figure class="impl-item reveal">
-          <p class="impl-tag mono" data-i18n="impl.hTag">// Horizontal re-sequencing</p>
-          <div class="video-wrapper-full">
-            <iframe
-              id="implPlayer"
-              src="https://www.youtube-nocookie.com/embed/AJOIJgnCPFo?enablejsapi=1" loading="lazy"
-              title="Filippo Gerbino — Horizontal re-sequencing in FMOD"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+          <div class="stat-row reveal reveal-delay-1">
+            <div class="stat-block">
+              <span class="stat-num">𝄞</span>
+              <span class="stat-label" data-i18n="about.stat1">Classical Pianist<br/>Conservatorio</span>
+            </div>
+            <div class="stat-block">
+              <span class="stat-num">1</span>
+              <span class="stat-label" data-i18n="about.stat2">Studio.<br/>Full pipeline.</span>
+            </div>
+            <div class="stat-block">
+              <span class="stat-num">∞</span>
+              <span class="stat-label" data-i18n="about.stat3">Session musicians<br/>on call</span>
+            </div>
           </div>
-          <div class="impl-chapters mono" data-impl-id="AJOIJgnCPFo">
-            <button type="button" class="impl-chip" data-seek="0">
-              <span class="impl-chip-t">0:00</span><span data-i18n="impl.c1">Exploration</span>
-            </button>
-            <button type="button" class="impl-chip" data-seek="35">
-              <span class="impl-chip-t">0:35</span><span data-i18n="impl.c2">Combat</span>
-            </button>
-            <button type="button" class="impl-chip" data-seek="58">
-              <span class="impl-chip-t">0:58</span><span data-i18n="impl.c3">Death</span>
-            </button>
+
+          <p class="about-single reveal reveal-delay-2" data-i18n="about.single">
+            I write, orchestrate, record, mix and master — solo.
+            When the project needs real players, I bring them in.
+          </p>
+
+          <div class="about-tags reveal reveal-delay-3">
+            <span class="tag">Conservatorio</span>
+            <span class="tag">Cubase 15</span>
+            <span class="tag" data-i18n="about.tagSession">Session Musicians</span>
+            <span class="tag">FMOD</span>
+            <span class="tag" data-i18n="about.tagStems">Stems delivery</span>
           </div>
-          <figcaption class="impl-cap" data-i18n="impl.hDesc">
-            The score moves between full musical sections — exploration, combat, death —
-            transitioning on the beat as the game state changes.
-          </figcaption>
-        </figure>
+        </div>
+
+        <div class="about-right">
+          <figure class="about-portrait reveal">
+            <img src="filippo-piano.jpg" alt="Filippo Gerbino at the piano"
+                 loading="lazy" width="999" height="666" />
+            <figcaption class="about-portrait-cap mono" data-i18n="about.portraitCap">Live at the piano · Conservatorio</figcaption>
+          </figure>
+          <div class="pipeline-card">
+            <p class="pipeline-label mono">// Pipeline</p>
+            <div class="pipeline-steps">
+              <div class="pipeline-step">
+                <div class="step-icon">♩</div>
+                <div>
+                  <strong data-i18n="pipe.comp">Composition</strong>
+                  <p data-i18n="pipe.compDesc">Themes, motifs, leitmotifs — built around your world.</p>
+                </div>
+              </div>
+              <div class="pipeline-step">
+                <div class="step-icon">𝄞</div>
+                <div>
+                  <strong data-i18n="pipe.orch">Orchestration</strong>
+                  <p data-i18n="pipe.orchDesc">Full written parts. Ready for live players or samples.</p>
+                </div>
+              </div>
+              <div class="pipeline-step">
+                <div class="step-icon">⏺</div>
+                <div>
+                  <strong data-i18n="pipe.prod">Production</strong>
+                  <p data-i18n="pipe.prodDesc">Virtual + live sessions. Real instruments when it matters.</p>
+                </div>
+              </div>
+              <div class="pipeline-step">
+                <div class="step-icon">⚡</div>
+                <div>
+                  <strong>Mix & Master</strong>
+                  <p data-i18n="pipe.mixDesc">Stereo or stems. Optimised for engine or streaming.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -609,6 +569,32 @@
         <button class="carousel-btn" id="carouselNext" aria-label="Next">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
         </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUND IDENTITY -->
+  <section class="style-section section" id="style">
+    <div class="container">
+      <p class="section-eyebrow mono reveal" data-i18n="sound.eyebrow">// Sound</p>
+      <h2 class="section-title center reveal" data-i18n="sound.title">What your world<br/><em>could sound like.</em></h2>
+      <div class="refs-grid">
+        <div class="ref-card reveal reveal-delay-1">
+          <div class="ref-game" data-i18n="ref1.title">High Fantasy</div>
+          <div class="ref-desc" data-i18n="ref1.desc">Epic orchestration, thematic leitmotifs, immersive world-building. Music that makes the world feel like it existed before the player arrived.</div>
+        </div>
+        <div class="ref-card reveal reveal-delay-2">
+          <div class="ref-game" data-i18n="ref2.title">Dark & Ancient</div>
+          <div class="ref-desc" data-i18n="ref2.desc">Heavy brass, haunting choirs, intimate strings. For desolate landscapes, forgotten gods, and worlds on the edge of collapse.</div>
+        </div>
+        <div class="ref-card reveal reveal-delay-3">
+          <div class="ref-game" data-i18n="ref3.title">Cinematic Drama</div>
+          <div class="ref-desc" data-i18n="ref3.desc">Narrative-driven scoring built around character and emotion. Themes that evolve, remember, and pay off.</div>
+        </div>
+        <div class="ref-card reveal reveal-delay-4">
+          <div class="ref-game" data-i18n="ref4.title">Action & Tension</div>
+          <div class="ref-desc" data-i18n="ref4.desc">Driving rhythms, aggressive brass, percussive urgency. Combat music that pushes the player forward without breaking immersion.</div>
+        </div>
       </div>
     </div>
   </section>
