@@ -6,7 +6,7 @@
   <title data-i18n="meta.title3">Privacy — Filippo Gerbino</title>
   <meta name="description" content="Privacy information for filippogerbino.com — what data is collected and why." />
   <meta name="robots" content="noindex" />
-  <meta name="theme-color" content="#0A0A0F" />
+  <meta name="theme-color" content="#07070B" />
   <link rel="canonical" href="https://filippogerbino.com/privacy.html" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -15,34 +15,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="quote.css" />
-  <style>
-    .legal h2 {
-      font-family: var(--font-display); font-weight: 400;
-      font-size: 1.3rem; color: var(--parchment); margin: 2.2rem 0 0.5rem;
-    }
-    .legal p { color: var(--mist); line-height: 1.75; font-size: 0.95rem; }
-    .legal .lead { font-size: 1.05rem; margin-bottom: 0.5rem; }
-    .legal .updated {
-      font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold);
-      letter-spacing: 0.06em; margin-bottom: 2rem;
-    }
-    .legal a { color: var(--gold); }
-    .legal .back-link {
-      display: inline-block; margin-top: 2.5rem;
-      font-family: var(--font-mono); font-size: 0.78rem; color: var(--mist);
-      letter-spacing: 0.06em; transition: color 0.2s;
-    }
-    .legal .back-link:hover { color: var(--gold); }
-  </style>
 </head>
 <body class="quote-page">
 
+  <!-- FILM GRAIN -->
+  <div class="grain" aria-hidden="true"></div>
+
   <nav class="nav scrolled" id="nav">
-    <a href="index.html" class="nav-logo">F<span class="gold">.</span></a>
-    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
-      <button type="button" class="lang-opt" data-lang="en">EN</button>
-      <button type="button" class="lang-opt" data-lang="it">IT</button>
+    <a href="index.html" class="nav-logo" aria-label="Filippo Gerbino — home">F<span class="gold">.</span></a>
+    <div class="nav-right" style="margin-left:auto;">
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-lang="en">EN</button>
+        <button type="button" class="lang-opt" data-lang="it">IT</button>
+      </div>
     </div>
   </nav>
 
@@ -50,7 +35,7 @@
     <div class="quote-container legal">
       <p class="section-eyebrow mono" data-i18n="privacy.eyebrow">// Privacy</p>
       <h1 class="quote-title" data-i18n="privacy.title">Privacy</h1>
-      <p class="updated" data-i18n="privacy.updated">Last updated — June 2026</p>
+      <p class="updated" data-i18n="privacy.updated">Last updated — July 2026</p>
 
       <p class="lead" data-i18n="privacy.intro">This site is run by Filippo Gerbino. Here's exactly what happens with your data — kept short and honest.</p>
 
@@ -86,5 +71,6 @@
           async src="//gc.zgo.at/count.js"></script>
 
   <script src="i18n.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

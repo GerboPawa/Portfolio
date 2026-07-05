@@ -14,7 +14,7 @@
   <meta property="og:image" content="https://filippogerbino.com/preview-social.jpg" />
   <meta property="og:url" content="https://filippogerbino.com/start-a-project.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#0A0A0F" />
+  <meta name="theme-color" content="#07070B" />
   <meta name="author" content="Filippo Gerbino" />
   <link rel="canonical" href="https://filippogerbino.com/start-a-project.html" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -24,37 +24,41 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="quote.css" />
 </head>
 <body class="quote-page">
 
+  <!-- FILM GRAIN -->
+  <div class="grain" aria-hidden="true"></div>
+
   <!-- NAV -->
   <nav class="nav scrolled" id="nav">
-    <a href="index.html" class="nav-logo">F<span class="gold">.</span></a>
-    <div class="nav-links">
-      <a href="index.html#about" data-i18n="nav.about">About</a>
+    <a href="index.html" class="nav-logo" aria-label="Filippo Gerbino — home">F<span class="gold">.</span></a>
+    <div class="nav-links" id="navLinks">
       <a href="index.html#portfolio" data-i18n="nav.work">Work</a>
       <a href="index.html#projects" data-i18n="nav.projects">Projects</a>
+      <a href="index.html#about" data-i18n="nav.about">About</a>
       <a href="start-a-project.html" class="nav-cta" data-i18n="nav.cta">Start a Project</a>
     </div>
-    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
-      <button type="button" class="lang-opt" data-lang="en">EN</button>
-      <button type="button" class="lang-opt" data-lang="it">IT</button>
+    <div class="nav-right">
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-lang="en">EN</button>
+        <button type="button" class="lang-opt" data-lang="it">IT</button>
+      </div>
+      <div class="available-badge">
+        <span class="available-dot"></span>
+        <span class="available-text mono" data-i18n="nav.available">Available</span>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="available-badge">
-      <span class="available-dot"></span>
-      <span class="available-text mono" data-i18n="nav.available">Available</span>
-    </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
   <main class="quote-main">
     <div class="quote-container">
 
       <div class="quote-header">
-        <p class="section-eyebrow mono" data-i18n="quote.eyebrow">// Start a Project</p>
+        <p class="section-eyebrow mono center" data-i18n="quote.eyebrow">// Start a Project</p>
         <h1 class="quote-title" data-i18n="quote.title">Let's build<br/><em>your soundtrack.</em></h1>
         <p class="quote-subtitle" data-i18n="quote.subtitle">A few quick questions — I'll come back with a real quote, not a template.</p>
       </div>
@@ -294,16 +298,22 @@
             </div>
           </div>
 
+          <!-- Live recap of the brief -->
+          <div class="quote-recap" id="quoteRecap">
+            <p class="quote-recap-label mono" data-i18n="q.recap">// Your brief so far</p>
+            <div class="quote-recap-chips" id="recapChips"></div>
+          </div>
+
           <div class="contact-fields" id="contactFields">
             <p class="section-eyebrow mono" style="margin-top:2.5rem;" data-i18n="q.details">// Your details</p>
             <div class="form-row" style="margin-top:1rem;">
               <div class="form-group">
                 <label for="q-name" class="mono" data-i18n="q.lblName">// Name</label>
-                <input type="text" id="q-name" name="name" placeholder="Your name" required data-i18n-ph="ph.name" />
+                <input type="text" id="q-name" name="name" placeholder="Your name" required data-i18n-ph="ph.name" autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="q-email" class="mono">// Email</label>
-                <input type="email" id="q-email" name="email" placeholder="your@email.com" required />
+                <input type="email" id="q-email" name="email" placeholder="your@email.com" required autocomplete="email" />
               </div>
             </div>
             <div class="form-group" style="margin-top:1rem;">
@@ -350,47 +360,7 @@
           async src="//gc.zgo.at/count.js"></script>
 
   <script src="i18n.js"></script>
-  <script>
-    // Footer year
-    var fy = document.getElementById('footerYear');
-    if (fy) fy.textContent = new Date().getFullYear();
-
-    // Mobile menu (this page doesn't load script.js)
-    (function () {
-      var hamburger = document.getElementById('hamburger');
-      var navLinks  = document.querySelector('.nav-links');
-      if (!hamburger || !navLinks) return;
-
-      function setMenu(open) {
-        navLinks.dataset.open = open ? '1' : '0';
-        hamburger.classList.toggle('is-open', open);
-        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-        Object.assign(navLinks.style, {
-          display:        open ? 'flex' : 'none',
-          position:       'fixed',
-          top:            '70px',
-          left:           '0',
-          right:          '0',
-          flexDirection:  'column',
-          background:     'rgba(10,10,15,0.97)',
-          padding:        '2rem',
-          borderBottom:   '1px solid rgba(201,168,76,0.15)',
-          gap:            '1.5rem',
-          backdropFilter: 'blur(20px)',
-          zIndex:         '99',
-        });
-      }
-
-      hamburger.addEventListener('click', function () {
-        setMenu(navLinks.dataset.open !== '1');
-      });
-      navLinks.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          if (navLinks.dataset.open === '1') setMenu(false);
-        });
-      });
-    })();
-  </script>
+  <script src="script.js"></script>
   <script src="quote.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
    English lives in the HTML (source of truth).
    This file provides the Italian overrides keyed
    by data-i18n / data-i18n-ph, plus dynamic strings
-   (DYN) used by quote.js.
+   (DYN) used by quote.js and script.js.
    ============================================ */
 (function () {
   const STORAGE_KEY = 'siteLang';
@@ -19,6 +19,8 @@
     'nav.about':     'Chi sono',
     'nav.work':      'Lavori',
     'nav.projects':  'Progetti',
+    'nav.services':  'Servizi',
+    'nav.faq':       'FAQ',
     'nav.cta':       'Inizia un progetto',
     'nav.available': 'Disponibile',
 
@@ -26,8 +28,9 @@
     'hero.eyebrow': 'Compositore Orchestrale · Game Audio',
     'hero.title':   "Un solo compositore.<br/><em>Un'orchestra intera.</em>",
     'hero.sub':     'Composizione. Orchestrazione. Produzione. Mix. Master.<br/>Tutto quello che serve al tuo gioco — da una sola mano.',
-    'hero.listen':  'Ascolta',
+    'hero.listen':  'Ascolta i lavori',
     'hero.start':   'Inizia un progetto',
+    'hero.trust':   'Risposta entro 48h &nbsp;·&nbsp; Pipeline completa in-house &nbsp;·&nbsp; Pronto per FMOD',
     'hero.scroll':  'scorri',
 
     // marquee
@@ -36,6 +39,56 @@
     'mq.pipeline': 'Pipeline Completa',
     'mq.written':  'Orchestrazioni Scritte',
     'mq.gfs':      'Giochi · Film · Serie',
+
+    // work / portfolio
+    'work.eyebrow': '// Lavori',
+    'work.title':   'Premi play.',
+    'work.sub':     'Otto tracce, otto mondi diversi. Il player ti segue mentre esplori il sito.',
+    'work.ctaText': 'Stai immaginando questo suono nel tuo gioco?',
+    'work.ctaBtn':  'Richiedi un preventivo',
+    'g1': 'Boss Finale · Battaglia',
+    'g2': 'Scontro col Boss',
+    'g3': 'Game Over · Jingle',
+    'g4': 'Cupo · Atmosferico · Ambient',
+    'g5': 'Trailer Epico',
+    'g6': 'Ambient · Calmo · Open World',
+    'g7': 'Rescoring · Mashup Orchestrale',
+    'g8': 'Tema Principale · Avventura',
+
+    // implementation / adaptive audio
+    'impl.eyebrow': '// Implementazione',
+    'impl.title':   'Musica che<br/><em>reagisce.</em>',
+    'impl.sub':     'Non consegno solo le tracce — le costruisco in sistemi adattivi in FMOD, così la musica segue il giocatore in tempo reale. Ecco come funziona.',
+    'impl.hTag':    '// Horizontal re-sequencing',
+    'impl.hDesc':   'La musica passa tra sezioni musicali complete — esplorazione, combattimento, morte — con transizioni a tempo quando cambia lo stato del gioco.',
+    'impl.c1': 'Esplorazione',
+    'impl.c2': 'Combattimento',
+    'impl.c3': 'Morte',
+
+    // rescore
+    'rescore.label': '// Scoring Cinematico',
+    'rescore.title': 'Stessa immagine.<br/><em>Anima diversa.</em>',
+    'rescore.sub':   'Un rescore integrale di <em>Book of the Dead</em> di Unity (2018) — atonale e inquietante, scritto e prodotto per seguire ogni stacco, respiro e ombra sullo schermo. La prova che la musica giusta può reggere da sola una cinematica.',
+    'rescore.watch': 'Guarda su YouTube <span aria-hidden="true">↗</span>',
+
+    // projects
+    'projects.eyebrow': '// Progetti',
+    'projects.title':   'Giochi pubblicati.<br/><em>Colonne sonore consegnate.</em>',
+    'projects.hint':    '↳ clicca il nome di una traccia per ascoltarla subito',
+    'proj1.type': 'Game Jam · RPG Tattico',
+    'proj1.desc': "Survival sci-fi a turni — affronta un'orda infinita di entità demoniache. OST completa: composta, prodotta e masterizzata da solo.",
+    'proj2.type': 'Game Jam · Avventura Nautica',
+    'proj2.desc': 'Avventura piratesca — quanto a lungo riuscirai a far durare la tua leggenda? Realizzata per la Godot Wild Game Jam 2026 con Nemo, Afonso Silva e BluNotes. Colonna sonora interamente composta, prodotta e masterizzata.',
+
+    // testimonials
+    'testi.eyebrow': '// Testimonianze',
+    'testi.title':   'Parola<br/><em>agli sviluppatori.</em>',
+    'testi.q1': 'La musica era incredibile — talento vero. Non lasciare che ti dicano il contrario.',
+    'testi.r1': 'Sviluppatore · Astra in Ruina',
+    'testi.q2': 'Grazie per la musica straordinaria. Ha fatto la differenza.',
+    'testi.r2': 'Content Creator · YouTube',
+    'testi.q3': 'Senza dubbio la miglior jam che abbia mai consegnato in tempo. Tutti hanno dato il massimo — e la colonna sonora ha superato ogni aspettativa.',
+    'testi.r3': 'Sviluppatore · Plundered',
 
     // about
     'about.eyebrow': '// Chi',
@@ -47,6 +100,10 @@
     'about.tagSession': 'Turnisti',
     'about.tagStems':   'Consegna stems',
     'about.portraitCap': 'Dal vivo al pianoforte · Conservatorio',
+    'train.eyebrow': '// Formazione',
+    'train.l1': 'Scoring per Film',
+    'train.l2': 'Composizione Classica',
+    'train.l3': 'Pianoforte Classico',
 
     // pipeline
     'pipe.comp':      'Composizione',
@@ -69,59 +126,6 @@
     'ref4.title': 'Azione e Tensione',
     'ref4.desc':  "Ritmi serrati, ottoni aggressivi, urgenza percussiva. Musica di combattimento che spinge il giocatore in avanti senza spezzare l'immersione.",
 
-    // intro video
-    'intro.title': 'Prima di<br/><em>premere play.</em>',
-
-    // work / portfolio
-    'work.eyebrow': '// Lavori',
-    'work.title':   'Premi play.',
-    'g1': 'Boss Finale · Battaglia',
-    'g2': 'Scontro col Boss',
-    'g3': 'Game Over · Jingle',
-    'g4': 'Cupo · Atmosferico · Ambient',
-    'g5': 'Trailer Epico',
-    'g6': 'Ambient · Calmo · Open World',
-    'g7': 'Rescoring · Mashup Orchestrale',
-    'g8': 'Tema Principale · Avventura',
-
-    // rescore
-    'rescore.label': '// Scoring Cinematico',
-    'rescore.title': 'Stessa immagine.<br/><em>Anima diversa.</em>',
-    'rescore.sub':   'Un rescore integrale di <em>Book of the Dead</em> di Unity (2018) — atonale e inquietante, scritto e prodotto per seguire ogni stacco, respiro e ombra sullo schermo. La prova che la musica giusta può reggere da sola una cinematica.',
-    'rescore.watch': 'Guarda su YouTube <span aria-hidden="true">↗</span>',
-
-    // implementation / adaptive audio
-    'impl.eyebrow': '// Implementazione',
-    'impl.title':   'Musica che<br/><em>reagisce.</em>',
-    'impl.sub':     'Non consegno solo le tracce — le costruisco in sistemi adattivi in FMOD, così la musica segue il giocatore in tempo reale. Ecco come funziona.',
-    'impl.hTag':    '// Horizontal re-sequencing',
-    'impl.hDesc':   'La musica passa tra sezioni musicali complete — esplorazione, combattimento, morte — con transizioni a tempo quando cambia lo stato del gioco.',
-    'impl.c1': 'Esplorazione',
-    'impl.c2': 'Combattimento',
-    'impl.c3': 'Morte',
-
-    // projects
-    'projects.eyebrow': '// Progetti',
-    'projects.title':   'Giochi pubblicati.<br/><em>Colonne sonore consegnate.</em>',
-    'proj1.type': 'Game Jam · RPG Tattico',
-    'proj1.desc': "Survival sci-fi a turni — affronta un'orda infinita di entità demoniache. OST completa: composta, prodotta e masterizzata da solo.",
-    'proj2.type': 'Game Jam · Avventura Nautica',
-    'proj2.desc': 'Avventura piratesca — quanto a lungo riuscirai a far durare la tua leggenda? Realizzata per la Godot Wild Game Jam 2026 con Nemo, Afonso Silva e BluNotes. Colonna sonora interamente composta, prodotta e masterizzata.',
-    'train.eyebrow': '// Formazione',
-    'train.l1': 'Scoring per Film',
-    'train.l2': 'Composizione Classica',
-    'train.l3': 'Pianoforte Classico',
-
-    // testimonials
-    'testi.eyebrow': '// Testimonianze',
-    'testi.title':   'Parola<br/><em>agli sviluppatori.</em>',
-    'testi.q1': 'La musica era incredibile — talento vero. Non lasciare che ti dicano il contrario.',
-    'testi.r1': 'Sviluppatore · Astra in Ruina',
-    'testi.q2': 'Grazie per la musica straordinaria. Ha fatto la differenza.',
-    'testi.r2': 'Content Creator · YouTube',
-    'testi.q3': 'Senza dubbio la miglior jam che abbia mai consegnato in tempo. Tutti hanno dato il massimo — e la colonna sonora ha superato ogni aspettativa.',
-    'testi.r3': 'Sviluppatore · Plundered',
-
     // services
     'services.eyebrow': '// Servizi',
     'services.title':   'Cosa consegno.',
@@ -133,16 +137,51 @@
     'svc3.desc':  "Partitura per direttore + parti staccate. Dallo schizzo alla notazione pronta per l'orchestra.",
     'svc4.desc':  'Stereo o stems. Game engine, trailer o streaming — scegli tu.',
 
+    // process
+    'process.eyebrow': '// Processo',
+    'process.title':   'Dal brief<br/><em>alla consegna.</em>',
+    'process.s1t': 'Brief',
+    'process.s1d': 'Raccontami il tuo mondo con il form di progetto (2 minuti). Ti rispondo entro 48 ore con una proposta su misura — non un template.',
+    'process.s2t': 'Partitura',
+    'process.s2d': 'Compongo, orchestro e produco. Ascolti la direzione fin da subito e la modelliamo insieme, finché non calza a pennello sul tuo gioco.',
+    'process.s3t': 'Consegna',
+    'process.s3d': 'Mixato e masterizzato — stereo, stems o un setup FMOD completo. Tutto arriva pronto da inserire nel tuo engine.',
+    'process.cta': 'Inizia dal passo 01 →',
+
+    // faq
+    'faq.eyebrow': '// FAQ',
+    'faq.title':   'Prima che tu lo chieda.',
+    'faq.q1': 'Cosa ricevo esattamente alla fine?',
+    'faq.a1': "Quello che serve alla tua pipeline: master stereo, stems separati per il tuo audio engine o un progetto FMOD completo con trigger adattivi — più partiture e parti scritte se registri dal vivo.",
+    'faq.q2': 'La musica può reagire al gameplay?',
+    'faq.a2': 'Sì — è la mia specialità. Costruisco sistemi adattivi in FMOD dove la musica passa a tempo tra esplorazione, combattimento e tutto il resto. Guarda la demo nella sezione Implementazione qui sopra.',
+    'faq.q3': 'Lavori con musicisti veri?',
+    'faq.a3': 'Quando il progetto lo richiede, sì. Ho una rete di turnisti — archi, ottoni, legni, voci — registrati e prodotti uno per uno sopra l\'orchestra virtuale.',
+    'faq.q4': 'Come funzionano i prezzi?',
+    'faq.a4': 'Ogni progetto viene quotato singolarmente in base ai minuti di musica, alla strumentazione e alle esigenze di implementazione. Compila il form di progetto e ricevi una proposta vera entro 48 ore — non un listino copia-incolla.',
+    'faq.q5': 'Componi solo per videogiochi?',
+    'faq.a5': 'I giochi sono casa mia, ma scrivo anche per film, serie e trailer — il rescore di Book of the Dead qui sopra è musica scritta sulle immagini, che segue ogni stacco e respiro sullo schermo.',
+    'faq.q6': 'Cosa ti serve da me per iniziare?',
+    'faq.a6': "Raccontami del tuo gioco: l'atmosfera che cerchi, brani di riferimento se li hai e le tue tempistiche. Una build o del gameplay aiutano, ma anche solo un concept doc basta per cominciare.",
+
     // contact / cta
     'contact.eyebrow': '// Contatti',
-    'cta.title': 'Hai un mondo<br/><em>da musicare?</em>',
-    'cta.sub':   'Raccontami cosa stai costruendo.',
+    'cta.title':  'Hai un mondo<br/><em>da musicare?</em>',
+    'cta.sub':    'Raccontami cosa stai costruendo.',
+    'cta.badge':  'consigliato · 2 min',
+    'cta.path1':  'Costruisci il preventivo →',
+    'cta.path1d': 'Form guidato — scope, atmosfera, budget. Proposta su misura entro 48h.',
+    'cta.or':     'oppure',
+    'cta.path2':  'Solo un saluto',
+    'cta.path2d': "Una domanda veloce o un'idea appena nata? Usa il form qui sotto.",
     'form.success': 'Messaggio inviato. Ti rispondo presto.',
     'form.name':    '// Nome',
     'form.proj':    '// Progetto',
     'form.send':    'Invia',
-    'form.sending': 'Invio…',
     'form.alt':     'oppure scrivimi direttamente — <a href="mailto:filippo.gerbino.mail@gmail.com">filippo.gerbino.mail@gmail.com</a>',
+
+    // player bar
+    'player.cta': 'Ti piace? → Inizia un progetto',
 
     // footer
     'footer.copy': '© <span id="footerYear">2026</span> Filippo Gerbino — Compositore e Orchestratore',
@@ -192,7 +231,8 @@
     'b5.t': 'Parliamone',           'b5.d': 'Preferisco parlarne con calma',
     'b.warn': 'Questo budget non copre la mole di lavoro.',
 
-    'q.details': '// I tuoi dati',
+    'q.recap':    '// Il tuo brief finora',
+    'q.details':  '// I tuoi dati',
     'q.lblName':  '// Nome',
     'q.lblExtra': '// Altro?',
     'q.back':   '← Indietro',
@@ -207,7 +247,7 @@
     'meta.title3':     'Privacy — Filippo Gerbino',
     'privacy.eyebrow': '// Privacy',
     'privacy.title':   'Privacy',
-    'privacy.updated': 'Ultimo aggiornamento — giugno 2026',
+    'privacy.updated': 'Ultimo aggiornamento — luglio 2026',
     'privacy.intro':   'Questo sito è gestito da Filippo Gerbino. Ecco esattamente cosa succede ai tuoi dati — in breve e in modo onesto.',
     'privacy.h1':      'Form di contatto e preventivo',
     'privacy.p1':      'Quando usi il form di contatto o il configuratore di preventivo, i dati che inserisci (nome, email, messaggio) mi arrivano tramite Formspree solo per poterti rispondere. Non vengono mai venduti, condivisi o usati per marketing.',
@@ -218,6 +258,11 @@
     'privacy.h4':      'I tuoi diritti',
     'privacy.p4':      'Puoi chiedermi in qualsiasi momento di vedere o cancellare i dati che mi hai inviato — scrivi a <a href="mailto:filippo.gerbino.mail@gmail.com">filippo.gerbino.mail@gmail.com</a>.',
     'footer.privacy':  'Privacy',
+
+    // 404
+    'nf.title': 'Questa pagina non esiste.',
+    'nf.sub':   'Forse è stata spostata — o forse non è mai stata scritta.',
+    'nf.back':  '← Torna alla home',
   };
 
   // ── Placeholder overrides ────────────────────────────────────────────────
@@ -227,7 +272,7 @@
     'ph.extra':   'Concept del gioco, brani di riferimento, scadenza, qualunque cosa possa aiutare...',
   };
 
-  // ── Dynamic strings used by quote.js (both languages) ────────────────────
+  // ── Dynamic strings used by quote.js / script.js (both languages) ────────
   const DYN = {
     en: {
       'q.step':      'Step {n} of {total}',
@@ -241,6 +286,9 @@
       'q.sending':   'Sending…',
       'q.submit':    'Get My Custom Quote',
       'q.error':     'Something went wrong — please email filippo.gerbino.mail@gmail.com directly.',
+      'q.recapMin':  '{n} min of music',
+      'form.sending':'Sending…',
+      'form.error':  'Something went wrong — please email filippo.gerbino.mail@gmail.com directly.',
     },
     it: {
       'q.step':      'Passo {n} di {total}',
@@ -254,6 +302,9 @@
       'q.sending':   'Invio…',
       'q.submit':    'Ricevi il preventivo',
       'q.error':     'Qualcosa è andato storto — scrivimi direttamente a filippo.gerbino.mail@gmail.com.',
+      'q.recapMin':  '{n} min di musica',
+      'form.sending':'Invio…',
+      'form.error':  'Qualcosa è andato storto — scrivimi direttamente a filippo.gerbino.mail@gmail.com.',
     },
   };
 
@@ -303,7 +354,7 @@
     window.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
   }
 
-  // public API (used by quote.js)
+  // public API (used by quote.js / script.js)
   window.i18n = {
     get lang() { return current; },
     set(lang) { if (SUPPORTED.includes(lang)) apply(lang); },

@@ -1,5 +1,7 @@
 /* ============================================
    QUOTE PAGE — quote.js
+   Multi-step brief builder with live recap,
+   budget sanity check and Formspree submit.
    ============================================ */
 
 const TOTAL_STEPS   = 5;
@@ -16,6 +18,7 @@ const successEl     = document.getElementById('quoteSuccess');
 const budgetWarning = document.getElementById('budgetWarning');
 const budgetWarnTxt = document.getElementById('budgetWarningText');
 const contactFields = document.getElementById('contactFields');
+const recapChips    = document.getElementById('recapChips');
 
 // ── i18n helper (falls back to the key if i18n.js isn't loaded) ───────────────
 const T = (key, vars) => (window.i18n ? window.i18n.t(key, vars) : key);
@@ -39,17 +42,34 @@ function updateProgress() {
   progressLbl.textContent = T('q.step', { n: currentStep, total: TOTAL_STEPS });
 }
 
+// ── Live recap (step 5) ───────────────────────────────────────────────────────
+function updateRecap() {
+  if (!recapChips) return;
+  const chips = [];
+  form.querySelectorAll('input[name="needs"]:checked').forEach(i => chips.push(i.value));
+  chips.push(T('q.recapMin', { n: getMinutes() }));
+  const vibe = form.querySelector('input[name="vibe"]:checked');
+  if (vibe) chips.push(vibe.value);
+  const impl = form.querySelector('input[name="implementation"]:checked');
+  if (impl) chips.push(impl.value);
+  recapChips.innerHTML = '';
+  chips.forEach(txt => {
+    const s = document.createElement('span');
+    s.className = 'chip';
+    s.textContent = txt;
+    recapChips.appendChild(s);
+  });
+}
+
 // ── Budget logic ──────────────────────────────────────────────────────────────
 function isBudgetTooLow(radio) {
   if (!radio) return false;
-  const mins    = getMinutes();
-  const minCost = mins * RATE_PER_MIN;
+  const minCost = getMinutes() * RATE_PER_MIN;
   return parseInt(radio.dataset.max) < minCost;
 }
 
 function updateBudgetStep() {
-  const mins    = getMinutes();
-  const minCost = mins * RATE_PER_MIN;
+  const minCost = getMinutes() * RATE_PER_MIN;
 
   // Dim and disable options that are too low
   document.querySelectorAll('input[name="budget"]').forEach(radio => {
@@ -105,6 +125,7 @@ function showStep(n) {
 
   if (n === TOTAL_STEPS) {
     nextBtn.classList.add('hidden');
+    updateRecap();
     updateBudgetStep(); // refresh min-cost note whenever step 5 is entered
 
     // Show submit only if a valid budget is already selected
@@ -166,6 +187,9 @@ const contexts = [
 function updateSlider() {
   const v = parseInt(slider.value);
   sliderDisp.textContent = v;
+  // fill the track up to the thumb
+  const min = parseInt(slider.min), max = parseInt(slider.max);
+  slider.style.setProperty('--fill', (((v - min) / (max - min)) * 100) + '%');
   const ctx = contexts.find(([mn, mx]) => v >= mn && v <= mx);
   if (ctx) sliderCtx.textContent = T(ctx[2]);
 }
@@ -216,7 +240,9 @@ ${extra || '(none)'}
     if (res.ok) {
       form.classList.add('hidden');
       document.querySelector('.progress-wrap').classList.add('hidden');
+      document.querySelector('.quote-header').classList.add('hidden');
       successEl.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       throw new Error('Server error');
     }
@@ -243,6 +269,7 @@ document.head.appendChild(styleEl);
 window.addEventListener('langchange', () => {
   updateProgress();
   updateSlider();
+  updateRecap();
   // refresh budget warning text if it's currently shown
   const sel = form.querySelector('input[name="budget"]:checked');
   if (sel && isBudgetTooLow(sel)) evaluateBudget(sel);

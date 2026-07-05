@@ -14,7 +14,8 @@
   <meta property="og:image" content="https://filippogerbino.com/preview-social.jpg" />
   <meta property="og:url" content="https://filippogerbino.com/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#0A0A0F" />
+  <meta name="theme-color" content="#07070B" />
+  <meta name="author" content="Filippo Gerbino" />
   <link rel="canonical" href="https://filippogerbino.com/" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -22,9 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <meta name="author" content="Filippo Gerbino" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="quote.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -64,34 +63,42 @@
 </head>
 <body>
 
+  <!-- FILM GRAIN -->
+  <div class="grain" aria-hidden="true"></div>
+
   <!-- SCROLL PROGRESS -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <div class="nav-logo">F<span class="gold">.</span></div>
-    <div class="nav-links">
-      <a href="#implementation" data-i18n="nav.work">Work</a>
+    <a href="#hero" class="nav-logo" aria-label="Filippo Gerbino — home">F<span class="gold">.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#portfolio" data-i18n="nav.work">Work</a>
       <a href="#projects" data-i18n="nav.projects">Projects</a>
       <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
       <a href="start-a-project.html" class="nav-cta" data-i18n="nav.cta">Start a Project</a>
     </div>
-    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
-      <button type="button" class="lang-opt" data-lang="en">EN</button>
-      <button type="button" class="lang-opt" data-lang="it">IT</button>
+    <div class="nav-right">
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-lang="en">EN</button>
+        <button type="button" class="lang-opt" data-lang="it">IT</button>
+      </div>
+      <div class="available-badge">
+        <span class="available-dot"></span>
+        <span class="available-text mono" data-i18n="nav.available">Available</span>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="available-badge">
-      <span class="available-dot"></span>
-      <span class="available-text mono" data-i18n="nav.available">Available</span>
-    </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="hero">
-    <canvas id="scoreCanvas" aria-hidden="true"></canvas>
+  <header class="hero" id="hero">
+    <canvas id="notesCanvas" aria-hidden="true"></canvas>
+    <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="hero-eyebrow mono" data-i18n="hero.eyebrow">Orchestral Composer · Game Audio</p>
       <h1 class="hero-title" data-i18n="hero.title">
@@ -103,24 +110,28 @@
         Everything your game needs — under one roof.
       </p>
       <div class="hero-actions">
-        <a href="#implementation" class="btn-primary" data-i18n="hero.listen">Listen</a>
-        <a href="start-a-project.html" class="btn-ghost" data-i18n="hero.start">Start a project</a>
+        <button type="button" class="btn-primary magnetic" id="heroListenBtn">
+          <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,3 21,12 6,21" fill="currentColor"/></svg>
+          <span data-i18n="hero.listen">Listen to the work</span>
+        </button>
+        <a href="start-a-project.html" class="btn-ghost magnetic" data-i18n="hero.start">Start a project</a>
       </div>
+      <p class="hero-trust mono" data-i18n="hero.trust">Reply within 48h &nbsp;·&nbsp; Full pipeline in-house &nbsp;·&nbsp; FMOD ready</p>
     </div>
-    <div class="hero-scroll-hint">
+    <div class="hero-scroll-hint" aria-hidden="true">
       <span class="mono" data-i18n="hero.scroll">scroll</span>
       <div class="scroll-line"></div>
     </div>
-  </section>
+  </header>
 
   <!-- MARQUEE -->
-  <div class="marquee-wrap">
+  <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
       <span data-i18n="mq.scoring">Orchestral Scoring</span><span class="dot">·</span>
       <span data-i18n="mq.live">Live Recording Sessions</span><span class="dot">·</span>
       <span data-i18n="mq.pipeline">Full Pipeline</span><span class="dot">·</span>
       <span>Cubase 15</span><span class="dot">·</span>
-      <span>Mix & Master</span><span class="dot">·</span>
+      <span>Mix &amp; Master</span><span class="dot">·</span>
       <span data-i18n="mq.written">Written Orchestrations</span><span class="dot">·</span>
       <span data-i18n="mq.gfs">Game · Film · Series</span><span class="dot">·</span>
       <span>FMOD Ready</span><span class="dot">·</span>
@@ -128,53 +139,190 @@
       <span data-i18n="mq.live">Live Recording Sessions</span><span class="dot">·</span>
       <span data-i18n="mq.pipeline">Full Pipeline</span><span class="dot">·</span>
       <span>Cubase 15</span><span class="dot">·</span>
-      <span>Mix & Master</span><span class="dot">·</span>
+      <span>Mix &amp; Master</span><span class="dot">·</span>
       <span data-i18n="mq.written">Written Orchestrations</span><span class="dot">·</span>
       <span data-i18n="mq.gfs">Game · Film · Series</span><span class="dot">·</span>
       <span>FMOD Ready</span><span class="dot">·</span>
     </div>
   </div>
 
+  <!-- PORTFOLIO / TRACKS -->
+  <section class="portfolio section" id="portfolio">
+    <div class="container">
+      <p class="section-eyebrow mono reveal"><span data-i18n="work.eyebrow">// Work</span> <span class="eyebrow-num">01</span></p>
+      <h2 class="section-title reveal" data-i18n="work.title">Press play.</h2>
+      <p class="section-sub reveal" data-i18n="work.sub">Eight tracks, eight different worlds. The player follows you while you browse.</p>
+
+      <div class="tracks-list reveal" id="tracksList">
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play Astra in Ruina — Combat Track"
+             data-src="audio/track-01.mp3" data-src-ogg="audio/track-01.ogg">
+          <span class="track-num mono">01</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">Astra in Ruina — Combat Track</span>
+            <span class="track-genre mono" data-i18n="g1">Final Boss · Battle</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play The Last Stand"
+             data-src="audio/track-02.mp3" data-src-ogg="audio/track-02.ogg">
+          <span class="track-num mono">02</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">The Last Stand</span>
+            <span class="track-genre mono" data-i18n="g2">Boss Fight</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play Down With the Ship"
+             data-src="audio/track-03.mp3" data-src-ogg="audio/track-03.ogg">
+          <span class="track-num mono">03</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">Down With the Ship</span>
+            <span class="track-genre mono" data-i18n="g3">Game Over · Jingle</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play Astra in Ruina — Background"
+             data-src="audio/track-04.mp3" data-src-ogg="audio/track-04.ogg">
+          <span class="track-num mono">04</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">Astra in Ruina — Background</span>
+            <span class="track-genre mono" data-i18n="g4">Dark · Moody · Ambient</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play The Last Seal"
+             data-src="audio/track-05.mp3" data-src-ogg="audio/track-05.ogg">
+          <span class="track-num mono">05</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">The Last Seal</span>
+            <span class="track-genre mono" data-i18n="g5">Epic Trailer</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play Plundered — Sea Exploration"
+             data-src="audio/track-06.mp3" data-src-ogg="audio/track-06.ogg">
+          <span class="track-num mono">06</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">Plundered — Sea Exploration</span>
+            <span class="track-genre mono" data-i18n="g6">Ambient · Calm · Open World</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play Sintel — Theme Suite"
+             data-src="audio/track-07.mp3" data-src-ogg="audio/track-07.ogg">
+          <span class="track-num mono">07</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">Sintel — Theme Suite</span>
+            <span class="track-genre mono" data-i18n="g7">Rescoring · Orchestral Mashup</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play Plundered — True Pirate"
+             data-src="audio/track-08.mp3" data-src-ogg="audio/track-08.ogg">
+          <span class="track-num mono">08</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">Plundered — True Pirate</span>
+            <span class="track-genre mono" data-i18n="g8">Main Theme · Adventure</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+      </div>
+
+      <div class="section-cta reveal">
+        <p class="section-cta-text" data-i18n="work.ctaText">Imagining this sound in your game?</p>
+        <a href="start-a-project.html" class="btn-primary magnetic" data-i18n="work.ctaBtn">Get a custom quote</a>
+      </div>
+    </div>
+  </section>
+
   <!-- IMPLEMENTATION / ADAPTIVE AUDIO -->
   <section class="implementation section" id="implementation">
     <div class="container">
-      <p class="section-eyebrow mono reveal" data-i18n="impl.eyebrow">// Implementation</p>
+      <p class="section-eyebrow mono reveal"><span data-i18n="impl.eyebrow">// Implementation</span> <span class="eyebrow-num">02</span></p>
       <h2 class="section-title reveal" data-i18n="impl.title">Music that<br/><em>reacts.</em></h2>
-      <p class="impl-sub reveal" data-i18n="impl.sub">
+      <p class="section-sub reveal" data-i18n="impl.sub">
         I don't just hand over tracks — I build them into adaptive systems in FMOD, so the
         score follows the player in real time. Here's how it works.
       </p>
 
-      <div class="impl-grid">
-        <figure class="impl-item reveal">
-          <p class="impl-tag mono" data-i18n="impl.hTag">// Horizontal re-sequencing</p>
-          <div class="video-wrapper-full">
-            <iframe
-              id="implPlayer"
-              src="https://www.youtube-nocookie.com/embed/AJOIJgnCPFo?enablejsapi=1" loading="lazy"
-              title="Filippo Gerbino — Horizontal re-sequencing in FMOD"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="impl-chapters mono" data-impl-id="AJOIJgnCPFo">
-            <button type="button" class="impl-chip" data-seek="0">
-              <span class="impl-chip-t">0:00</span><span data-i18n="impl.c1">Exploration</span>
-            </button>
-            <button type="button" class="impl-chip" data-seek="35">
-              <span class="impl-chip-t">0:35</span><span data-i18n="impl.c2">Combat</span>
-            </button>
-            <button type="button" class="impl-chip" data-seek="58">
-              <span class="impl-chip-t">0:58</span><span data-i18n="impl.c3">Death</span>
-            </button>
-          </div>
-          <figcaption class="impl-cap" data-i18n="impl.hDesc">
-            The score moves between full musical sections — exploration, combat, death —
-            transitioning on the beat as the game state changes.
-          </figcaption>
-        </figure>
-      </div>
+      <figure class="impl-item reveal">
+        <p class="impl-tag mono" data-i18n="impl.hTag">// Horizontal re-sequencing</p>
+        <div class="video-wrapper-full">
+          <iframe
+            id="implPlayer"
+            class="yt-embed"
+            src="https://www.youtube-nocookie.com/embed/AJOIJgnCPFo?enablejsapi=1" loading="lazy"
+            title="Filippo Gerbino — Horizontal re-sequencing in FMOD"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="impl-chapters mono">
+          <button type="button" class="impl-chip" data-seek="0">
+            <span class="impl-chip-t">0:00</span><span data-i18n="impl.c1">Exploration</span>
+          </button>
+          <button type="button" class="impl-chip" data-seek="35">
+            <span class="impl-chip-t">0:35</span><span data-i18n="impl.c2">Combat</span>
+          </button>
+          <button type="button" class="impl-chip" data-seek="58">
+            <span class="impl-chip-t">0:58</span><span data-i18n="impl.c3">Death</span>
+          </button>
+        </div>
+        <figcaption class="impl-cap" data-i18n="impl.hDesc">
+          The score moves between full musical sections — exploration, combat, death —
+          transitioning on the beat as the game state changes.
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -182,16 +330,17 @@
   <section class="rescore-section section" id="rescore">
     <div class="container">
       <div class="rescoring-piece reveal">
-        <p class="rescoring-label mono" data-i18n="rescore.label">// Cinematic Scoring</p>
-        <h3 class="rescoring-title" data-i18n="rescore.title">Same picture.<br/><em>Different soul.</em></h3>
-        <p class="rescoring-sub" data-i18n="rescore.sub">
+        <p class="section-eyebrow mono"><span data-i18n="rescore.label">// Cinematic Scoring</span> <span class="eyebrow-num">03</span></p>
+        <h2 class="section-title" data-i18n="rescore.title">Same picture.<br/><em>Different soul.</em></h2>
+        <p class="section-sub" data-i18n="rescore.sub">
           A full rescore of Unity's <em>Book of the Dead</em> (2018) — atonal and unsettling,
           written and produced to hit every cut, breath and shadow on screen. Proof that the
           right score can carry a cinematic on its own.
         </p>
         <div class="video-wrapper-full">
           <iframe
-            src="https://www.youtube-nocookie.com/embed/d8BKK9SVm9c" loading="lazy"
+            class="yt-embed"
+            src="https://www.youtube-nocookie.com/embed/d8BKK9SVm9c?enablejsapi=1" loading="lazy"
             title="Filippo Gerbino — Book of the Dead Rescore"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -205,174 +354,80 @@
     </div>
   </section>
 
-  <!-- PORTFOLIO / TRACKS -->
-  <section class="portfolio section" id="portfolio">
+  <!-- PROJECTS -->
+  <section class="projects section" id="projects">
     <div class="container">
-      <p class="section-eyebrow mono reveal" data-i18n="work.eyebrow">// Work</p>
-      <h2 class="section-title reveal" data-i18n="work.title">Press play.</h2>
+      <p class="section-eyebrow mono reveal"><span data-i18n="projects.eyebrow">// Projects</span> <span class="eyebrow-num">04</span></p>
+      <h2 class="section-title reveal" data-i18n="projects.title">Games shipped.<br/><em>Scores delivered.</em></h2>
 
-      <div class="tracks-list" id="tracksList">
+      <div class="projects-grid">
 
-        <div class="track-item" tabindex="0" role="button" data-src="audio/track-01.mp3" data-src-ogg="audio/track-01.ogg">
-          <div class="track-play-btn">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        <article class="project-card tilt reveal reveal-delay-1">
+          <div class="project-header">
+            <span class="project-type mono" data-i18n="proj1.type">Game Jam · Tactical RPG</span>
+            <a href="https://krobucgd.itch.io/astra-in-ruina" target="_blank" rel="noopener" class="project-link mono">itch.io ↗</a>
           </div>
-          <div class="track-info">
-            <span class="track-title">Astra in Ruina — Combat Track</span>
-            <span class="track-genre mono" data-i18n="g1">Final Boss · Battle</span>
+          <h3 class="project-title">Astra in Ruina</h3>
+          <p class="project-desc" data-i18n="proj1.desc">Turn-based sci-fi survival game — fight an endless horde of demonic entities. Full OST composed, produced and mastered solo.</p>
+          <div class="project-tracks mono">
+            <button type="button" class="proj-track-link" data-play-src="audio/track-01.mp3">↳ Combat Track</button>
+            <button type="button" class="proj-track-link" data-play-src="audio/track-04.mp3">↳ Background</button>
           </div>
-          <div class="track-waveform">
-            <canvas class="waveform-canvas"></canvas>
-            <div class="waveform-progress"></div>
-          </div>
-          <div class="track-time mono">
-            <span class="current-time">0:00</span>
-            <span class="separator">/</span>
-            <span class="duration">—:——</span>
-          </div>
-        </div>
+        </article>
 
-        <div class="track-item" tabindex="0" role="button" data-src="audio/track-02.mp3" data-src-ogg="audio/track-02.ogg">
-          <div class="track-play-btn">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        <article class="project-card tilt reveal reveal-delay-2">
+          <div class="project-header">
+            <span class="project-type mono" data-i18n="proj2.type">Game Jam · Nautical Adventure</span>
+            <a href="https://nemo2001.itch.io/plundered" target="_blank" rel="noopener" class="project-link mono">itch.io ↗</a>
           </div>
-          <div class="track-info">
-            <span class="track-title">The Last Stand</span>
-            <span class="track-genre mono" data-i18n="g2">Boss Fight</span>
+          <h3 class="project-title">Plundered</h3>
+          <p class="project-desc" data-i18n="proj2.desc">Pirate adventure game — how long can you make your legend last? Built for the 2026 Godot Wild Game Jam with Nemo, Afonso Silva and BluNotes. Full soundtrack composed, produced and mastered.</p>
+          <div class="project-tracks mono">
+            <button type="button" class="proj-track-link" data-play-src="audio/track-08.mp3">↳ True Pirate</button>
+            <button type="button" class="proj-track-link" data-play-src="audio/track-06.mp3">↳ Sea Exploration</button>
+            <button type="button" class="proj-track-link" data-play-src="audio/track-03.mp3">↳ Down With the Ship</button>
           </div>
-          <div class="track-waveform">
-            <canvas class="waveform-canvas"></canvas>
-            <div class="waveform-progress"></div>
-          </div>
-          <div class="track-time mono">
-            <span class="current-time">0:00</span>
-            <span class="separator">/</span>
-            <span class="duration">—:——</span>
-          </div>
-        </div>
+        </article>
 
-        <div class="track-item" tabindex="0" role="button" data-src="audio/track-03.mp3" data-src-ogg="audio/track-03.ogg">
-          <div class="track-play-btn">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="track-info">
-            <span class="track-title">Down With the Ship</span>
-            <span class="track-genre mono" data-i18n="g3">Game Over · Jingle</span>
-          </div>
-          <div class="track-waveform">
-            <canvas class="waveform-canvas"></canvas>
-            <div class="waveform-progress"></div>
-          </div>
-          <div class="track-time mono">
-            <span class="current-time">0:00</span>
-            <span class="separator">/</span>
-            <span class="duration">—:——</span>
-          </div>
-        </div>
+      </div>
 
-        <div class="track-item" tabindex="0" role="button" data-src="audio/track-04.mp3" data-src-ogg="audio/track-04.ogg">
-          <div class="track-play-btn">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="track-info">
-            <span class="track-title">Astra in Ruina — Background</span>
-            <span class="track-genre mono" data-i18n="g4">Dark · Moody · Ambient</span>
-          </div>
-          <div class="track-waveform">
-            <canvas class="waveform-canvas"></canvas>
-            <div class="waveform-progress"></div>
-          </div>
-          <div class="track-time mono">
-            <span class="current-time">0:00</span>
-            <span class="separator">/</span>
-            <span class="duration">—:——</span>
-          </div>
-        </div>
+      <p class="projects-hint mono reveal" data-i18n="projects.hint">↳ click a track name to hear it instantly</p>
+    </div>
+  </section>
 
-        <div class="track-item" tabindex="0" role="button" data-src="audio/track-05.mp3" data-src-ogg="audio/track-05.ogg">
-          <div class="track-play-btn">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="track-info">
-            <span class="track-title">The Last Seal</span>
-            <span class="track-genre mono" data-i18n="g5">Epic Trailer</span>
-          </div>
-          <div class="track-waveform">
-            <canvas class="waveform-canvas"></canvas>
-            <div class="waveform-progress"></div>
-          </div>
-          <div class="track-time mono">
-            <span class="current-time">0:00</span>
-            <span class="separator">/</span>
-            <span class="duration">—:——</span>
-          </div>
-        </div>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+      <p class="section-eyebrow mono reveal"><span data-i18n="testi.eyebrow">// Testimonials</span> <span class="eyebrow-num">05</span></p>
+      <h2 class="section-title reveal" data-i18n="testi.title">From the devs<br/><em>themselves.</em></h2>
 
-        <div class="track-item" tabindex="0" role="button" data-src="audio/track-06.mp3" data-src-ogg="audio/track-06.ogg">
-          <div class="track-play-btn">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="track-info">
-            <span class="track-title">Plundered — Sea Exploration</span>
-            <span class="track-genre mono" data-i18n="g6">Ambient · Calm · Open World</span>
-          </div>
-          <div class="track-waveform">
-            <canvas class="waveform-canvas"></canvas>
-            <div class="waveform-progress"></div>
-          </div>
-          <div class="track-time mono">
-            <span class="current-time">0:00</span>
-            <span class="separator">/</span>
-            <span class="duration">—:——</span>
-          </div>
-        </div>
+      <div class="testimonials-grid">
+        <figure class="testimonial-card tilt reveal reveal-delay-1">
+          <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+          <blockquote class="testimonial-quote" data-i18n="testi.q1">The music was incredible — serious talent. Don't let anyone tell you otherwise.</blockquote>
+          <figcaption class="testimonial-author">
+            <span class="testimonial-name">Krobuc</span>
+            <span class="testimonial-role mono" data-i18n="testi.r1">Developer · Astra in Ruina</span>
+          </figcaption>
+        </figure>
 
-        <div class="track-item" tabindex="0" role="button" data-src="audio/track-07.mp3" data-src-ogg="audio/track-07.ogg">
-          <div class="track-play-btn">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="track-info">
-            <span class="track-title">Sintel — Theme Suite</span>
-            <span class="track-genre mono" data-i18n="g7">Rescoring · Orchestral Mashup</span>
-          </div>
-          <div class="track-waveform">
-            <canvas class="waveform-canvas"></canvas>
-            <div class="waveform-progress"></div>
-          </div>
-          <div class="track-time mono">
-            <span class="current-time">0:00</span>
-            <span class="separator">/</span>
-            <span class="duration">—:——</span>
-          </div>
-        </div>
+        <figure class="testimonial-card tilt featured reveal reveal-delay-2">
+          <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+          <blockquote class="testimonial-quote" data-i18n="testi.q3">By far the best jam I've ever shipped on time. Everyone brought their A-game — and the soundtrack exceeded every expectation.</blockquote>
+          <figcaption class="testimonial-author">
+            <span class="testimonial-name">Nemo</span>
+            <span class="testimonial-role mono" data-i18n="testi.r3">Developer · Plundered</span>
+          </figcaption>
+        </figure>
 
-        <div class="track-item" tabindex="0" role="button" data-src="audio/track-08.mp3" data-src-ogg="audio/track-08.ogg">
-          <div class="track-play-btn">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="track-info">
-            <span class="track-title">Plundered — True Pirate</span>
-            <span class="track-genre mono" data-i18n="g8">Main Theme · Adventure</span>
-          </div>
-          <div class="track-waveform">
-            <canvas class="waveform-canvas"></canvas>
-            <div class="waveform-progress"></div>
-          </div>
-          <div class="track-time mono">
-            <span class="current-time">0:00</span>
-            <span class="separator">/</span>
-            <span class="duration">—:——</span>
-          </div>
-        </div>
-
+        <figure class="testimonial-card tilt reveal reveal-delay-3">
+          <div class="testimonial-quote-mark" aria-hidden="true">"</div>
+          <blockquote class="testimonial-quote" data-i18n="testi.q2">Thank you for the extraordinary music. It made all the difference.</blockquote>
+          <figcaption class="testimonial-author">
+            <span class="testimonial-name">Manuel Ferra</span>
+            <span class="testimonial-role mono" data-i18n="testi.r2">Content Creator · YouTube</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -382,7 +437,7 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-left">
-          <p class="section-eyebrow mono reveal" data-i18n="about.eyebrow">// Who</p>
+          <p class="section-eyebrow mono reveal"><span data-i18n="about.eyebrow">// Who</span> <span class="eyebrow-num">06</span></p>
           <h2 class="section-title reveal" data-i18n="about.title">Classically trained.<br/><em>Digitally fluent.</em></h2>
 
           <div class="stat-row reveal reveal-delay-1">
@@ -416,92 +471,50 @@
 
         <div class="about-right">
           <figure class="about-portrait reveal">
-            <img src="filippo-piano.jpg" alt="Filippo Gerbino at the piano"
-                 loading="lazy" width="999" height="666" />
+            <img src="filippo-piano.jpg" alt="Filippo Gerbino at the piano" loading="lazy" />
             <figcaption class="about-portrait-cap mono" data-i18n="about.portraitCap">Live at the piano · Conservatorio</figcaption>
           </figure>
-          <div class="pipeline-card">
-            <p class="pipeline-label mono">// Pipeline</p>
-            <div class="pipeline-steps">
-              <div class="pipeline-step">
-                <div class="step-icon">♩</div>
-                <div>
-                  <strong data-i18n="pipe.comp">Composition</strong>
-                  <p data-i18n="pipe.compDesc">Themes, motifs, leitmotifs — built around your world.</p>
-                </div>
-              </div>
-              <div class="pipeline-step">
-                <div class="step-icon">𝄞</div>
-                <div>
-                  <strong data-i18n="pipe.orch">Orchestration</strong>
-                  <p data-i18n="pipe.orchDesc">Full written parts. Ready for live players or samples.</p>
-                </div>
-              </div>
-              <div class="pipeline-step">
-                <div class="step-icon">⏺</div>
-                <div>
-                  <strong data-i18n="pipe.prod">Production</strong>
-                  <p data-i18n="pipe.prodDesc">Virtual + live sessions. Real instruments when it matters.</p>
-                </div>
-              </div>
-              <div class="pipeline-step">
-                <div class="step-icon">⚡</div>
-                <div>
-                  <strong>Mix & Master</strong>
-                  <p data-i18n="pipe.mixDesc">Stereo or stems. Optimised for engine or streaming.</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- PROJECTS -->
-  <section class="projects section" id="projects">
-    <div class="container">
-      <p class="section-eyebrow mono reveal" data-i18n="projects.eyebrow">// Projects</p>
-      <h2 class="section-title reveal" data-i18n="projects.title">Games shipped.<br/><em>Scores delivered.</em></h2>
-
-      <div class="projects-grid">
-
-        <div class="project-card reveal reveal-delay-1">
-          <div class="project-header">
-            <div class="project-meta">
-              <span class="project-type mono" data-i18n="proj1.type">Game Jam · Tactical RPG</span>
+      <!-- PIPELINE -->
+      <div class="pipeline-card reveal">
+        <p class="pipeline-label mono">// Pipeline</p>
+        <div class="pipeline-steps">
+          <div class="pipeline-step">
+            <div class="step-icon">♩</div>
+            <div>
+              <strong data-i18n="pipe.comp">Composition</strong>
+              <p data-i18n="pipe.compDesc">Themes, motifs, leitmotifs — built around your world.</p>
             </div>
-            <a href="https://krobucgd.itch.io/astra-in-ruina" target="_blank" rel="noopener" class="project-link mono">itch.io ↗</a>
           </div>
-          <h3 class="project-title">Astra in Ruina</h3>
-          <p class="project-desc" data-i18n="proj1.desc">Turn-based sci-fi survival game — fight an endless horde of demonic entities. Full OST composed, produced and mastered solo.</p>
-          <div class="project-tracks mono">
-            <span>↳ Combat Track</span>
-            <span>↳ Background</span>
+          <div class="pipeline-step">
+            <div class="step-icon">𝄞</div>
+            <div>
+              <strong data-i18n="pipe.orch">Orchestration</strong>
+              <p data-i18n="pipe.orchDesc">Full written parts. Ready for live players or samples.</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="step-icon">⏺</div>
+            <div>
+              <strong data-i18n="pipe.prod">Production</strong>
+              <p data-i18n="pipe.prodDesc">Virtual + live sessions. Real instruments when it matters.</p>
+            </div>
+          </div>
+          <div class="pipeline-step">
+            <div class="step-icon">⚡</div>
+            <div>
+              <strong>Mix &amp; Master</strong>
+              <p data-i18n="pipe.mixDesc">Stereo or stems. Optimised for engine or streaming.</p>
+            </div>
           </div>
         </div>
-
-        <div class="project-card reveal reveal-delay-2">
-          <div class="project-header">
-            <div class="project-meta">
-              <span class="project-type mono" data-i18n="proj2.type">Game Jam · Nautical Adventure</span>
-            </div>
-            <a href="https://nemo2001.itch.io/plundered" target="_blank" rel="noopener" class="project-link mono">itch.io ↗</a>
-          </div>
-          <h3 class="project-title">Plundered</h3>
-          <p class="project-desc" data-i18n="proj2.desc">Pirate adventure game — how long can you make your legend last? Built for the 2026 Godot Wild Game Jam with Nemo, Afonso Silva and BluNotes. Full soundtrack composed, produced and mastered.</p>
-          <div class="project-tracks mono">
-            <span>↳ True Pirate</span>
-            <span>↳ Sea Exploration</span>
-            <span>↳ Down With the Ship</span>
-          </div>
-        </div>
-
       </div>
 
       <!-- TRAINING -->
       <div class="training-row reveal">
-        <p class="section-eyebrow mono" data-i18n="train.eyebrow">// Training</p>
+        <p class="training-eyebrow mono" data-i18n="train.eyebrow">// Training</p>
         <div class="training-grid">
           <div class="training-item">
             <span class="training-name">Ian Honeyman</span>
@@ -519,80 +532,29 @@
           </div>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials section" id="testimonials">
-    <div class="container">
-      <p class="section-eyebrow mono reveal" data-i18n="testi.eyebrow">// Testimonials</p>
-      <h2 class="section-title reveal" data-i18n="testi.title">From the devs<br/><em>themselves.</em></h2>
-    </div>
-    <div class="testimonials-carousel reveal">
-      <div class="carousel-track" id="carouselTrack">
-
-        <div class="testimonial-card">
-          <div class="testimonial-quote-mark">"</div>
-          <blockquote class="testimonial-quote" data-i18n="testi.q1">The music was incredible — serious talent. Don't let anyone tell you otherwise.</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Krobuc</div>
-            <div class="testimonial-role mono" data-i18n="testi.r1">Developer · Astra in Ruina</div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-quote-mark">"</div>
-          <blockquote class="testimonial-quote" data-i18n="testi.q2">Thank you for the extraordinary music. It made all the difference.</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Manuel Ferra</div>
-            <div class="testimonial-role mono" data-i18n="testi.r2">Content Creator · YouTube</div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-quote-mark">"</div>
-          <blockquote class="testimonial-quote" data-i18n="testi.q3">By far the best jam I've ever shipped on time. Everyone brought their A-game — and the soundtrack exceeded every expectation.</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-name">Nemo</div>
-            <div class="testimonial-role mono" data-i18n="testi.r3">Developer · Plundered</div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="carouselPrev" aria-label="Previous">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
-        </button>
-        <div class="carousel-dots" id="carouselDots"></div>
-        <button class="carousel-btn" id="carouselNext" aria-label="Next">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
-        </button>
-      </div>
     </div>
   </section>
 
   <!-- SOUND IDENTITY -->
   <section class="style-section section" id="style">
     <div class="container">
-      <p class="section-eyebrow mono reveal" data-i18n="sound.eyebrow">// Sound</p>
-      <h2 class="section-title center reveal" data-i18n="sound.title">What your world<br/><em>could sound like.</em></h2>
+      <p class="section-eyebrow mono reveal"><span data-i18n="sound.eyebrow">// Sound</span> <span class="eyebrow-num">07</span></p>
+      <h2 class="section-title reveal" data-i18n="sound.title">What your world<br/><em>could sound like.</em></h2>
       <div class="refs-grid">
-        <div class="ref-card reveal reveal-delay-1">
+        <div class="ref-card tilt reveal reveal-delay-1">
           <div class="ref-game" data-i18n="ref1.title">High Fantasy</div>
           <div class="ref-desc" data-i18n="ref1.desc">Epic orchestration, thematic leitmotifs, immersive world-building. Music that makes the world feel like it existed before the player arrived.</div>
         </div>
-        <div class="ref-card reveal reveal-delay-2">
-          <div class="ref-game" data-i18n="ref2.title">Dark & Ancient</div>
+        <div class="ref-card tilt reveal reveal-delay-2">
+          <div class="ref-game" data-i18n="ref2.title">Dark &amp; Ancient</div>
           <div class="ref-desc" data-i18n="ref2.desc">Heavy brass, haunting choirs, intimate strings. For desolate landscapes, forgotten gods, and worlds on the edge of collapse.</div>
         </div>
-        <div class="ref-card reveal reveal-delay-3">
+        <div class="ref-card tilt reveal reveal-delay-3">
           <div class="ref-game" data-i18n="ref3.title">Cinematic Drama</div>
           <div class="ref-desc" data-i18n="ref3.desc">Narrative-driven scoring built around character and emotion. Themes that evolve, remember, and pay off.</div>
         </div>
-        <div class="ref-card reveal reveal-delay-4">
-          <div class="ref-game" data-i18n="ref4.title">Action & Tension</div>
+        <div class="ref-card tilt reveal reveal-delay-4">
+          <div class="ref-game" data-i18n="ref4.title">Action &amp; Tension</div>
           <div class="ref-desc" data-i18n="ref4.desc">Driving rhythms, aggressive brass, percussive urgency. Combat music that pushes the player forward without breaking immersion.</div>
         </div>
       </div>
@@ -602,81 +564,166 @@
   <!-- SERVICES -->
   <section class="services section" id="services">
     <div class="container">
-      <p class="section-eyebrow mono reveal" data-i18n="services.eyebrow">// Services</p>
+      <p class="section-eyebrow mono reveal"><span data-i18n="services.eyebrow">// Services</span> <span class="eyebrow-num">08</span></p>
       <h2 class="section-title reveal" data-i18n="services.title">What I deliver.</h2>
       <div class="services-grid">
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-icon">🎬</div>
+        <div class="service-card tilt reveal reveal-delay-1">
+          <div class="service-icon" aria-hidden="true">🎬</div>
           <h3 data-i18n="svc1.title">Full OST</h3>
           <p data-i18n="svc1.desc">Themes, biomes, boss music, UI stings, credits. FMOD ready.</p>
         </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-icon">🎻</div>
+        <div class="service-card tilt reveal reveal-delay-2">
+          <div class="service-icon" aria-hidden="true">🎻</div>
           <h3 data-i18n="svc2.title">Session Recording</h3>
           <p data-i18n="svc2.desc">Real players, my network. Strings, brass, woodwinds, voices — individual session musicians recorded and produced.</p>
         </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-icon">🎹</div>
-          <h3 data-i18n="svc3.title">Score & Parts</h3>
+        <div class="service-card tilt reveal reveal-delay-3">
+          <div class="service-icon" aria-hidden="true">🎹</div>
+          <h3 data-i18n="svc3.title">Score &amp; Parts</h3>
           <p data-i18n="svc3.desc">Conductor score + printed parts. From sketch to symphony-ready notation.</p>
         </div>
-        <div class="service-card reveal reveal-delay-4">
-          <div class="service-icon">⚙️</div>
-          <h3>Mix & Master</h3>
+        <div class="service-card tilt reveal reveal-delay-4">
+          <div class="service-icon" aria-hidden="true">⚙️</div>
+          <h3>Mix &amp; Master</h3>
           <p data-i18n="svc4.desc">Stereo or stems. Game engine, trailer, or streaming — your choice.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- PROCESS -->
+  <section class="process section" id="process">
+    <div class="container">
+      <p class="section-eyebrow mono reveal"><span data-i18n="process.eyebrow">// Process</span> <span class="eyebrow-num">09</span></p>
+      <h2 class="section-title reveal" data-i18n="process.title">From brief<br/><em>to bounce.</em></h2>
+
+      <ol class="process-steps">
+        <li class="process-step reveal reveal-delay-1">
+          <span class="process-num mono">01</span>
+          <h3 data-i18n="process.s1t">Brief</h3>
+          <p data-i18n="process.s1d">Tell me about your world with the 2-minute project form. I reply within 48 hours with a tailored proposal — not a template.</p>
+        </li>
+        <li class="process-step reveal reveal-delay-2">
+          <span class="process-num mono">02</span>
+          <h3 data-i18n="process.s2t">Score</h3>
+          <p data-i18n="process.s2d">I compose, orchestrate and produce. You hear the direction early, and we shape it together until it fits your game like a glove.</p>
+        </li>
+        <li class="process-step reveal reveal-delay-3">
+          <span class="process-num mono">03</span>
+          <h3 data-i18n="process.s3t">Deliver</h3>
+          <p data-i18n="process.s3d">Mixed and mastered — stereo, stems, or a full FMOD setup. Everything arrives ready to drop into your engine.</p>
+        </li>
+      </ol>
+
+      <div class="section-cta reveal">
+        <a href="start-a-project.html" class="btn-primary large magnetic" data-i18n="process.cta">Start step 01 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq section" id="faq">
+    <div class="container narrow">
+      <p class="section-eyebrow mono reveal"><span data-i18n="faq.eyebrow">// FAQ</span> <span class="eyebrow-num">10</span></p>
+      <h2 class="section-title reveal" data-i18n="faq.title">Before you ask.</h2>
+
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            <span data-i18n="faq.q1">What exactly do I get at the end?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p data-i18n="faq.a1">Whatever your pipeline needs: stereo masters, separated stems for your audio engine, or a complete FMOD project with adaptive triggers — plus written scores and parts if you're recording live.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            <span data-i18n="faq.q2">Can the music react to gameplay?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p data-i18n="faq.a2">Yes — that's my specialty. I build adaptive systems in FMOD where the score transitions on the beat between exploration, combat and everything in between. See the demo in the Implementation section above.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            <span data-i18n="faq.q3">Do you work with real musicians?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p data-i18n="faq.a3">When the project calls for it, yes. I have a network of session musicians — strings, brass, woodwinds, voices — recorded and produced individually on top of the virtual orchestra.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            <span data-i18n="faq.q4">How does pricing work?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p data-i18n="faq.a4">Every project is quoted individually based on minutes of music, instrumentation and implementation needs. Fill in the project form and you'll get a real proposal within 48 hours — not a copy-paste rate card.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            <span data-i18n="faq.q5">Do you only score games?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p data-i18n="faq.a5">Games are home, but I also write for film, series and trailers — the Book of the Dead rescore above is scored to picture, hitting every cut and breath on screen.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            <span data-i18n="faq.q6">What do you need from me to start?</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner"><p data-i18n="faq.a6">Just tell me about your game: the vibe you're going for, reference tracks if you have them, and your timeline. A build or gameplay footage helps, but even a concept doc is enough to begin.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA / CONTACT -->
-  <section class="cta-section" id="contact">
-    <div class="cta-bg-notes" id="ctaNotes"></div>
+  <section class="cta-section section" id="contact">
     <div class="container">
       <div class="cta-inner">
-        <p class="section-eyebrow mono center" data-i18n="contact.eyebrow">// Contact</p>
-        <h2 class="cta-title" data-i18n="cta.title">Got a world<br/><em>to score?</em></h2>
-        <p class="cta-sub" data-i18n="cta.sub">Tell me what you're building.</p>
+        <p class="section-eyebrow mono center reveal" data-i18n="contact.eyebrow">// Contact</p>
+        <h2 class="cta-title reveal" data-i18n="cta.title">Got a world<br/><em>to score?</em></h2>
+        <p class="cta-sub reveal" data-i18n="cta.sub">Tell me what you're building.</p>
 
-        <div data-fs-success class="form-success hidden">
+        <div class="cta-paths reveal">
+          <a href="start-a-project.html" class="cta-path recommended">
+            <span class="cta-path-badge mono" data-i18n="cta.badge">recommended · 2 min</span>
+            <strong data-i18n="cta.path1">Build my quote →</strong>
+            <span data-i18n="cta.path1d">Guided form — scope, vibe, budget. Tailored proposal within 48h.</span>
+          </a>
+          <div class="cta-path-or mono" data-i18n="cta.or">or</div>
+          <div class="cta-path">
+            <strong data-i18n="cta.path2">Just say hi</strong>
+            <span data-i18n="cta.path2d">Quick question or early idea? Use the form below.</span>
+          </div>
+        </div>
+
+        <div class="form-success hidden" id="formSuccess">
           <span class="form-success-icon">✓</span>
           <p data-i18n="form.success">Message sent. I'll get back to you soon.</p>
         </div>
-        <div data-fs-error class="form-error hidden"></div>
+        <div class="form-error hidden" id="formError"></div>
 
-        <form id="contact-form" class="contact-form">
+        <form id="contact-form" class="contact-form reveal" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="name" class="mono" data-i18n="form.name">// Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required data-fs-field data-i18n-ph="ph.name" />
-              <span data-fs-error="name" class="field-error"></span>
+              <input type="text" id="name" name="name" placeholder="Your name" required data-i18n-ph="ph.name" autocomplete="name" />
             </div>
             <div class="form-group">
               <label for="email" class="mono">// Email</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required data-fs-field />
-              <span data-fs-error="email" class="field-error"></span>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
             </div>
           </div>
           <div class="form-group">
             <label for="message" class="mono" data-i18n="form.proj">// Project</label>
-            <textarea id="message" name="message" placeholder="Tell me about your game, the vibe you're going for, timeline..." rows="5" required data-fs-field data-i18n-ph="ph.message"></textarea>
-            <span data-fs-error="message" class="field-error"></span>
+            <textarea id="message" name="message" placeholder="Tell me about your game, the vibe you're going for, timeline..." rows="5" required data-i18n-ph="ph.message"></textarea>
           </div>
-          <button type="submit" class="btn-primary large" data-fs-submit-btn>
+          <button type="submit" class="btn-primary large magnetic" id="contactSubmit">
             <span class="btn-label" data-i18n="form.send">Send</span>
-            <span class="btn-sending hidden" data-i18n="form.sending">Sending…</span>
           </button>
           <p class="form-email-alt mono" data-i18n="form.alt">or write directly — <a href="mailto:filippo.gerbino.mail@gmail.com">filippo.gerbino.mail@gmail.com</a></p>
         </form>
       </div>
     </div>
   </section>
-
-  <script>
-    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-    formspree('initForm', { formElement: '#contact-form', formId: 'mkoaqpop' });
-  </script>
-  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -691,7 +738,31 @@
     </div>
   </footer>
 
-  <audio id="globalAudio"></audio>
+  <!-- PERSISTENT PLAYER BAR -->
+  <div class="player-bar" id="playerBar" aria-hidden="true">
+    <div class="pb-controls">
+      <button type="button" class="pb-btn" id="pbPrev" aria-label="Previous track">
+        <svg viewBox="0 0 24 24"><polygon points="19,4 8,12 19,20"/><rect x="4" y="4" width="3" height="16"/></svg>
+      </button>
+      <button type="button" class="pb-btn pb-play" id="pbPlay" aria-label="Play / pause">
+        <svg class="icon-play" viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg>
+        <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16"/><rect x="14" y="4" width="5" height="16"/></svg>
+      </button>
+      <button type="button" class="pb-btn" id="pbNext" aria-label="Next track">
+        <svg viewBox="0 0 24 24"><polygon points="5,4 16,12 5,20"/><rect x="17" y="4" width="3" height="16"/></svg>
+      </button>
+    </div>
+    <div class="pb-info">
+      <span class="pb-title" id="pbTitle">—</span>
+      <span class="pb-genre mono" id="pbGenre"></span>
+    </div>
+    <div class="pb-wave" id="pbWave"><canvas id="pbCanvas"></canvas></div>
+    <span class="pb-time mono" id="pbTime">0:00 / 0:00</span>
+    <a href="start-a-project.html" class="pb-cta mono" data-i18n="player.cta">Like it? → Start a project</a>
+    <button type="button" class="pb-close" id="pbClose" aria-label="Close player">✕</button>
+  </div>
+
+  <audio id="globalAudio" preload="none"></audio>
 
   <!-- Analytics — privacy-friendly & cookieless (GoatCounter) -->
   <script data-goatcounter="https://gerbino.goatcounter.com/count"
