@@ -23,6 +23,15 @@ const recapChips    = document.getElementById('recapChips');
 // ── i18n helper (falls back to the key if i18n.js isn't loaded) ───────────────
 const T = (key, vars) => (window.i18n ? window.i18n.t(key, vars) : key);
 
+// ── Analytics events (GoatCounter, cookieless) ────────────────────────────────
+const track = (name) => {
+  try {
+    if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+      window.goatcounter.count({ path: name, title: name, event: true });
+    }
+  } catch (e) {}
+};
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function getMinutes() {
   return parseInt(document.getElementById('minutesSlider').value) || 15;
@@ -96,6 +105,7 @@ function evaluateBudget(radio) {
   if (tooLow) {
     const mins    = getMinutes();
     const minCost = mins * RATE_PER_MIN;
+    track('quote-budget-blocked');
     budgetWarning.classList.remove('hidden');
     budgetWarnTxt.textContent = T('q.budgetWarn', { mins: mins, cost: minCost.toLocaleString() });
     contactFields.classList.add('hidden');
@@ -163,7 +173,11 @@ function validateStep(n) {
 
 nextBtn.addEventListener('click', () => {
   if (!validateStep(currentStep)) return;
-  if (currentStep < TOTAL_STEPS) { currentStep++; showStep(currentStep); }
+  if (currentStep < TOTAL_STEPS) {
+    currentStep++;
+    showStep(currentStep);
+    track('quote-step-' + currentStep);
+  }
 });
 
 prevBtn.addEventListener('click', () => {
@@ -238,6 +252,7 @@ ${extra || '(none)'}
     });
 
     if (res.ok) {
+      track('quote-sent');
       form.classList.add('hidden');
       document.querySelector('.progress-wrap').classList.add('hidden');
       document.querySelector('.quote-header').classList.add('hidden');

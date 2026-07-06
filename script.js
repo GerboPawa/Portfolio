@@ -8,6 +8,22 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isTouch      = window.matchMedia('(hover: none)').matches;
 
+  /* ── Analytics events (GoatCounter, cookieless) ──────────────────────── */
+  function track(name) {
+    try {
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count({ path: name, title: name, event: true });
+      }
+    } catch (e) {}
+  }
+  // where do "Start a Project" clicks come from?
+  document.querySelectorAll('a[href*="start-a-project"]').forEach(a => {
+    a.addEventListener('click', () => {
+      const zone = a.closest('section, header, nav, .player-bar');
+      track('cta-start-project--' + ((zone && zone.id) || 'page'));
+    });
+  });
+
   /* ── Footer year ─────────────────────────────────────────────────────── */
   const footerYear = document.getElementById('footerYear');
   if (footerYear) footerYear.textContent = new Date().getFullYear();
@@ -206,12 +222,13 @@
 
     const trackData = rows.map((row, i) => {
       const title = row.querySelector('.track-title')?.textContent.trim() || ('Track ' + (i + 1));
+      const base  = (row.dataset.src || '').split('/').pop().replace(/\.[^.]+$/, '');
       return {
         row,
         src:   row.dataset.src,
         title,
         genre: row.querySelector('.track-genre')?.textContent.trim() || '',
-        peaks: makePeaks(title, 72),
+        peaks: (window.TRACK_PEAKS || {})[base] || makePeaks(title, 96),
         canvas: row.querySelector('.waveform-canvas'),
         curEl:  row.querySelector('.current-time'),
         durEl:  row.querySelector('.duration'),
@@ -326,7 +343,10 @@
       if (pbTitle) pbTitle.textContent = t.title;
       if (pbGenre) pbGenre.textContent = t.genre;
       openBar();
-      if (autoplay) audio.play().catch(() => {});
+      if (autoplay) {
+        audio.play().catch(() => {});
+        track('track-play--' + String(i + 1).padStart(2, '0'));
+      }
       setRowState();
     }
 
@@ -419,53 +439,91 @@
 
     window.addEventListener('resize', drawAllStatic);
     drawAllStatic();
-
-    /* ── Keep site audio and YouTube embeds from playing over each other ── */
-    const ytFrames = Array.from(document.querySelectorAll('iframe.yt-embed'));
-    if (ytFrames.length) {
-      const ytPost = (frame, payload) => {
-        try { frame.contentWindow?.postMessage(JSON.stringify(payload), '*'); } catch (e) {}
-      };
-      // handshake so the embeds start reporting their player state
-      const handshake = () => ytFrames.forEach((f, i) =>
-        ytPost(f, { event: 'listening', id: f.id || ('yt' + i), channel: 'widget' }));
-      ytFrames.forEach(f => f.addEventListener('load', handshake));
-      handshake();
-      setTimeout(handshake, 2000); // lazy iframes that load on scroll
-
-      // a YouTube video started → pause the track player
-      window.addEventListener('message', (e) => {
-        if (!/^https:\/\/([^/]*\.)?youtube(-nocookie)?\.com$/.test(e.origin)) return;
-        if (typeof e.data !== 'string') return;
-        try {
-          const d = JSON.parse(e.data);
-          if (d.event === 'infoDelivery' && d.info && d.info.playerState === 1 && !audio.paused) {
-            audio.pause();
-          }
-        } catch (err) {}
-      });
-
-      // a track started → pause any playing YouTube video
-      audio.addEventListener('play', () => ytFrames.forEach(f =>
-        ytPost(f, { event: 'command', func: 'pauseVideo', args: [] })));
-    }
   }
 
-  /* ── Implementation video: chapter chips (YouTube seek) ──────────────── */
-  const implPlayer = document.getElementById('implPlayer');
-  if (implPlayer) {
-    const ytCmd = (func, args) => {
-      implPlayer.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args: args || [] }), '*');
-    };
-    document.querySelectorAll('.impl-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        const t = parseInt(chip.dataset.seek, 10) || 0;
-        document.getElementById('globalAudio')?.pause(); // don't talk over the video
-        ytCmd('seekTo', [t, true]);
-        ytCmd('playVideo');
-      });
+  /* ══════════════════════════════════════════════════════════════════════
+     YOUTUBE FACADES — the heavy player loads only when clicked.
+     Also keeps videos and the track player from talking over each other.
+     ═════════════════════════════════════════════════════════════════════ */
+  const globalAudioEl = document.getElementById('globalAudio');
+  const ytFrames = {}; // yt video id -> live iframe
+
+  function ytPost(frame, payload) {
+    try { frame.contentWindow?.postMessage(JSON.stringify(payload), '*'); } catch (e) {}
+  }
+  function ytHandshake() {
+    Object.values(ytFrames).forEach(f =>
+      ytPost(f, { event: 'listening', id: f.dataset.ytId, channel: 'widget' }));
+  }
+  function ytCreate(facade, startAt) {
+    const id = facade.dataset.ytId;
+    if (ytFrames[id]) return ytFrames[id];
+    const iframe = document.createElement('iframe');
+    // no autoplay: when the browser denies it, the player can hang on a black
+    // screen — one extra click on YouTube's own play button is always safe
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?enablejsapi=1' +
+                 (startAt ? '&start=' + startAt : '');
+    iframe.title = facade.dataset.ytTitle || 'YouTube video';
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.dataset.ytId = id;
+    iframe.addEventListener('load', () => setTimeout(ytHandshake, 600));
+    ytFrames[id] = iframe;
+    facade.innerHTML = '';
+    facade.appendChild(iframe);
+    facade.classList.add('yt-loaded');
+    facade.removeAttribute('role');
+    facade.removeAttribute('tabindex');
+    globalAudioEl?.pause(); // don't talk over the video
+    track('video-play--' + (facade.dataset.ytName || id));
+    return iframe;
+  }
+
+  document.querySelectorAll('.yt-facade').forEach(facade => {
+    facade.addEventListener('click', () => ytCreate(facade));
+    facade.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ytCreate(facade); }
+    });
+  });
+
+  // a YouTube video started → pause the track player
+  window.addEventListener('message', (e) => {
+    if (!/^https:\/\/([^/]*\.)?youtube(-nocookie)?\.com$/.test(e.origin)) return;
+    if (typeof e.data !== 'string') return;
+    try {
+      const d = JSON.parse(e.data);
+      if (d.event === 'infoDelivery' && d.info && d.info.playerState === 1 &&
+          globalAudioEl && !globalAudioEl.paused) {
+        globalAudioEl.pause();
+      }
+    } catch (err) {}
+  });
+
+  // a track started → pause any playing YouTube video
+  if (globalAudioEl) {
+    globalAudioEl.addEventListener('play', () => {
+      Object.values(ytFrames).forEach(f =>
+        ytPost(f, { event: 'command', func: 'pauseVideo', args: [] }));
     });
   }
+
+  /* ── Implementation video: chapter chips (create player / seek) ──────── */
+  document.querySelectorAll('.impl-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const t = parseInt(chip.dataset.seek, 10) || 0;
+      const facade = chip.closest('.impl-item')?.querySelector('.yt-facade');
+      if (!facade) return;
+      globalAudioEl?.pause();
+      const frame = ytFrames[facade.dataset.ytId];
+      if (frame) {
+        ytPost(frame, { event: 'command', func: 'seekTo', args: [t, true] });
+        ytPost(frame, { event: 'command', func: 'playVideo', args: [] });
+      } else {
+        ytCreate(facade, t);
+      }
+    });
+  });
 
   /* ── FAQ accordion ───────────────────────────────────────────────────── */
   document.querySelectorAll('.faq-item').forEach(item => {
@@ -513,6 +571,7 @@
           }),
         });
         if (!res.ok) throw new Error('server');
+        track('contact-sent');
         contactForm.classList.add('hidden');
         successEl.classList.remove('hidden');
         successEl.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
