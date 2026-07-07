@@ -282,6 +282,8 @@
       let i = 0;
       const next = () => {
         if (i >= trackData.length) return;
+        // never compete with actual playback for bandwidth
+        if (!audio.paused) { setTimeout(next, 2000); return; }
         const t = trackData[i++];
         if (t.duration) { next(); return; }
         const probe = new Audio();
