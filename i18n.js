@@ -43,17 +43,16 @@
     // work / portfolio
     'work.eyebrow': '// Lavori',
     'work.title':   'Premi play.',
-    'work.sub':     'Otto tracce, otto mondi diversi. Il player ti segue mentre esplori il sito.',
+    'work.sub':     'Sette tracce, sette mondi diversi. Il player ti segue mentre esplori il sito.',
     'work.ctaText': 'Stai immaginando questo suono nel tuo gioco?',
     'work.ctaBtn':  'Richiedi un preventivo',
     'g1': 'The Sting (in sviluppo) · Tema dello Shop',
     'g2': 'Tema Principale · Avventura',
     'g3': 'Rescoring · Mashup Orchestrale',
     'g4': 'The Sting (in sviluppo) · Boss Fight',
-    'g5': 'Voci Femminili · Demo di Tema',
-    'g6': 'Ambient · Calmo · Open World',
-    'g7': 'Game Over · Jingle',
-    'g8': 'Cupo · Atmosferico · Ambient',
+    'g5': 'Ambient · Calmo · Open World',
+    'g6': 'Game Over · Jingle',
+    'g7': 'Cupo · Atmosferico · Ambient',
 
     // implementation / adaptive audio
     'impl.eyebrow': '// Implementazione',
