@@ -6,3 +6,7 @@ Desktop.ini
 *~
 .vscode/
 .idea/
+
+# backup audio locali, non vanno pubblicati
+audio/_non-pubblicati/
+audio/_originali-pre-normalizzazione/
