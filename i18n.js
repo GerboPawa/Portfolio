@@ -32,7 +32,6 @@
     'hero.start':   'Inizia un progetto',
     'hero.trust':   'Risposta entro 48h &nbsp;·&nbsp; Pipeline completa in-house &nbsp;·&nbsp; Pronto per FMOD',
     'hero.scroll':  'scorri',
-    'hero.portraitCap': 'Dal vivo al pianoforte · Conservatorio',
 
     // marquee
     'mq.scoring':  'Scoring Orchestrale',
