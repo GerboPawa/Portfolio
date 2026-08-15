@@ -32,6 +32,7 @@
     'hero.start':   'Inizia un progetto',
     'hero.trust':   'Risposta entro 48h &nbsp;·&nbsp; Pipeline completa in-house &nbsp;·&nbsp; Pronto per FMOD',
     'hero.scroll':  'scorri',
+    'hero.portraitCap': 'Dal vivo al pianoforte · Conservatorio',
 
     // marquee
     'mq.scoring':  'Scoring Orchestrale',
@@ -46,6 +47,10 @@
     'work.sub':     'Otto tracce, otto mondi diversi. Il player ti segue mentre esplori il sito.',
     'work.ctaText': 'Stai immaginando questo suono nel tuo gioco?',
     'work.ctaBtn':  'Richiedi un preventivo',
+    'reel.badge': 'Reel',
+    'reel.title': 'Audio Reel Completo',
+    'reel.genre': 'Tutto, uno via l\'altro',
+    'reel.hint':  '↳ un reel, otto mondi — oppure premi play su un brano qui sotto',
     'g1': 'Dark Fantasy · Regno Caduto',
     'g2': 'Orchestra Completa e Coro · Trionfo',
     'g3': 'Tema Principale · Avventura',
@@ -99,32 +104,10 @@
     'about.single':  'Scrivo, orchestro, registro, mixo e masterizzo — da solo. Quando il progetto chiede musicisti veri, li porto in studio.',
     'about.tagSession': 'Turnisti',
     'about.tagStems':   'Consegna stems',
-    'about.portraitCap': 'Dal vivo al pianoforte · Conservatorio',
     'train.eyebrow': '// Formazione',
     'train.l1': 'Scoring per Film',
     'train.l2': 'Composizione Classica',
     'train.l3': 'Pianoforte Classico',
-
-    // pipeline
-    'pipe.comp':      'Composizione',
-    'pipe.compDesc':  'Temi, motivi, leitmotiv — cuciti sul tuo mondo.',
-    'pipe.orch':      'Orchestrazione',
-    'pipe.orchDesc':  'Partiture complete. Pronte per musicisti veri o sample.',
-    'pipe.prod':      'Produzione',
-    'pipe.prodDesc':  'Session virtuali e dal vivo. Strumenti veri quando conta.',
-    'pipe.mixDesc':   'Stereo o stems. Ottimizzati per engine o streaming.',
-
-    // sound / references
-    'sound.eyebrow': '// Suono',
-    'sound.title':   'Come potrebbe<br/><em>suonare il tuo mondo.</em>',
-    'ref1.title': 'High Fantasy',
-    'ref1.desc':  'Orchestrazioni epiche, leitmotiv tematici, world-building immersivo. Musica che fa esistere il mondo ancora prima che il giocatore ci arrivi.',
-    'ref2.title': 'Oscuro e Antico',
-    'ref2.desc':  "Ottoni potenti, cori inquietanti, archi intimi. Per terre desolate, dèi dimenticati e mondi sull'orlo del baratro.",
-    'ref3.title': 'Dramma Cinematico',
-    'ref3.desc':  'Scrittura guidata dalla narrazione, costruita su personaggi ed emozioni. Temi che evolvono, ricordano e ripagano.',
-    'ref4.title': 'Azione e Tensione',
-    'ref4.desc':  "Ritmi serrati, ottoni aggressivi, urgenza percussiva. Musica di combattimento che spinge il giocatore in avanti senza spezzare l'immersione.",
 
     // services
     'services.eyebrow': '// Servizi',

@@ -101,24 +101,30 @@
   <header class="hero" id="hero">
     <canvas id="notesCanvas" aria-hidden="true"></canvas>
     <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow mono" data-i18n="hero.eyebrow">Orchestral Composer · Game Audio</p>
-      <h1 class="hero-title" data-i18n="hero.title">
-        One composer.<br/>
-        <em>Full orchestra.</em>
-      </h1>
-      <p class="hero-sub" data-i18n="hero.sub">
-        Composition. Orchestration. Production. Mix. Master.<br/>
-        Everything your game needs — under one roof.
-      </p>
-      <div class="hero-actions">
-        <button type="button" class="btn-primary magnetic" id="heroListenBtn">
-          <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,3 21,12 6,21" fill="currentColor"/></svg>
-          <span data-i18n="hero.listen">Listen to the work</span>
-        </button>
-        <a href="start-a-project.html" class="btn-ghost magnetic" data-i18n="hero.start">Start a project</a>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="hero-eyebrow mono" data-i18n="hero.eyebrow">Orchestral Composer · Game Audio</p>
+        <h1 class="hero-title" data-i18n="hero.title">
+          One composer.<br/>
+          <em>Full orchestra.</em>
+        </h1>
+        <p class="hero-sub" data-i18n="hero.sub">
+          Composition. Orchestration. Production. Mix. Master.<br/>
+          Everything your game needs — under one roof.
+        </p>
+        <div class="hero-actions">
+          <button type="button" class="btn-primary magnetic" id="heroListenBtn">
+            <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,3 21,12 6,21" fill="currentColor"/></svg>
+            <span data-i18n="hero.listen">Listen to the work</span>
+          </button>
+          <a href="start-a-project.html" class="btn-ghost magnetic" data-i18n="hero.start">Start a project</a>
+        </div>
+        <p class="hero-trust mono" data-i18n="hero.trust">Reply within 48h &nbsp;·&nbsp; Full pipeline in-house &nbsp;·&nbsp; FMOD ready</p>
       </div>
-      <p class="hero-trust mono" data-i18n="hero.trust">Reply within 48h &nbsp;·&nbsp; Full pipeline in-house &nbsp;·&nbsp; FMOD ready</p>
+      <figure class="hero-portrait">
+        <img src="filippo-piano.jpg" alt="Filippo Gerbino at the piano" />
+        <figcaption class="hero-portrait-cap mono" data-i18n="hero.portraitCap">Live at the piano · Conservatorio</figcaption>
+      </figure>
     </div>
     <div class="hero-scroll-hint" aria-hidden="true">
       <span class="mono" data-i18n="hero.scroll">scroll</span>
@@ -154,6 +160,24 @@
       <p class="section-eyebrow mono reveal"><span data-i18n="work.eyebrow">// Work</span> <span class="eyebrow-num">01</span></p>
       <h2 class="section-title reveal" data-i18n="work.title">Press play.</h2>
       <p class="section-sub reveal" data-i18n="work.sub">Eight tracks, eight different worlds. The player follows you while you browse.</p>
+
+      <div class="tracks-featured reveal">
+        <div class="track-item track-item-featured" tabindex="0" role="button" aria-label="Play the full audio reel"
+             data-src="audio/audio-reel.mp3" data-src-ogg="audio/audio-reel.ogg">
+          <span class="track-num mono" data-i18n="reel.badge">Reel</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title" data-i18n="reel.title">Full Audio Reel</span>
+            <span class="track-genre mono" data-i18n="reel.genre">Everything, back to back</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+        <p class="tracks-featured-hint mono" data-i18n="reel.hint">↳ one reel, every world — or press play on a single track below</p>
+      </div>
 
       <div class="tracks-list reveal" id="tracksList">
 
@@ -424,81 +448,35 @@
   <!-- ABOUT -->
   <section class="about section" id="about">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-left">
-          <p class="section-eyebrow mono reveal"><span data-i18n="about.eyebrow">// Who</span> <span class="eyebrow-num">06</span></p>
-          <h2 class="section-title reveal" data-i18n="about.title">Classically trained.<br/><em>Digitally fluent.</em></h2>
+      <p class="section-eyebrow mono reveal"><span data-i18n="about.eyebrow">// Who</span> <span class="eyebrow-num">06</span></p>
+      <h2 class="section-title reveal" data-i18n="about.title">Classically trained.<br/><em>Digitally fluent.</em></h2>
 
-          <div class="stat-row reveal reveal-delay-1">
-            <div class="stat-block">
-              <span class="stat-num">𝄞</span>
-              <span class="stat-label" data-i18n="about.stat1">Classical Pianist<br/>Conservatorio</span>
-            </div>
-            <div class="stat-block">
-              <span class="stat-num">1</span>
-              <span class="stat-label" data-i18n="about.stat2">Studio.<br/>Full pipeline.</span>
-            </div>
-            <div class="stat-block">
-              <span class="stat-num">∞</span>
-              <span class="stat-label" data-i18n="about.stat3">Session musicians<br/>on call</span>
-            </div>
-          </div>
-
-          <p class="about-single reveal reveal-delay-2" data-i18n="about.single">
-            I write, orchestrate, record, mix and master — solo.
-            When the project needs real players, I bring them in.
-          </p>
-
-          <div class="about-tags reveal reveal-delay-3">
-            <span class="tag">Conservatorio</span>
-            <span class="tag">Cubase 15</span>
-            <span class="tag" data-i18n="about.tagSession">Session Musicians</span>
-            <span class="tag">FMOD</span>
-            <span class="tag" data-i18n="about.tagStems">Stems delivery</span>
-          </div>
+      <div class="stat-row reveal reveal-delay-1">
+        <div class="stat-block">
+          <span class="stat-num">𝄞</span>
+          <span class="stat-label" data-i18n="about.stat1">Classical Pianist<br/>Conservatorio</span>
         </div>
-
-        <div class="about-right">
-          <figure class="about-portrait reveal">
-            <img src="filippo-piano.jpg" alt="Filippo Gerbino at the piano" loading="lazy" />
-            <figcaption class="about-portrait-cap mono" data-i18n="about.portraitCap">Live at the piano · Conservatorio</figcaption>
-          </figure>
+        <div class="stat-block">
+          <span class="stat-num">1</span>
+          <span class="stat-label" data-i18n="about.stat2">Studio.<br/>Full pipeline.</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-num">∞</span>
+          <span class="stat-label" data-i18n="about.stat3">Session musicians<br/>on call</span>
         </div>
       </div>
 
-      <!-- PIPELINE -->
-      <div class="pipeline-card reveal">
-        <p class="pipeline-label mono">// Pipeline</p>
-        <div class="pipeline-steps">
-          <div class="pipeline-step">
-            <div class="step-icon">♩</div>
-            <div>
-              <strong data-i18n="pipe.comp">Composition</strong>
-              <p data-i18n="pipe.compDesc">Themes, motifs, leitmotifs — built around your world.</p>
-            </div>
-          </div>
-          <div class="pipeline-step">
-            <div class="step-icon">𝄞</div>
-            <div>
-              <strong data-i18n="pipe.orch">Orchestration</strong>
-              <p data-i18n="pipe.orchDesc">Full written parts. Ready for live players or samples.</p>
-            </div>
-          </div>
-          <div class="pipeline-step">
-            <div class="step-icon">⏺</div>
-            <div>
-              <strong data-i18n="pipe.prod">Production</strong>
-              <p data-i18n="pipe.prodDesc">Virtual + live sessions. Real instruments when it matters.</p>
-            </div>
-          </div>
-          <div class="pipeline-step">
-            <div class="step-icon">⚡</div>
-            <div>
-              <strong>Mix &amp; Master</strong>
-              <p data-i18n="pipe.mixDesc">Stereo or stems. Optimised for engine or streaming.</p>
-            </div>
-          </div>
-        </div>
+      <p class="about-single reveal reveal-delay-2" data-i18n="about.single">
+        I write, orchestrate, record, mix and master — solo.
+        When the project needs real players, I bring them in.
+      </p>
+
+      <div class="about-tags reveal reveal-delay-3">
+        <span class="tag">Conservatorio</span>
+        <span class="tag">Cubase 15</span>
+        <span class="tag" data-i18n="about.tagSession">Session Musicians</span>
+        <span class="tag">FMOD</span>
+        <span class="tag" data-i18n="about.tagStems">Stems delivery</span>
       </div>
 
       <!-- TRAINING -->
@@ -524,36 +502,10 @@
     </div>
   </section>
 
-  <!-- SOUND IDENTITY -->
-  <section class="style-section section" id="style">
-    <div class="container">
-      <p class="section-eyebrow mono reveal"><span data-i18n="sound.eyebrow">// Sound</span> <span class="eyebrow-num">07</span></p>
-      <h2 class="section-title reveal" data-i18n="sound.title">What your world<br/><em>could sound like.</em></h2>
-      <div class="refs-grid">
-        <div class="ref-card tilt reveal reveal-delay-1">
-          <div class="ref-game" data-i18n="ref1.title">High Fantasy</div>
-          <div class="ref-desc" data-i18n="ref1.desc">Epic orchestration, thematic leitmotifs, immersive world-building. Music that makes the world feel like it existed before the player arrived.</div>
-        </div>
-        <div class="ref-card tilt reveal reveal-delay-2">
-          <div class="ref-game" data-i18n="ref2.title">Dark &amp; Ancient</div>
-          <div class="ref-desc" data-i18n="ref2.desc">Heavy brass, haunting choirs, intimate strings. For desolate landscapes, forgotten gods, and worlds on the edge of collapse.</div>
-        </div>
-        <div class="ref-card tilt reveal reveal-delay-3">
-          <div class="ref-game" data-i18n="ref3.title">Cinematic Drama</div>
-          <div class="ref-desc" data-i18n="ref3.desc">Narrative-driven scoring built around character and emotion. Themes that evolve, remember, and pay off.</div>
-        </div>
-        <div class="ref-card tilt reveal reveal-delay-4">
-          <div class="ref-game" data-i18n="ref4.title">Action &amp; Tension</div>
-          <div class="ref-desc" data-i18n="ref4.desc">Driving rhythms, aggressive brass, percussive urgency. Combat music that pushes the player forward without breaking immersion.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- SERVICES -->
   <section class="services section" id="services">
     <div class="container">
-      <p class="section-eyebrow mono reveal"><span data-i18n="services.eyebrow">// Services</span> <span class="eyebrow-num">08</span></p>
+      <p class="section-eyebrow mono reveal"><span data-i18n="services.eyebrow">// Services</span> <span class="eyebrow-num">07</span></p>
       <h2 class="section-title reveal" data-i18n="services.title">What I deliver.</h2>
       <div class="services-grid">
         <div class="service-card tilt reveal reveal-delay-1">
@@ -583,7 +535,7 @@
   <!-- PROCESS -->
   <section class="process section" id="process">
     <div class="container">
-      <p class="section-eyebrow mono reveal"><span data-i18n="process.eyebrow">// Process</span> <span class="eyebrow-num">09</span></p>
+      <p class="section-eyebrow mono reveal"><span data-i18n="process.eyebrow">// Process</span> <span class="eyebrow-num">08</span></p>
       <h2 class="section-title reveal" data-i18n="process.title">From brief<br/><em>to bounce.</em></h2>
 
       <ol class="process-steps">
@@ -613,7 +565,7 @@
   <!-- FAQ -->
   <section class="faq section" id="faq">
     <div class="container narrow">
-      <p class="section-eyebrow mono reveal"><span data-i18n="faq.eyebrow">// FAQ</span> <span class="eyebrow-num">10</span></p>
+      <p class="section-eyebrow mono reveal"><span data-i18n="faq.eyebrow">// FAQ</span> <span class="eyebrow-num">09</span></p>
       <h2 class="section-title reveal" data-i18n="faq.title">Before you ask.</h2>
 
       <div class="faq-list reveal">
