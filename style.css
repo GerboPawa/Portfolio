@@ -686,7 +686,52 @@ img { max-width: 100%; display: block; }
 .impl-chip-t { color: var(--gold); }
 .impl-cap { margin-top: 1.3rem; color: var(--mist); font-size: 0.92rem; max-width: 640px; line-height: 1.7; }
 
-.rescoring-piece { max-width: 860px; margin: 0 auto; }
+.rescore-carousel {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 2vw, 1.4rem);
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+}
+.rescore-viewport { flex: 1; min-width: 0; overflow: hidden; }
+.rescore-track {
+  display: flex;
+  transition: transform 0.55s var(--ease-out);
+}
+.rescore-slide { flex: 0 0 100%; min-width: 100%; }
+
+.rescore-arrow {
+  flex-shrink: 0;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(7, 7, 11, 0.75);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--parchment);
+  transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+.rescore-arrow svg { width: 18px; height: 18px; }
+.rescore-arrow:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0A0A0F;
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.35);
+}
+
+.rescore-dots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 1.6rem; }
+.rescore-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--line-soft);
+  border: 1px solid transparent;
+  transition: background 0.3s, transform 0.3s;
+}
+.rescore-dot.active { background: var(--gold); transform: scale(1.3); }
+.rescore-dot:hover { background: var(--gold-dim); }
+
 .rescoring-watch {
   display: inline-block;
   margin-top: 1.4rem;
@@ -1333,6 +1378,16 @@ img { max-width: 100%; display: block; }
   .nav-links a { font-size: 1rem; }
   .nav-hamburger { display: flex; }
   .available-badge { display: none; }
+
+  .rescore-carousel { gap: 0; }
+  .rescore-arrow {
+    position: absolute; top: 40%; transform: translateY(-50%);
+    width: 40px; height: 40px;
+    z-index: 3;
+  }
+  .rescore-prev { left: 8px; }
+  .rescore-next { right: 8px; }
+  .rescore-viewport { width: 100%; }
 
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
   .hero-content { max-width: 100%; margin: 0 auto; }

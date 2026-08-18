@@ -58,6 +58,16 @@
         "embedUrl": "https://www.youtube-nocookie.com/embed/d8BKK9SVm9c",
         "contentUrl": "https://youtu.be/d8BKK9SVm9c",
         "creator": { "@id": "https://filippogerbino.com/#filippo" }
+      },
+      {
+        "@type": "VideoObject",
+        "name": "Spring (Blender Open Movie) — Original Orchestral Rescore",
+        "description": "A full original orchestral rescore of Blender's open movie Spring (2019) by Filippo Gerbino, written and produced to follow the film's story on screen.",
+        "thumbnailUrl": "https://i.ytimg.com/vi/IiLGnwVNXKU/maxresdefault.jpg",
+        "uploadDate": "2026-08-18",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/IiLGnwVNXKU",
+        "contentUrl": "https://youtu.be/IiLGnwVNXKU",
+        "creator": { "@id": "https://filippogerbino.com/#filippo" }
       }
     ]
   }
@@ -350,24 +360,62 @@
   <!-- CINEMATIC RESCORING -->
   <section class="rescore-section section" id="rescore">
     <div class="container">
-      <div class="rescoring-piece reveal">
-        <p class="section-eyebrow mono"><span data-i18n="rescore.label">// Cinematic Scoring</span> <span class="eyebrow-num">03</span></p>
-        <h2 class="section-title" data-i18n="rescore.title">Same picture.<br/><em>Different soul.</em></h2>
-        <p class="section-sub" data-i18n="rescore.sub">
-          A full rescore of Unity's <em>Book of the Dead</em> (2018) — atonal and unsettling,
-          written and produced to hit every cut, breath and shadow on screen. Proof that the
-          right score can carry a cinematic on its own.
-        </p>
-        <div class="video-wrapper-full yt-facade" data-yt-id="d8BKK9SVm9c" data-yt-name="rescore"
-             data-yt-title="Filippo Gerbino — Book of the Dead Rescore"
-             role="button" tabindex="0" aria-label="Play video: Book of the Dead Rescore">
-          <img src="https://i.ytimg.com/vi/d8BKK9SVm9c/maxresdefault.jpg" alt="" loading="lazy"
-               onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/d8BKK9SVm9c/hqdefault.jpg'" />
-          <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></span>
+      <p class="section-eyebrow mono reveal"><span data-i18n="rescore.label">// Cinematic Scoring</span> <span class="eyebrow-num">03</span></p>
+      <h2 class="section-title reveal" data-i18n="rescore.title">Same picture.<br/><em>Different soul.</em></h2>
+
+      <div class="rescore-carousel reveal" id="rescoreCarousel">
+        <button type="button" class="rescore-arrow rescore-prev" id="rescorePrev" aria-label="Previous video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,4 7,12 15,20"/></svg>
+        </button>
+
+        <div class="rescore-viewport">
+          <div class="rescore-track" id="rescoreTrack">
+
+            <div class="rescore-slide">
+              <p class="section-sub" data-i18n="rescore.sub1">
+                A full rescore of Unity's <em>Book of the Dead</em> (2018) — atonal and unsettling,
+                written and produced to hit every cut, breath and shadow on screen.
+              </p>
+              <div class="video-wrapper-full yt-facade" data-yt-id="d8BKK9SVm9c" data-yt-name="rescore-botd"
+                   data-yt-title="Filippo Gerbino — Book of the Dead Rescore"
+                   role="button" tabindex="0" aria-label="Play video: Book of the Dead Rescore">
+                <img src="https://i.ytimg.com/vi/d8BKK9SVm9c/maxresdefault.jpg" alt="" loading="lazy"
+                     onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/d8BKK9SVm9c/hqdefault.jpg'" />
+                <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></span>
+              </div>
+              <a href="https://youtu.be/d8BKK9SVm9c" target="_blank" rel="noopener" class="rescoring-watch mono">
+                <span data-i18n="rescore.watch">Watch on YouTube</span> <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="rescore-slide">
+              <p class="section-sub" data-i18n="rescore.sub2">
+                A full orchestral rescore of Blender's open movie <em>Spring</em> (2019) — lush and
+                emotional, written to follow the short's story beat by beat.
+              </p>
+              <div class="video-wrapper-full yt-facade" data-yt-id="IiLGnwVNXKU" data-yt-name="rescore-spring"
+                   data-yt-title="Filippo Gerbino — Spring Rescore"
+                   role="button" tabindex="0" aria-label="Play video: Spring Rescore">
+                <img src="https://i.ytimg.com/vi/IiLGnwVNXKU/maxresdefault.jpg" alt="" loading="lazy"
+                     onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/IiLGnwVNXKU/hqdefault.jpg'" />
+                <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></span>
+              </div>
+              <a href="https://youtu.be/IiLGnwVNXKU" target="_blank" rel="noopener" class="rescoring-watch mono">
+                <span data-i18n="rescore.watch">Watch on YouTube</span> <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+          </div>
         </div>
-        <a href="https://youtu.be/d8BKK9SVm9c" target="_blank" rel="noopener" class="rescoring-watch mono" data-i18n="rescore.watch">
-          Watch on YouTube <span aria-hidden="true">↗</span>
-        </a>
+
+        <button type="button" class="rescore-arrow rescore-next" id="rescoreNext" aria-label="Next video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,4 17,12 9,20"/></svg>
+        </button>
+      </div>
+
+      <div class="rescore-dots" id="rescoreDots">
+        <button type="button" class="rescore-dot active" data-goto="0" aria-label="Show video 1 of 2"></button>
+        <button type="button" class="rescore-dot" data-goto="1" aria-label="Show video 2 of 2"></button>
       </div>
     </div>
   </section>
@@ -601,7 +649,7 @@
             <span data-i18n="faq.q5">Do you only score games?</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p data-i18n="faq.a5">Games are home, but I also write for film, series and trailers — the Book of the Dead rescore above is scored to picture, hitting every cut and breath on screen.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p data-i18n="faq.a5">Games are home, but I also write for film, series and trailers — the rescores above (Book of the Dead, Spring) are scored to picture, hitting every cut and breath on screen.</p></div></div>
         </div>
         <div class="faq-item">
           <button type="button" class="faq-q" aria-expanded="false">

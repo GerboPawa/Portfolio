@@ -72,8 +72,9 @@
     // rescore
     'rescore.label': '// Scoring Cinematico',
     'rescore.title': 'Stessa immagine.<br/><em>Anima diversa.</em>',
-    'rescore.sub':   'Un rescore integrale di <em>Book of the Dead</em> di Unity (2018) — atonale e inquietante, scritto e prodotto per seguire ogni stacco, respiro e ombra sullo schermo. La prova che la musica giusta può reggere da sola una cinematica.',
-    'rescore.watch': 'Guarda su YouTube <span aria-hidden="true">↗</span>',
+    'rescore.sub1':  'Un rescore integrale di <em>Book of the Dead</em> di Unity (2018) — atonale e inquietante, scritto e prodotto per seguire ogni stacco, respiro e ombra sullo schermo.',
+    'rescore.sub2':  "Un rescore orchestrale integrale del film open di Blender <em>Spring</em> (2019) — lussureggiante ed emotivo, scritto per seguire la storia del corto battuta per battuta.",
+    'rescore.watch': 'Guarda su YouTube',
 
     // projects
     'projects.eyebrow': '// Progetti',
@@ -142,7 +143,7 @@
     'faq.q4': 'Come funzionano i prezzi?',
     'faq.a4': 'Ogni progetto viene quotato singolarmente in base ai minuti di musica, alla strumentazione e alle esigenze di implementazione. Compila il form di progetto e ricevi una proposta vera entro 48 ore — non un listino copia-incolla.',
     'faq.q5': 'Componi solo per videogiochi?',
-    'faq.a5': 'I giochi sono casa mia, ma scrivo anche per film, serie e trailer — il rescore di Book of the Dead qui sopra è musica scritta sulle immagini, che segue ogni stacco e respiro sullo schermo.',
+    'faq.a5': 'I giochi sono casa mia, ma scrivo anche per film, serie e trailer — i rescore qui sopra (Book of the Dead, Spring) sono musica scritta sulle immagini, che segue ogni stacco e respiro sullo schermo.',
     'faq.q6': 'Cosa ti serve da me per iniziare?',
     'faq.a6': "Raccontami del tuo gioco: l'atmosfera che cerchi, brani di riferimento se li hai e le tue tempistiche. Una build o del gameplay aiutano, ma anche solo un concept doc basta per cominciare.",
 

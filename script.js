@@ -527,6 +527,55 @@
     });
   });
 
+  /* ── Cinematic rescore carousel ──────────────────────────────────────── */
+  (function () {
+    const carousel = document.getElementById('rescoreCarousel');
+    const track    = document.getElementById('rescoreTrack');
+    const prevBtn  = document.getElementById('rescorePrev');
+    const nextBtn  = document.getElementById('rescoreNext');
+    const dots     = Array.from(document.querySelectorAll('#rescoreDots .rescore-dot'));
+    if (!carousel || !track || !dots.length) return;
+
+    const slides = Array.from(track.children);
+    let index = 0;
+
+    function goTo(i) {
+      const from = slides[index];
+      index = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+
+      // pause whatever video/audio was playing on the slide we're leaving
+      if (from && from !== slides[index]) {
+        const facade = from.querySelector('.yt-facade');
+        const frame  = facade && ytFrames[facade.dataset.ytId];
+        if (frame) ytPost(frame, { event: 'command', func: 'pauseVideo', args: [] });
+      }
+    }
+
+    prevBtn?.addEventListener('click', () => goTo(index - 1));
+    nextBtn?.addEventListener('click', () => goTo(index + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    carousel.setAttribute('tabindex', '0');
+    carousel.setAttribute('aria-roledescription', 'carousel');
+    carousel.setAttribute('aria-label', 'Cinematic rescore examples');
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
+    });
+
+    // basic swipe support on touch
+    let touchX = null;
+    track.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      if (touchX == null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) goTo(dx < 0 ? index + 1 : index - 1);
+      touchX = null;
+    }, { passive: true });
+  })();
+
   /* ── FAQ accordion ───────────────────────────────────────────────────── */
   document.querySelectorAll('.faq-item').forEach(item => {
     const q = item.querySelector('.faq-q');
