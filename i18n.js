@@ -143,7 +143,7 @@
     'faq.q4': 'Come funzionano i prezzi?',
     'faq.a4': 'Ogni progetto viene quotato singolarmente in base ai minuti di musica, alla strumentazione e alle esigenze di implementazione. Compila il form di progetto e ricevi una proposta vera entro 48 ore — non un listino copia-incolla.',
     'faq.q5': 'Componi solo per videogiochi?',
-    'faq.a5': 'I giochi sono casa mia, ma scrivo anche per film, serie e trailer — i rescore qui sopra (Book of the Dead, Spring) sono musica scritta sulle immagini, che segue ogni stacco e respiro sullo schermo.',
+    'faq.a5': 'I giochi sono casa mia, ma scrivo anche per film, serie e trailer — i rescore qui sopra (Spring, Book of the Dead) sono musica scritta sulle immagini, che segue ogni stacco e respiro sullo schermo.',
     'faq.q6': 'Cosa ti serve da me per iniziare?',
     'faq.a6': "Raccontami del tuo gioco: l'atmosfera che cerchi, brani di riferimento se li hai e le tue tempistiche. Una build o del gameplay aiutano, ma anche solo un concept doc basta per cominciare.",
 
@@ -161,7 +161,7 @@
     'form.name':    '// Nome',
     'form.proj':    '// Progetto',
     'form.send':    'Invia',
-    'form.alt':     'oppure scrivimi direttamente — <a href="mailto:filippo.gerbino.mail@gmail.com">filippo.gerbino.mail@gmail.com</a>',
+    'form.alt':     'oppure scrivimi direttamente — <a href="mailto:contact@filippogerbino.com">contact@filippogerbino.com</a>',
 
     // player bar
     'player.cta': 'Ti piace? → Inizia un progetto',
@@ -239,7 +239,7 @@
     'privacy.h3':      'Statistiche',
     'privacy.p3':      'Uso uno strumento di statistiche rispettoso della privacy che conta le visite in forma anonima, senza cookie e senza tracciarti su altri siti. Non viene raccolto alcun dato personale.',
     'privacy.h4':      'I tuoi diritti',
-    'privacy.p4':      'Puoi chiedermi in qualsiasi momento di vedere o cancellare i dati che mi hai inviato — scrivi a <a href="mailto:filippo.gerbino.mail@gmail.com">filippo.gerbino.mail@gmail.com</a>.',
+    'privacy.p4':      'Puoi chiedermi in qualsiasi momento di vedere o cancellare i dati che mi hai inviato — scrivi a <a href="mailto:contact@filippogerbino.com">contact@filippogerbino.com</a>.',
     'footer.privacy':  'Privacy',
 
     // 404
@@ -268,10 +268,10 @@
       'q.budgetWarn':"For ~{mins} min of music my rate starts at ${cost}. This range isn't a fit right now — but feel free to reach out directly if you'd like to discuss.",
       'q.sending':   'Sending…',
       'q.submit':    'Get My Custom Quote',
-      'q.error':     'Something went wrong — please email filippo.gerbino.mail@gmail.com directly.',
+      'q.error':     'Something went wrong — please email contact@filippogerbino.com directly.',
       'q.recapMin':  '{n} min of music',
       'form.sending':'Sending…',
-      'form.error':  'Something went wrong — please email filippo.gerbino.mail@gmail.com directly.',
+      'form.error':  'Something went wrong — please email contact@filippogerbino.com directly.',
     },
     it: {
       'q.step':      'Passo {n} di {total}',
@@ -284,10 +284,10 @@
       'q.budgetWarn':'Per ~{mins} min di musica la mia tariffa parte da {cost}$. Per ora questa fascia non è in linea — ma scrivimi pure direttamente se vuoi parlarne.',
       'q.sending':   'Invio…',
       'q.submit':    'Ricevi il preventivo',
-      'q.error':     'Qualcosa è andato storto — scrivimi direttamente a filippo.gerbino.mail@gmail.com.',
+      'q.error':     'Qualcosa è andato storto — scrivimi direttamente a contact@filippogerbino.com.',
       'q.recapMin':  '{n} min di musica',
       'form.sending':'Invio…',
-      'form.error':  'Qualcosa è andato storto — scrivimi direttamente a filippo.gerbino.mail@gmail.com.',
+      'form.error':  'Qualcosa è andato storto — scrivimi direttamente a contact@filippogerbino.com.',
     },
   };
 

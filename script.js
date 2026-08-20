@@ -226,6 +226,7 @@
       return {
         row,
         src:   row.dataset.src,
+        slug:  base,
         title,
         genre: row.querySelector('.track-genre')?.textContent.trim() || '',
         peaks: (window.TRACK_PEAKS || {})[base] || makePeaks(title, 96),
@@ -347,7 +348,7 @@
       openBar();
       if (autoplay) {
         audio.play().catch(() => {});
-        track('track-play--' + String(i + 1).padStart(2, '0'));
+        track('track-play--' + (t.slug || String(i + 1).padStart(2, '0')));
       }
       setRowState();
     }
@@ -627,7 +628,7 @@
         successEl.classList.remove('hidden');
         successEl.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
       } catch {
-        errorEl.textContent = T('form.error', 'Something went wrong — please email filippo.gerbino.mail@gmail.com directly.');
+        errorEl.textContent = T('form.error', 'Something went wrong — please email contact@filippogerbino.com directly.');
         errorEl.classList.remove('hidden');
         submitBtn.disabled = false;
         label.textContent = original;
