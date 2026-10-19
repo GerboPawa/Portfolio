@@ -21,6 +21,7 @@
     'nav.projects':  'Progetti',
     'nav.services':  'Servizi',
     'nav.faq':       'FAQ',
+    'nav.shop':      'Shop',
     'nav.cta':       'Inizia un progetto',
     'nav.available': 'Disponibile',
 

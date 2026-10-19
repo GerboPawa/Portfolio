@@ -1445,6 +1445,13 @@ img { max-width: 100%; display: block; }
   .pb-cta { display: none; }
 }
 
+/* the nav has 6 links + CTA: keep it on one line until the hamburger takes over at 860px */
+.nav-links a { white-space: nowrap; }
+@media (max-width: 1000px) {
+  .nav-links { gap: 1.3rem; }
+  .available-badge { display: none; }
+}
+
 @media (max-width: 860px) {
   .nav { gap: 1rem; }
   .nav-links {
