@@ -255,7 +255,7 @@
     'shop.p1.desc':    'Una roadmap in 4 passi per la tua prima traccia da videogioco — melodia, accordi, basso, ritmo — senza teoria musicale. In più la mappa scale-emozioni e gli strumenti gratuiti per iniziare.',
     'shop.consent':    'Inviami anche, ogni tanto, email sulle nuove risorse (facoltativo). Puoi disiscriverti quando vuoi. <a href="privacy.html">Privacy</a>',
     'shop.cta':        'Inviami il PDF',
-    'shop.success':    "Ci siamo quasi — controlla la casella e conferma l'email: il PDF arriva subito dopo. Non lo vedi? Controlla lo spam.",
+    'shop.success':    "Ci siamo quasi — controlla la casella e clicca il link di conferma: è lì che ricevi il PDF. Non lo vedi? Controlla lo spam.",
     'shop.note':       'Consegna via email · Niente spam · Disiscrizione con un click',
 
     // 404
