@@ -635,4 +635,63 @@
       }
     });
   }
+
+  /* ── Shop: free downloads via Kit ────────────────────────────────────── */
+  // Each .shop-form carries its Kit form ID in data-kit-form. The endpoint below
+  // must match the form action of the HTML embed code Kit shows for that form.
+  const shopForms = document.querySelectorAll('.shop-form');
+  if (shopForms.length) {
+    const T = (key, fallback) => (window.i18n && window.i18n.t(key) !== key) ? window.i18n.t(key) : fallback;
+    const kitEndpoint = (id) => 'https://app.kit.com/forms/' + encodeURIComponent(id) + '/subscriptions';
+
+    shopForms.forEach(form => {
+      const card    = form.closest('.shop-card');
+      const success = card.querySelector('.form-success');
+      const errorEl = card.querySelector('.form-error');
+      const btn     = form.querySelector('button[type="submit"]');
+      const label   = btn.querySelector('.btn-label');
+      const slug    = form.dataset.product || 'unknown';
+
+      const showError = () => {
+        errorEl.textContent = T('shop.error', 'Something went wrong — please email contact@filippogerbino.com and I’ll send you the PDF.');
+        errorEl.classList.remove('hidden');
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        if (form.elements.website.value) return; // honeypot: only bots fill it
+        errorEl.classList.add('hidden');
+
+        const formId = (form.dataset.kitForm || '').trim();
+        if (!formId) {
+          console.warn('[shop] data-kit-form is empty for "' + slug + '" — connect it to a Kit form first.');
+          showError();
+          return;
+        }
+
+        btn.disabled = true;
+        const original = label.textContent;
+        label.textContent = T('form.sending', 'Sending…');
+
+        try {
+          const body = new FormData();
+          body.append('email_address', form.elements.email_address.value);
+          const res = await fetch(kitEndpoint(formId), {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body,
+          });
+          if (!res.ok) throw new Error('server');
+          track('shop-free-request--' + slug);
+          form.classList.add('hidden');
+          success.classList.remove('hidden');
+        } catch {
+          showError();
+          btn.disabled = false;
+          label.textContent = original;
+        }
+      });
+    });
+  }
 })();

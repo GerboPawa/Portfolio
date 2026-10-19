@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="meta.title4">Shop — Filippo Gerbino</title>
+  <meta name="description" content="Free guides and resources from Filippo Gerbino's composing workflow — delivered straight to your inbox." />
+  <!-- TODO(launch): remove this noindex, add the page to sitemap.xml and the nav. -->
+  <meta name="robots" content="noindex" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Filippo Gerbino" />
+  <meta property="og:title" content="Shop — Filippo Gerbino" />
+  <meta property="og:description" content="Free guides and resources from my composing workflow." />
+  <meta property="og:image" content="https://filippogerbino.com/preview-social.jpg" />
+  <meta property="og:url" content="https://filippogerbino.com/shop.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#07070B" />
+  <meta name="author" content="Filippo Gerbino" />
+  <link rel="canonical" href="https://filippogerbino.com/shop.html" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="shop-page">
+
+  <!-- FILM GRAIN -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <a href="index.html" class="nav-logo" aria-label="Filippo Gerbino — home">F<span class="gold">.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#portfolio" data-i18n="nav.work">Work</a>
+      <a href="index.html#projects" data-i18n="nav.projects">Projects</a>
+      <a href="index.html#about" data-i18n="nav.about">About</a>
+      <a href="start-a-project.html" class="nav-cta" data-i18n="nav.cta">Start a Project</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+        <button type="button" class="lang-opt" data-lang="en">EN</button>
+        <button type="button" class="lang-opt" data-lang="it">IT</button>
+      </div>
+      <div class="available-badge">
+        <span class="available-dot"></span>
+        <span class="available-text mono" data-i18n="nav.available">Available</span>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="shop-main">
+    <div class="container">
+
+      <header class="shop-header">
+        <p class="section-eyebrow mono center" data-i18n="shop.eyebrow">// Shop</p>
+        <h1 class="quote-title" data-i18n="shop.title">Resources<br/><em>from my desk.</em></h1>
+        <p class="quote-subtitle" data-i18n="shop.subtitle">Guides and tools from my own composing workflow. Free downloads land straight in your inbox.</p>
+      </header>
+
+      <div class="shop-grid" id="shopGrid">
+
+        <!--
+          One <article class="shop-card"> per product.
+          - data-product: stable slug, used for analytics (shop-free-request--<slug>).
+          - data-kit-form: the numeric form ID from Kit (Grow → Landing Pages & Forms → Embed).
+            Leave empty until the form exists: submitting then shows the error message on purpose.
+          - Placeholder text below is NOT final copy — replace it with the real PDF's details.
+        -->
+        <article class="shop-card" data-product="starter-pdf">
+          <!-- Replace with <img class="shop-cover-img" src="shop/starter-pdf.jpg" alt="…"> once the cover exists -->
+          <div class="shop-cover" aria-hidden="true"><span>𝄞</span></div>
+
+          <div class="shop-card-body">
+            <div class="shop-card-meta">
+              <span class="shop-badge mono" data-i18n="shop.free">Free</span>
+              <span class="shop-format mono" data-i18n="shop.p1.format">PDF · 12 pages</span>
+            </div>
+            <h2 class="shop-card-title" data-i18n="shop.p1.title">PDF title goes here</h2>
+            <p class="shop-card-desc" data-i18n="shop.p1.desc">A short description of what's inside and who it's for — two lines at most.</p>
+
+            <form class="shop-form" data-product="starter-pdf" data-kit-form="" novalidate>
+              <div class="form-group">
+                <label for="shop-email-starter-pdf" class="mono">// Email</label>
+                <input type="email" id="shop-email-starter-pdf" name="email_address" placeholder="your@email.com" required autocomplete="email" />
+              </div>
+              <label class="shop-consent">
+                <input type="checkbox" name="consent" required />
+                <span data-i18n="shop.consent">Send me the PDF and occasional emails about new resources. Unsubscribe anytime. <a href="privacy.html">Privacy</a></span>
+              </label>
+              <!-- honeypot: real visitors never see or fill this -->
+              <input type="text" name="website" class="shop-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <button type="submit" class="btn-primary magnetic">
+                <span class="btn-label" data-i18n="shop.cta">Send me the PDF</span>
+              </button>
+            </form>
+
+            <div class="form-success hidden" role="status">
+              <span class="form-success-icon">✓</span>
+              <p data-i18n="shop.success">Almost there — check your inbox and confirm your email, the PDF arrives right after. Nothing yet? Check your spam folder.</p>
+            </div>
+            <div class="form-error hidden" role="alert"></div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="shop-note mono" data-i18n="shop.note">Delivered by email · No spam · Unsubscribe in one click</p>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">F<span class="gold">.</span></div>
+      <p class="footer-copy mono" data-i18n="footer.copy">© <span id="footerYear">2026</span> Filippo Gerbino — Composer &amp; Orchestrator</p>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/filippo__g/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@GerbinoScores" target="_blank" rel="noopener">YouTube</a>
+        <a href="privacy.html" data-i18n="footer.privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Analytics — privacy-friendly & cookieless (GoatCounter) -->
+  <script data-goatcounter="https://gerbino.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

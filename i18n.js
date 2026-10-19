@@ -230,7 +230,7 @@
     'meta.title3':     'Privacy — Filippo Gerbino',
     'privacy.eyebrow': '// Privacy',
     'privacy.title':   'Privacy',
-    'privacy.updated': 'Ultimo aggiornamento — luglio 2026',
+    'privacy.updated': 'Ultimo aggiornamento — ottobre 2026',
     'privacy.intro':   'Questo sito è gestito da Filippo Gerbino. Ecco esattamente cosa succede ai tuoi dati — in breve e in modo onesto.',
     'privacy.h1':      'Form di contatto e preventivo',
     'privacy.p1':      'Quando usi il form di contatto o il configuratore di preventivo, i dati che inserisci (nome, email, messaggio) mi arrivano tramite Formspree solo per poterti rispondere. Non vengono mai venduti, condivisi o usati per marketing.',
@@ -240,7 +240,23 @@
     'privacy.p3':      'Uso uno strumento di statistiche rispettoso della privacy che conta le visite in forma anonima, senza cookie e senza tracciarti su altri siti. Non viene raccolto alcun dato personale.',
     'privacy.h4':      'I tuoi diritti',
     'privacy.p4':      'Puoi chiedermi in qualsiasi momento di vedere o cancellare i dati che mi hai inviato — scrivi a <a href="mailto:contact@filippogerbino.com">contact@filippogerbino.com</a>.',
+    'privacy.h5':      'Download gratuiti e lista email',
+    'privacy.p5':      "Quando richiedi un download gratuito dalla pagina shop, il tuo indirizzo email viene inviato a Kit (kit.com), il servizio di email che uso. Lo uso per mandarti il file e, con il tuo consenso, qualche email occasionale sulle nuove risorse. Kit ha sede negli Stati Uniti e tratta i dati secondo la propria informativa sulla privacy. Puoi disiscriverti con un click da qualsiasi email e cancello i tuoi dati su richiesta.",
     'footer.privacy':  'Privacy',
+
+    // shop page
+    'meta.title4':     'Shop — Filippo Gerbino',
+    'shop.eyebrow':    '// Shop',
+    'shop.title':      'Risorse<br/><em>dalla mia scrivania.</em>',
+    'shop.subtitle':   'Guide e strumenti dal mio modo di comporre. I download gratuiti ti arrivano direttamente via email.',
+    'shop.free':       'Gratis',
+    'shop.p1.format':  'PDF · 12 pagine',
+    'shop.p1.title':   'Titolo del PDF',
+    'shop.p1.desc':    'Una breve descrizione di cosa contiene e a chi è utile — al massimo due righe.',
+    'shop.consent':    'Inviami il PDF e, ogni tanto, email sulle nuove risorse. Puoi disiscriverti quando vuoi. <a href="privacy.html">Privacy</a>',
+    'shop.cta':        'Inviami il PDF',
+    'shop.success':    "Ci siamo quasi — controlla la casella e conferma l'email: il PDF arriva subito dopo. Non lo vedi? Controlla lo spam.",
+    'shop.note':       'Consegna via email · Niente spam · Disiscrizione con un click',
 
     // 404
     'nf.title': 'Questa pagina non esiste.',
@@ -272,6 +288,7 @@
       'q.recapMin':  '{n} min of music',
       'form.sending':'Sending…',
       'form.error':  'Something went wrong — please email contact@filippogerbino.com directly.',
+      'shop.error':  'Something went wrong — please email contact@filippogerbino.com and I’ll send you the PDF.',
     },
     it: {
       'q.step':      'Passo {n} di {total}',
@@ -288,6 +305,7 @@
       'q.recapMin':  '{n} min di musica',
       'form.sending':'Invio…',
       'form.error':  'Qualcosa è andato storto — scrivimi direttamente a contact@filippogerbino.com.',
+      'shop.error':  'Qualcosa è andato storto — scrivimi a contact@filippogerbino.com e ti mando io il PDF.',
     },
   };
 
