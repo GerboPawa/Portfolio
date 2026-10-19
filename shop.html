@@ -70,28 +70,33 @@
           - data-product: stable slug, used for analytics (shop-free-request--<slug>).
           - data-kit-form: the numeric form ID from Kit (Grow → Landing Pages & Forms → Embed).
             Leave empty until the form exists: submitting then shows the error message on purpose.
-          - Placeholder text below is NOT final copy — replace it with the real PDF's details.
+          - The newsletter checkbox is optional and unchecked on purpose: the PDF must not depend on it
+            (Kit's GDPR guidance). data-kit-field on the checkbox = the field name Kit's HTML embed
+            uses for its email-consent checkbox; fill it in when the Kit form exists.
         -->
-        <article class="shop-card" data-product="starter-pdf">
-          <!-- Replace with <img class="shop-cover-img" src="shop/starter-pdf.jpg" alt="…"> once the cover exists -->
-          <div class="shop-cover" aria-hidden="true"><span>𝄞</span></div>
+        <article class="shop-card" data-product="game-music-cheat-sheet">
+          <!-- Typographic cover (the PDF has none). Swap for <img class="shop-cover-img" src="shop/….jpg" alt="…"> if a real cover is made. -->
+          <div class="shop-cover" aria-hidden="true">
+            <span class="shop-cover-kicker mono">GerbinoScores · Free cheat sheet</span>
+            <span class="shop-cover-title">Game Music in 4 Steps.<em>No Theory Required.</em></span>
+          </div>
 
           <div class="shop-card-body">
             <div class="shop-card-meta">
               <span class="shop-badge mono" data-i18n="shop.free">Free</span>
-              <span class="shop-format mono" data-i18n="shop.p1.format">PDF · 12 pages</span>
+              <span class="shop-format mono" data-i18n="shop.p1.format">PDF · 2 pages</span>
             </div>
-            <h2 class="shop-card-title" data-i18n="shop.p1.title">PDF title goes here</h2>
-            <p class="shop-card-desc" data-i18n="shop.p1.desc">A short description of what's inside and who it's for — two lines at most.</p>
+            <h2 class="shop-card-title" data-i18n="shop.p1.title">Game Music Cheat Sheet</h2>
+            <p class="shop-card-desc" data-i18n="shop.p1.desc">A 4-step roadmap to your first game track — melody, chords, bass, rhythm — with no music theory. Plus a scale-to-mood map and free tools to get started.</p>
 
-            <form class="shop-form" data-product="starter-pdf" data-kit-form="" novalidate>
+            <form class="shop-form" data-product="game-music-cheat-sheet" data-kit-form="" novalidate>
               <div class="form-group">
-                <label for="shop-email-starter-pdf" class="mono">// Email</label>
-                <input type="email" id="shop-email-starter-pdf" name="email_address" placeholder="your@email.com" required autocomplete="email" />
+                <label for="shop-email-game-music-cheat-sheet" class="mono">// Email</label>
+                <input type="email" id="shop-email-game-music-cheat-sheet" name="email_address" placeholder="your@email.com" required autocomplete="email" />
               </div>
               <label class="shop-consent">
-                <input type="checkbox" name="consent" required />
-                <span data-i18n="shop.consent">Send me the PDF and occasional emails about new resources. Unsubscribe anytime. <a href="privacy.html">Privacy</a></span>
+                <input type="checkbox" name="consent" data-kit-field="" />
+                <span data-i18n="shop.consent">Also send me occasional emails about new resources (optional). Unsubscribe anytime. <a href="privacy.html">Privacy</a></span>
               </label>
               <!-- honeypot: real visitors never see or fill this -->
               <input type="text" name="website" class="shop-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />

@@ -677,6 +677,9 @@
         try {
           const body = new FormData();
           body.append('email_address', form.elements.email_address.value);
+          // optional newsletter consent: only sent if ticked AND the Kit field name is configured
+          const consent = form.elements.consent;
+          if (consent && consent.checked && consent.dataset.kitField) body.append(consent.dataset.kitField, '1');
           const res = await fetch(kitEndpoint(formId), {
             method: 'POST',
             headers: { 'Accept': 'application/json' },
