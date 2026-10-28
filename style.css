@@ -1438,6 +1438,76 @@ img { max-width: 100%; display: block; }
   color: var(--mist-dim);
 }
 
+/* ==========================================================================
+   CARD LANDING (card.html) — where the business-card QR code lands.
+   Music first, photo later.
+   ========================================================================== */
+.card-intro {
+  padding: calc(var(--nav-h) + clamp(2.6rem, 8vh, 5rem)) 0 0;
+  position: relative;
+}
+.card-intro-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4.6rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  animation: heroIn 1.1s var(--ease-out) 0.15s both;
+}
+.card-intro-title em { font-style: italic; font-weight: 300; color: var(--gold); }
+.card-intro-sub {
+  margin-top: 1.4rem;
+  max-width: 560px;
+  color: var(--mist);
+  font-size: clamp(0.98rem, 1.6vw, 1.1rem);
+  line-height: 1.75;
+  animation: heroIn 1.1s var(--ease-out) 0.3s both;
+}
+.card-intro-actions { margin-top: 2.2rem; }
+.card-music { padding-top: clamp(2.6rem, 7vh, 4.5rem); }
+
+.card-about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.card-about-photo {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+.card-about-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: saturate(0.85) contrast(1.05);
+}
+
+.card-contact-actions {
+  margin-top: 2.4rem;
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+}
+.card-contact-actions .btn-ghost { text-transform: none; letter-spacing: 0.02em; }
+.card-socials {
+  margin-top: 2.2rem;
+  display: flex; gap: 1.6rem; justify-content: center; flex-wrap: wrap;
+  font-size: 0.74rem; letter-spacing: 0.1em;
+  color: var(--mist);
+}
+.card-socials a:hover { color: var(--gold); }
+
+@media (max-width: 860px) {
+  .card-about-grid { grid-template-columns: 1fr; }
+  .card-about-photo { max-width: 260px; }
+}
+@media (max-width: 480px) {
+  .card-contact-actions { flex-direction: column; align-items: stretch; }
+  .card-contact-actions .btn-ghost { font-size: 0.82rem; }
+}
+
 /* ── Responsive ────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .hero-grid { grid-template-columns: 1fr 0.75fr; gap: 2rem; }

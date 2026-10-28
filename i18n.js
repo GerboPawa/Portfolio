@@ -24,6 +24,17 @@
     'nav.shop':      'Shop',
     'nav.cta':       'Inizia un progetto',
     'nav.available': 'Disponibile',
+    'nav.fullsite':  'Sito completo',
+
+    // card.html — landing page for the business-card QR code
+    'meta.titleCard': 'Piacere di conoscerti — Filippo Gerbino',
+    'card.eyebrow':   '// Piacere di conoscerti',
+    'card.title':     'Grazie per aver preso<br/><em>il mio biglietto.</em>',
+    'card.sub':       'Sono Filippo, compositore orchestrale per videogiochi. Premi play: bastano trenta secondi per capire se la mia musica fa per il tuo mondo.',
+    'card.listen':    'Ascolta il reel',
+    'card.ctaTitle':  'Stai facendo un gioco?<br/><em>Parliamone.</em>',
+    'card.ctaSub':    'Raccontami cosa stai costruendo — rispondo entro 48 ore.',
+    'card.fullsite':  'Sito completo →',
 
     // hero
     'hero.eyebrow': 'Compositore Orchestrale · Game Audio',
@@ -318,6 +329,9 @@
   function detect() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved && SUPPORTED.includes(saved)) return saved;
+    // pages marked data-lang-auto (card.html) follow the browser language on a first visit
+    if (document.documentElement.hasAttribute('data-lang-auto') &&
+        /^it\b/i.test(navigator.language || '')) return 'it';
     return 'en'; // default English
   }
 
