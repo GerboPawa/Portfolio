@@ -12,7 +12,7 @@
   // ── Italian overrides for static markup ──────────────────────────────────
   const IT = {
     // meta titles
-    'meta.title':  'Filippo Gerbino — Compositore e Orchestratore',
+    'meta.title':  'Filippo Gerbino — Compositore per Videogiochi e Orchestratore',
     'meta.title2': 'Inizia un Progetto — Filippo Gerbino',
 
     // nav (shared)
@@ -74,7 +74,7 @@
     // implementation / adaptive audio
     'impl.eyebrow': '// Implementazione',
     'impl.title':   'Musica che<br/><em>reagisce.</em>',
-    'impl.sub':     'Non consegno solo le tracce — le costruisco in sistemi adattivi in FMOD, così la musica segue il giocatore in tempo reale. Ecco come funziona.',
+    'impl.sub':     'Non consegno solo le tracce — le costruisco in sistemi adattivi in FMOD, così la musica segue il giocatore in tempo reale. In <em>The Sting</em> mi sono occupato di tutto il comparto audio, dalla musica agli effetti sonori, implementando tutto in FMOD. Ecco come funziona.',
     'impl.hTag':    '// Horizontal re-sequencing',
     'impl.hDesc':   'La musica passa tra sezioni musicali complete — esplorazione, combattimento, morte — con transizioni a tempo quando cambia lo stato del gioco.',
     'impl.c1': 'Esplorazione',
@@ -92,8 +92,8 @@
     'projects.eyebrow': '// Progetti',
     'projects.title':   'Giochi pubblicati.<br/><em>Colonne sonore consegnate.</em>',
     'projects.hint':    '↳ clicca il nome di una traccia per ascoltarla subito',
-    'proj1.type': 'Game Jam · RPG Tattico',
-    'proj1.desc': "Survival sci-fi a turni — affronta un'orda infinita di entità demoniache. OST completa: composta, prodotta e masterizzata da solo.",
+    'proj1.type': 'In arrivo · Roguelike di Boxe',
+    'proj1.desc': 'Un roguelike di boxe nello spirito di Punch-Out!!, in arrivo. Ne ho composto la colonna sonora, dai temi dei boss alla musica dello shop — qui sotto puoi già ascoltare due brani.',
     'proj2.type': 'Game Jam · Avventura Nautica',
     'proj2.desc': 'Avventura piratesca — quanto a lungo riuscirai a far durare la tua leggenda? Realizzata per la Godot Wild Game Jam 2026 con Nemo, Afonso Silva e BluNotes. Colonna sonora interamente composta, prodotta e masterizzata.',
 
@@ -110,10 +110,10 @@
     // about
     'about.eyebrow': '// Chi',
     'about.title':   'Formazione classica.<br/><em>Disinvoltura digitale.</em>',
-    'about.stat1':   'Pianista Classico<br/>Conservatorio',
-    'about.stat2':   'Studio.<br/>Pipeline completa.',
-    'about.stat3':   'Turnisti<br/>a disposizione',
-    'about.single':  'Scrivo, orchestro, registro, mixo e masterizzo — da solo. Quando il progetto chiede musicisti veri, li porto in studio.',
+    'about.bio1':    'Mi sono formato al Conservatorio Giuseppe Verdi di Torino: ho perfezionato la tecnica pianistica con Caterina Vivarelli, ho imparato a comporre con il maestro Giulio Castagnoli e ho studiato film scoring con Ian Honeyman.',
+    'about.bio2':    'Le colonne sonore sono la mia ossessione da sempre. Nei videogiochi i miei preferiti in assoluto sono <em>Undertale</em> e <em>Hogwarts Legacy</em>; al cinema, qualsiasi cosa di John Williams, Ludwig Göransson o Hans Zimmer. Scelte scontate, lo so — ma se piacciono a tutti un motivo c\'è.',
+    // about.single / tags / train.* are still used by card.html
+    'about.single': 'Scrivo, orchestro, registro, mixo e masterizzo — da solo. Quando il progetto chiede musicisti veri, li porto in studio.',
     'about.tagSession': 'Turnisti',
     'about.tagStems':   'Consegna stems',
     'train.eyebrow': '// Formazione',
@@ -133,8 +133,7 @@
     'svc4.desc':  'Stereo o stems. Game engine, trailer o streaming — scegli tu.',
 
     // process
-    'process.eyebrow': '// Processo',
-    'process.title':   'Dal brief<br/><em>alla consegna.</em>',
+    'process.title':   'Dal brief <em>alla consegna.</em>',
     'process.s1t': 'Brief',
     'process.s1d': 'Raccontami il tuo mondo con il form di progetto (2 minuti). Ti rispondo entro 48 ore con una proposta su misura — non un template.',
     'process.s2t': 'Partitura',
@@ -146,12 +145,6 @@
     // faq
     'faq.eyebrow': '// FAQ',
     'faq.title':   'Prima che tu lo chieda.',
-    'faq.q1': 'Cosa ricevo esattamente alla fine?',
-    'faq.a1': "Quello che serve alla tua pipeline: master stereo, stems separati per il tuo audio engine o un progetto FMOD completo con trigger adattivi — più partiture e parti scritte se registri dal vivo.",
-    'faq.q2': 'La musica può reagire al gameplay?',
-    'faq.a2': 'Sì — è la mia specialità. Costruisco sistemi adattivi in FMOD dove la musica passa a tempo tra esplorazione, combattimento e tutto il resto. Guarda la demo nella sezione Implementazione qui sopra.',
-    'faq.q3': 'Lavori con musicisti veri?',
-    'faq.a3': 'Quando il progetto lo richiede, sì. Ho una rete di turnisti — archi, ottoni, legni, voci — registrati e prodotti uno per uno sopra l\'orchestra virtuale.',
     'faq.q4': 'Come funzionano i prezzi?',
     'faq.a4': 'Ogni progetto viene quotato singolarmente in base ai minuti di musica, alla strumentazione e alle esigenze di implementazione. Compila il form di progetto e ricevi una proposta vera entro 48 ore — non un listino copia-incolla.',
     'faq.q5': 'Componi solo per videogiochi?',
