@@ -1,7 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang-fixed="en" data-alt-it="it/">
 <head>
   <meta charset="UTF-8" />
+  <!-- en-only:start (tools/build-it.js drops this block from the Italian edition) -->
+  <script>
+    // visitors who already chose Italian get the Italian edition — never on Back/Forward,
+    // so the Back button keeps working
+    try {
+      var nav = performance.getEntriesByType('navigation')[0];
+      if (localStorage.getItem('siteLang') === 'it' && !(nav && nav.type === 'back_forward'))
+        location.replace('it/' + location.search + location.hash);
+    } catch (e) {}
+  </script>
+  <!-- en-only:end -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="meta.title">Filippo Gerbino — Video Game Composer & Orchestrator</title>
   <meta name="description" content="Filippo Gerbino is a video game composer, orchestrator and producer. Full orchestral soundtracks and adaptive game audio implemented in FMOD — for games, film and trailers." />
@@ -21,12 +32,17 @@
   <meta name="theme-color" content="#07070B" />
   <meta name="author" content="Filippo Gerbino" />
   <link rel="canonical" href="https://filippogerbino.com/" />
+  <link rel="alternate" hreflang="en" href="https://filippogerbino.com/" />
+  <link rel="alternate" hreflang="it" href="https://filippogerbino.com/it/" />
+  <link rel="alternate" hreflang="x-default" href="https://filippogerbino.com/" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- fonts are self-hosted (fonts/, declared in style.css); the ones used above the fold start loading at once -->
+  <link rel="preload" href="fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/cormorant-garamond-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="style.css" />
   <script type="application/ld+json">
   {
