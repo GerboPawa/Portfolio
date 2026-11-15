@@ -102,7 +102,9 @@
 
     // testimonials
     'testi.eyebrow': '// Testimonianze',
-    'testi.title':   'Parola<br/><em>agli sviluppatori.</em>',
+    'testi.title':   'Con le<br/><em>loro parole.</em>',
+    'testi.q4': 'Grazie davvero per questo lavoro straordinario! È stato fantastico lavorare con te — ci siamo sicuramente per i progetti futuri.',
+    'testi.r4': 'Cortometraggio · Colonna sonora originale',
     'testi.q1': 'La musica era incredibile — talento vero. Non lasciare che ti dicano il contrario.',
     'testi.r1': 'Sviluppatore · Astra in Ruina',
     'testi.q2': 'Grazie per la musica straordinaria. Ha fatto la differenza.',
