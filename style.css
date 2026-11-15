@@ -369,7 +369,8 @@ img { max-width: 100%; display: block; }
 /* "Un solo compositore." is wider than "One composer.": a slightly smaller size keeps the
    Italian title on two lines next to the portrait, so the buttons stay on the first screen */
 @media (min-width: 861px) {
-  html[lang="it"] .hero-title { font-size: clamp(2.6rem, min(5.1vw, 10.5vh), 5.2rem); }
+  /* 4.5rem cap: the text column stops growing at 620px, and the first line needs ~8.3em */
+  html[lang="it"] .hero-title { font-size: clamp(2.6rem, min(5.1vw, 10.5vh), 4.5rem); }
 }
 .hero-sub {
   margin: 1.7rem 0 0;
