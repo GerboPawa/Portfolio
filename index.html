@@ -123,12 +123,31 @@
           Composition. Orchestration. Production. Mix. Master.<br/>
           Everything your game needs — under one roof.
         </p>
+        <!-- AUDIO REEL — the first thing to press, visible without scrolling.
+             data-chapters = [seconds, label] pairs: they become the clickable timestamps below. -->
+        <div class="hero-reel" id="heroReel">
+          <div class="track-item hero-reel-row" tabindex="0" role="button" aria-label="Play the audio reel"
+               data-src="audio/audio-reel.mp3" data-src-ogg="audio/audio-reel.ogg" data-duration="142.8"
+               data-chapters-list="heroReelChapters"
+               data-chapters='[[0,"Crownfall"],[13,"Spring Score"],[25,"The Catastrophist"],[39,"Beyond the Shore"],[52,"True Pirate"],[70,"Tense Exploration"],[87,"Unexpected Encounter"],[102,"Cozy Beach Level"],[114,"To the Stars"]]'>
+            <div class="track-play-btn" aria-hidden="true">
+              <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+              <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </div>
+            <div class="track-info">
+              <span class="track-title" data-i18n="reel.title">Audio Reel</span>
+              <span class="track-genre mono" data-i18n="reel.genre">Nine worlds in two minutes</span>
+              <span class="reel-now mono hidden"></span>
+            </div>
+            <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+            <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">2:22</span></div>
+          </div>
+          <div class="reel-chapters mono" id="heroReelChapters" role="group" aria-label="Reel chapters"></div>
+        </div>
+
         <div class="hero-actions">
-          <button type="button" class="btn-primary magnetic" id="heroListenBtn">
-            <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,3 21,12 6,21" fill="currentColor"/></svg>
-            <span data-i18n="hero.listen">Listen to the work</span>
-          </button>
-          <a href="start-a-project.html" class="btn-ghost magnetic" data-i18n="hero.start">Start a project</a>
+          <a href="start-a-project.html" class="btn-primary magnetic" data-i18n="hero.start">Start a project</a>
+          <a href="#portfolio" class="btn-ghost magnetic" data-i18n="hero.tracks">All tracks ↓</a>
         </div>
         <p class="hero-trust mono" data-i18n="hero.trust">Reply within 48h &nbsp;·&nbsp; Full pipeline in-house &nbsp;·&nbsp; FMOD ready</p>
       </div>
@@ -169,25 +188,7 @@
     <div class="container">
       <p class="section-eyebrow mono reveal"><span data-i18n="work.eyebrow">// Work</span> <span class="eyebrow-num">01</span></p>
       <h2 class="section-title reveal" data-i18n="work.title">Press play.</h2>
-      <p class="section-sub reveal" data-i18n="work.sub">Eight tracks, eight different worlds. The player follows you while you browse.</p>
-
-      <div class="tracks-featured reveal">
-        <div class="track-item track-item-featured" tabindex="0" role="button" aria-label="Play the full audio reel"
-             data-src="audio/audio-reel.mp3" data-src-ogg="audio/audio-reel.ogg">
-          <span class="track-num mono" data-i18n="reel.badge">Reel</span>
-          <div class="track-play-btn" aria-hidden="true">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="track-info">
-            <span class="track-title" data-i18n="reel.title">Full Audio Reel</span>
-            <span class="track-genre mono" data-i18n="reel.genre">Everything, back to back</span>
-          </div>
-          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
-        </div>
-        <p class="tracks-featured-hint mono" data-i18n="reel.hint">↳ one reel, every world — or press play on a single track below</p>
-      </div>
+      <p class="section-sub reveal" data-i18n="work.sub">Nine tracks, nine different worlds. The player follows you while you browse.</p>
 
       <div class="tracks-list reveal" id="tracksList">
 
@@ -206,9 +207,39 @@
           <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
         </div>
 
+        <div class="track-item" tabindex="0" role="button" aria-label="Play The Catastrophist — Harbinger"
+             data-src="audio/the-catastrophist.mp3" data-src-ogg="audio/the-catastrophist.ogg">
+          <span class="track-num mono">02</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">The Catastrophist — Harbinger</span>
+            <span class="track-genre mono" data-i18n="g6">Commissioned Soundtrack · Title Track</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play Boxing Champion"
+             data-src="audio/boxing-champion.mp3" data-src-ogg="audio/boxing-champion.ogg">
+          <span class="track-num mono">03</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">Boxing Champion</span>
+            <span class="track-genre mono" data-i18n="g4">The Sting (upcoming) · Boss Fight</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
         <div class="track-item" tabindex="0" role="button" aria-label="Play To the Stars"
              data-src="audio/to-the-stars.mp3" data-src-ogg="audio/to-the-stars.ogg">
-          <span class="track-num mono">02</span>
+          <span class="track-num mono">04</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -223,7 +254,7 @@
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play Plundered — True Pirate"
              data-src="audio/true-pirate.mp3" data-src-ogg="audio/true-pirate.ogg">
-          <span class="track-num mono">03</span>
+          <span class="track-num mono">05</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -236,24 +267,9 @@
           <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
         </div>
 
-        <div class="track-item" tabindex="0" role="button" aria-label="Play Boxing Champion"
-             data-src="audio/boxing-champion.mp3" data-src-ogg="audio/boxing-champion.ogg">
-          <span class="track-num mono">04</span>
-          <div class="track-play-btn" aria-hidden="true">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="track-info">
-            <span class="track-title">Boxing Champion</span>
-            <span class="track-genre mono" data-i18n="g4">The Sting (upcoming) · Boss Fight</span>
-          </div>
-          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
-        </div>
-
         <div class="track-item" tabindex="0" role="button" aria-label="Play The Long Descent"
              data-src="audio/the-long-descent.mp3" data-src-ogg="audio/the-long-descent.ogg">
-          <span class="track-num mono">05</span>
+          <span class="track-num mono">06</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -266,31 +282,16 @@
           <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
         </div>
 
-        <div class="track-item" tabindex="0" role="button" aria-label="Play Mystical Forest — Night"
-             data-src="audio/mystical-forest-night.mp3" data-src-ogg="audio/mystical-forest-night.ogg">
-          <span class="track-num mono">06</span>
-          <div class="track-play-btn" aria-hidden="true">
-            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="track-info">
-            <span class="track-title">Mystical Forest — Night</span>
-            <span class="track-genre mono" data-i18n="g6">Fantasy Adventure · Open-World Exploration</span>
-          </div>
-          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
-        </div>
-
-        <div class="track-item" tabindex="0" role="button" aria-label="Play Spider's Shop"
-             data-src="audio/spiders-shop.mp3" data-src-ogg="audio/spiders-shop.ogg">
+        <div class="track-item" tabindex="0" role="button" aria-label="Play Barefoot Bay"
+             data-src="audio/barefoot-bay.mp3" data-src-ogg="audio/barefoot-bay.ogg">
           <span class="track-num mono">07</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
           </div>
           <div class="track-info">
-            <span class="track-title">Spider's Shop</span>
-            <span class="track-genre mono" data-i18n="g7">The Sting (upcoming) · Shop Theme</span>
+            <span class="track-title">Barefoot Bay</span>
+            <span class="track-genre mono" data-i18n="g7">Cozy · Beach Level</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
           <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
@@ -306,6 +307,21 @@
           <div class="track-info">
             <span class="track-title">Plundered — Sea Exploration</span>
             <span class="track-genre mono" data-i18n="g8">Ambient · Calm · Open World</span>
+          </div>
+          <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+        </div>
+
+        <div class="track-item" tabindex="0" role="button" aria-label="Play No Small Fight"
+             data-src="audio/no-small-fight.mp3" data-src-ogg="audio/no-small-fight.ogg">
+          <span class="track-num mono">09</span>
+          <div class="track-play-btn" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="track-info">
+            <span class="track-title">No Small Fight</span>
+            <span class="track-genre mono" data-i18n="g9">Gnome's Hero (in production) · Boss Fight</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
           <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
@@ -336,7 +352,8 @@
         <div class="video-wrapper-full yt-facade" data-yt-id="AJOIJgnCPFo" data-yt-name="fmod-demo"
              data-yt-title="Filippo Gerbino — Horizontal re-sequencing in FMOD"
              role="button" tabindex="0" aria-label="Play video: Horizontal re-sequencing in FMOD">
-          <img src="https://i.ytimg.com/vi/AJOIJgnCPFo/maxresdefault.jpg" alt="" loading="lazy"
+          <!-- this video has no maxresdefault thumbnail (YouTube answers 404 with a grey placeholder) -->
+          <img src="https://i.ytimg.com/vi/AJOIJgnCPFo/sddefault.jpg" alt="" loading="lazy"
                onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/AJOIJgnCPFo/hqdefault.jpg'" />
           <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></span>
         </div>
@@ -435,10 +452,9 @@
             <span class="project-type mono" data-i18n="proj1.type">Upcoming · Boxing Roguelike</span>
           </div>
           <h3 class="project-title">The Sting</h3>
-          <p class="project-desc" data-i18n="proj1.desc">A boxing roguelike in the spirit of Punch-Out!!, coming soon. I composed its soundtrack, from the boss-fight themes to the music in the shop — two cues are ready to hear below.</p>
+          <p class="project-desc" data-i18n="proj1.desc">A boxing roguelike in the spirit of Punch-Out!!, coming soon. I composed its soundtrack — hear one of the boss-fight themes below.</p>
           <div class="project-tracks mono">
             <button type="button" class="proj-track-link" data-play-src="audio/boxing-champion.mp3">↳ Boxing Champion</button>
-            <button type="button" class="proj-track-link" data-play-src="audio/spiders-shop.mp3">↳ Spider's Shop</button>
           </div>
         </article>
 
@@ -452,6 +468,17 @@
           <div class="project-tracks mono">
             <button type="button" class="proj-track-link" data-play-src="audio/true-pirate.mp3">↳ True Pirate</button>
             <button type="button" class="proj-track-link" data-play-src="audio/sea-exploration.mp3">↳ Sea Exploration</button>
+          </div>
+        </article>
+
+        <article class="project-card tilt reveal reveal-delay-3">
+          <div class="project-header">
+            <span class="project-type mono" data-i18n="proj3.type">In Production · Metroidvania</span>
+          </div>
+          <h3 class="project-title">Gnome's Hero</h3>
+          <p class="project-desc" data-i18n="proj3.desc">A metroidvania currently in production. I wrote the music for its first boss — hear it below.</p>
+          <div class="project-tracks mono">
+            <button type="button" class="proj-track-link" data-play-src="audio/no-small-fight.mp3">↳ No Small Fight</button>
           </div>
         </article>
 

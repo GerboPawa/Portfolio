@@ -223,17 +223,28 @@
     const trackData = rows.map((row, i) => {
       const title = row.querySelector('.track-title')?.textContent.trim() || ('Track ' + (i + 1));
       const base  = (row.dataset.src || '').split('/').pop().replace(/\.[^.]+$/, '');
+      // optional chapters: data-chapters='[[seconds,"Label"],…]' (used by the reel)
+      let chapters = [];
+      try {
+        chapters = JSON.parse(row.dataset.chapters || '[]').map(c => ({ t: +c[0], label: String(c[1]) }));
+      } catch (e) {}
       return {
         row,
         src:   row.dataset.src,
         slug:  base,
         title,
-        genre: row.querySelector('.track-genre')?.textContent.trim() || '',
+        titleEl: row.querySelector('.track-title'),
+        genreEl: row.querySelector('.track-genre'),
         peaks: (window.TRACK_PEAKS || {})[base] || makePeaks(title, 96),
         canvas: row.querySelector('.waveform-canvas'),
         curEl:  row.querySelector('.current-time'),
         durEl:  row.querySelector('.duration'),
-        duration: 0,
+        duration: parseFloat(row.dataset.duration) || 0,
+        chapters,
+        chapter: -1,                 // index of the chapter being played
+        chips: [],
+        chipBox: row.dataset.chaptersList ? document.getElementById(row.dataset.chaptersList) : null,
+        nowEl:   row.querySelector('.reel-now'),
       };
     });
 
@@ -243,8 +254,22 @@
       return m + ':' + String(s).padStart(2, '0');
     }
 
+    // read live from the DOM, so the bar follows the EN/IT switch
+    const titleOf = (t) => (t.titleEl ? t.titleEl.textContent.trim() : '') || t.title;
+    const genreOf = (t) => (t.genreEl ? t.genreEl.textContent.trim() : '');
+    const chapterText = (ch) => fmt(ch.t) + ' · ' + ch.label;
+
+    // chapter boundaries as fractions of the track, for tick marks on the waveform
+    function marksOf(t) {
+      const dur = t.duration || 0;
+      if (!t.chapters.length || !dur) return null;
+      return t.chapters.filter(c => c.t > 0).map(c => c.t / dur);
+    }
+
+    trackData.forEach(t => { if (t.duration && t.durEl) t.durEl.textContent = fmt(t.duration); });
+
     /* waveform drawing (base + progress in one pass) */
-    function drawWave(canvas, peaks, progress, active) {
+    function drawWave(canvas, peaks, progress, active, marks) {
       if (!canvas) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const w = canvas.clientWidth, h = canvas.clientHeight;
@@ -268,13 +293,48 @@
         if (c.roundRect) { c.roundRect(x, y, bw, bh, 1.5); c.fill(); }
         else c.fillRect(x, y, bw, bh);
       }
+      if (marks) {
+        c.fillStyle = active ? 'rgba(240,233,216,0.7)' : 'rgba(201,168,76,0.6)';
+        marks.forEach(m => c.fillRect(Math.round(m * w), 0, 1, h));
+      }
     }
 
     function drawAllStatic() {
       trackData.forEach((t, i) => {
         const prog = (i === current && audio.duration) ? (audio.currentTime / audio.duration) : 0;
-        drawWave(t.canvas, t.peaks, prog, i === current);
+        drawWave(t.canvas, t.peaks, prog, i === current, marksOf(t));
       });
+    }
+
+    /* chapters (reel): which one is playing, chips, labels */
+    function chapterAt(t, time) {
+      let idx = -1;
+      for (let k = 0; k < t.chapters.length; k++) if (time + 0.05 >= t.chapters[k].t) idx = k;
+      return idx;
+    }
+    function setChapter(t, idx) {
+      if (t.chapter === idx) return;
+      t.chapter = idx;
+      const ch = t.chapters[idx];
+      t.chips.forEach((chip, k) => {
+        chip.classList.toggle('active', k === idx);
+        if (k === idx) chip.setAttribute('aria-current', 'true');
+        else chip.removeAttribute('aria-current');
+      });
+      if (t.nowEl) {
+        t.nowEl.textContent = ch ? chapterText(ch) : '';
+        t.nowEl.classList.toggle('hidden', !ch);
+        if (t.genreEl) t.genreEl.classList.toggle('hidden', !!ch);
+      }
+      if (pbGenre && trackData[current] === t) pbGenre.textContent = ch ? chapterText(ch) : genreOf(t);
+      // keep the active chip in view inside a horizontally scrolling strip (never scrolls the page)
+      const chip = t.chips[idx];
+      if (chip && t.chipBox && t.chipBox.scrollWidth > t.chipBox.clientWidth) {
+        t.chipBox.scrollTo({
+          left: chip.offsetLeft - (t.chipBox.clientWidth - chip.offsetWidth) / 2,
+          behavior: reduceMotion ? 'auto' : 'smooth',
+        });
+      }
     }
 
     /* lazy duration fetch — one file at a time, only after the page has
@@ -340,11 +400,12 @@
     function load(i, autoplay = true) {
       if (i < 0) i = trackData.length - 1;
       if (i >= trackData.length) i = 0;
+      if (current >= 0 && current !== i) setChapter(trackData[current], -1);
       current = i;
       const t = trackData[i];
       audio.src = t.src;
-      if (pbTitle) pbTitle.textContent = t.title;
-      if (pbGenre) pbGenre.textContent = t.genre;
+      if (pbTitle) pbTitle.textContent = titleOf(t);
+      if (pbGenre) pbGenre.textContent = genreOf(t);
       openBar();
       if (autoplay) {
         audio.play().catch(() => {});
@@ -384,6 +445,42 @@
           else audio.addEventListener('loadedmetadata', seekWhenReady, { once: true });
         });
       }
+    });
+
+    /* jump to a point of a track (loads it first if it isn't the current one) */
+    function seekTo(i, time) {
+      const go = () => { try { audio.currentTime = time; } catch (e) {} };
+      if (i !== current) {
+        load(i);
+        audio.addEventListener('loadedmetadata', go, { once: true });
+      } else {
+        if (audio.readyState >= 1) go();
+        else audio.addEventListener('loadedmetadata', go, { once: true });
+        if (audio.paused) audio.play().catch(() => {});
+      }
+    }
+
+    /* chapter chips: one clickable timestamp per chapter */
+    trackData.forEach((t, i) => {
+      if (!t.chapters.length || !t.chipBox) return;
+      t.chapters.forEach((ch) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'reel-chip';
+        const time = document.createElement('span');
+        time.className = 'reel-chip-t';
+        time.textContent = fmt(ch.t);
+        const label = document.createElement('span');
+        label.textContent = ch.label;
+        chip.append(time, label);
+        chip.addEventListener('click', (e) => {
+          e.stopPropagation();
+          seekTo(i, ch.t);
+          track('reel-chapter--' + ch.label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
+        });
+        t.chipBox.appendChild(chip);
+        t.chips.push(chip);
+      });
     });
 
     /* project-card quick links */
@@ -426,8 +523,10 @@
       const prog = dur ? audio.currentTime / dur : 0;
       if (t.curEl) t.curEl.textContent = fmt(audio.currentTime);
       if (pbTime)  pbTime.textContent  = fmt(audio.currentTime) + ' / ' + fmt(dur);
-      drawWave(t.canvas, t.peaks, prog, true);
-      if (pbCanvas) drawWave(pbCanvas, t.peaks, prog, true);
+      if (t.chapters.length) setChapter(t, chapterAt(t, audio.currentTime));
+      const marks = marksOf(t);
+      drawWave(t.canvas, t.peaks, prog, true, marks);
+      if (pbCanvas) drawWave(pbCanvas, t.peaks, prog, true, marks);
     });
     audio.addEventListener('loadedmetadata', () => {
       if (current < 0) return;
@@ -435,6 +534,13 @@
       t.duration = audio.duration;
       if (t.durEl) t.durEl.textContent = fmt(audio.duration);
       if (pbTime)  pbTime.textContent  = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+    });
+    // language switched: refresh the texts the bar copied from the row
+    window.addEventListener('langchange', () => {
+      if (current < 0) return;
+      const t = trackData[current];
+      if (pbTitle) pbTitle.textContent = titleOf(t);
+      if (pbGenre && t.chapter < 0) pbGenre.textContent = genreOf(t);
     });
     audio.addEventListener('play',  setRowState);
     audio.addEventListener('pause', setRowState);
