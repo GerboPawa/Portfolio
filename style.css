@@ -18,7 +18,7 @@
   --gold-soft:   rgba(201, 168, 76, 0.09);
   --parchment:   #F0E9D8;
   --mist:        #A9A5B2;
-  --mist-dim:    #6E6B78;
+  --mist-dim:    #807D8B;   /* 4.9:1 on --bg: small labels stay readable (WCAG AA) */
   --green:       #59D68E;
   --red:         #E06666;
 
@@ -445,6 +445,7 @@ img { max-width: 100%; display: block; }
   justify-self: center;
   animation: heroIn 1.2s var(--ease-out) 0.35s both;
 }
+.hero-portrait picture, .card-about-photo picture { display: contents; }
 .hero-portrait img {
   width: 100%; height: 100%;
   object-fit: cover;

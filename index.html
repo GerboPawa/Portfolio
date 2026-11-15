@@ -13,6 +13,9 @@
   <meta property="og:title" content="Filippo Gerbino — Video Game Composer & Orchestrator" />
   <meta property="og:description" content="Composition, orchestration, production, mix, and master. Everything your game needs under one roof." />
   <meta property="og:image" content="https://filippogerbino.com/preview-social.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Filippo Gerbino — video game composer and orchestrator" />
   <meta property="og:url" content="https://filippogerbino.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#07070B" />
@@ -30,10 +33,19 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebSite",
+        "@id": "https://filippogerbino.com/#website",
+        "url": "https://filippogerbino.com/",
+        "name": "Filippo Gerbino",
+        "inLanguage": ["en", "it"],
+        "publisher": { "@id": "https://filippogerbino.com/#filippo" }
+      },
+      {
         "@type": "Person",
         "@id": "https://filippogerbino.com/#filippo",
         "name": "Filippo Gerbino",
         "jobTitle": "Video Game Composer & Orchestrator",
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Conservatorio Giuseppe Verdi di Torino" },
         "description": "Video game and film composer, orchestrator and producer specialised in full orchestral scores and adaptive game audio.",
         "url": "https://filippogerbino.com/",
         "image": "https://filippogerbino.com/filippo-piano.jpg",
@@ -42,6 +54,9 @@
           "https://www.youtube.com/@GerbinoScores"
         ],
         "knowsAbout": [
+          "Video game music",
+          "Adaptive music",
+          "FMOD",
           "Film scoring",
           "Game audio",
           "Orchestration",
@@ -127,7 +142,7 @@
              data-chapters = [seconds, label] pairs: they become the clickable timestamps below. -->
         <div class="hero-reel" id="heroReel">
           <div class="track-item hero-reel-row" tabindex="0" role="button" aria-label="Play the audio reel"
-               data-src="audio/audio-reel.mp3" data-src-ogg="audio/audio-reel.ogg" data-duration="142.8"
+               data-src="audio/audio-reel.mp3" data-duration="142.8"
                data-chapters-list="heroReelChapters"
                data-chapters='[[0,"Crownfall"],[13,"Spring Score"],[25,"The Catastrophist"],[39,"Beyond the Shore"],[52,"True Pirate"],[70,"Tense Exploration"],[87,"Unexpected Encounter"],[102,"Cozy Beach Level"],[114,"To the Stars"]]'>
             <div class="track-play-btn" aria-hidden="true">
@@ -152,7 +167,13 @@
         <p class="hero-trust mono" data-i18n="hero.trust">Reply within 48h &nbsp;·&nbsp; Full pipeline in-house &nbsp;·&nbsp; FMOD ready</p>
       </div>
       <figure class="hero-portrait">
-        <img src="filippo-piano.jpg" alt="Filippo Gerbino at the piano" />
+        <!-- sizes = width of the photo once cropped by object-fit (wider than its frame) -->
+        <picture>
+          <source type="image/webp" srcset="filippo-piano-675.webp 675w, filippo-piano.webp 999w"
+                  sizes="(max-width: 860px) 225px, 712px" />
+          <img src="filippo-piano.jpg" alt="Filippo Gerbino at the piano" width="999" height="666"
+               fetchpriority="high" decoding="async" />
+        </picture>
       </figure>
     </div>
     <div class="hero-scroll-hint" aria-hidden="true">
@@ -193,7 +214,7 @@
       <div class="tracks-list reveal" id="tracksList">
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play Crownfall"
-             data-src="audio/crownfall.mp3" data-src-ogg="audio/crownfall.ogg">
+             data-src="audio/crownfall.mp3" data-duration="61">
           <span class="track-num mono">01</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -204,11 +225,11 @@
             <span class="track-genre mono" data-i18n="g1">Dark Fantasy · Fallen Kingdom</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">1:01</span></div>
         </div>
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play The Catastrophist — Harbinger"
-             data-src="audio/the-catastrophist.mp3" data-src-ogg="audio/the-catastrophist.ogg">
+             data-src="audio/the-catastrophist.mp3" data-duration="185.6">
           <span class="track-num mono">02</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -219,11 +240,11 @@
             <span class="track-genre mono" data-i18n="g6">Commissioned Soundtrack · Title Track</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">3:05</span></div>
         </div>
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play Boxing Champion"
-             data-src="audio/boxing-champion.mp3" data-src-ogg="audio/boxing-champion.ogg">
+             data-src="audio/boxing-champion.mp3" data-duration="63.6">
           <span class="track-num mono">03</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -234,11 +255,11 @@
             <span class="track-genre mono" data-i18n="g4">The Sting (upcoming) · Boss Fight</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">1:03</span></div>
         </div>
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play To the Stars"
-             data-src="audio/to-the-stars.mp3" data-src-ogg="audio/to-the-stars.ogg">
+             data-src="audio/to-the-stars.mp3" data-duration="62.3">
           <span class="track-num mono">04</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -249,11 +270,11 @@
             <span class="track-genre mono" data-i18n="g2">Full Orchestra &amp; Choir · Triumph</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">1:02</span></div>
         </div>
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play Plundered — True Pirate"
-             data-src="audio/true-pirate.mp3" data-src-ogg="audio/true-pirate.ogg">
+             data-src="audio/true-pirate.mp3" data-duration="129.6">
           <span class="track-num mono">05</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -264,11 +285,11 @@
             <span class="track-genre mono" data-i18n="g3">Main Theme · Adventure</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">2:09</span></div>
         </div>
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play The Long Descent"
-             data-src="audio/the-long-descent.mp3" data-src-ogg="audio/the-long-descent.ogg">
+             data-src="audio/the-long-descent.mp3" data-duration="67.7">
           <span class="track-num mono">06</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -279,11 +300,11 @@
             <span class="track-genre mono" data-i18n="g5">Deep Sea · Exploration Theme</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">1:07</span></div>
         </div>
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play Barefoot Bay"
-             data-src="audio/barefoot-bay.mp3" data-src-ogg="audio/barefoot-bay.ogg">
+             data-src="audio/barefoot-bay.mp3" data-duration="108.7">
           <span class="track-num mono">07</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -294,11 +315,11 @@
             <span class="track-genre mono" data-i18n="g7">Cozy · Beach Level</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">1:48</span></div>
         </div>
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play Plundered — Sea Exploration"
-             data-src="audio/sea-exploration.mp3" data-src-ogg="audio/sea-exploration.ogg">
+             data-src="audio/sea-exploration.mp3" data-duration="115.2">
           <span class="track-num mono">08</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -309,11 +330,11 @@
             <span class="track-genre mono" data-i18n="g8">Ambient · Calm · Open World</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">1:55</span></div>
         </div>
 
         <div class="track-item" tabindex="0" role="button" aria-label="Play No Small Fight"
-             data-src="audio/no-small-fight.mp3" data-src-ogg="audio/no-small-fight.ogg">
+             data-src="audio/no-small-fight.mp3" data-duration="97.3">
           <span class="track-num mono">09</span>
           <div class="track-play-btn" aria-hidden="true">
             <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
@@ -324,7 +345,7 @@
             <span class="track-genre mono" data-i18n="g9">Gnome's Hero (in production) · Boss Fight</span>
           </div>
           <div class="track-waveform"><canvas class="waveform-canvas"></canvas></div>
-          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">–:––</span></div>
+          <div class="track-time mono"><span class="current-time">0:00</span><span class="separator">/</span><span class="duration">1:37</span></div>
         </div>
 
       </div>
@@ -353,7 +374,7 @@
              data-yt-title="Filippo Gerbino — Horizontal re-sequencing in FMOD"
              role="button" tabindex="0" aria-label="Play video: Horizontal re-sequencing in FMOD">
           <!-- this video has no maxresdefault thumbnail (YouTube answers 404 with a grey placeholder) -->
-          <img src="https://i.ytimg.com/vi/AJOIJgnCPFo/sddefault.jpg" alt="" loading="lazy"
+          <img src="https://i.ytimg.com/vi_webp/AJOIJgnCPFo/sddefault.webp" alt="" loading="lazy" decoding="async"
                onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/AJOIJgnCPFo/hqdefault.jpg'" />
           <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></span>
         </div>
@@ -398,7 +419,7 @@
               <div class="video-wrapper-full yt-facade" data-yt-id="IiLGnwVNXKU" data-yt-name="rescore-spring"
                    data-yt-title="Filippo Gerbino — Spring Rescore"
                    role="button" tabindex="0" aria-label="Play video: Spring Rescore">
-                <img src="https://i.ytimg.com/vi/IiLGnwVNXKU/maxresdefault.jpg" alt="" loading="lazy"
+                <img src="https://i.ytimg.com/vi_webp/IiLGnwVNXKU/maxresdefault.webp" alt="" loading="lazy" decoding="async"
                      onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/IiLGnwVNXKU/hqdefault.jpg'" />
                 <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></span>
               </div>
@@ -415,7 +436,7 @@
               <div class="video-wrapper-full yt-facade" data-yt-id="d8BKK9SVm9c" data-yt-name="rescore-botd"
                    data-yt-title="Filippo Gerbino — Book of the Dead Rescore"
                    role="button" tabindex="0" aria-label="Play video: Book of the Dead Rescore">
-                <img src="https://i.ytimg.com/vi/d8BKK9SVm9c/maxresdefault.jpg" alt="" loading="lazy"
+                <img src="https://i.ytimg.com/vi_webp/d8BKK9SVm9c/maxresdefault.webp" alt="" loading="lazy" decoding="async"
                      onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/d8BKK9SVm9c/hqdefault.jpg'" />
                 <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></span>
               </div>

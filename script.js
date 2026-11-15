@@ -125,17 +125,44 @@
       }
     }
 
+    const hero = document.getElementById('hero');
+
     resize();
     spawn();
     if (reduceMotion) {
       draw(); // one static frame
     } else {
-      (function loop() { draw(); requestAnimationFrame(loop); })();
+      // animate only while the hero is on screen and the tab is visible:
+      // no point burning CPU/battery on a canvas nobody can see
+      let onScreen = true, rafId = 0;
+      const tick = () => { rafId = 0; draw(); run(); };
+      const run  = () => { if (!rafId && onScreen && !document.hidden) rafId = requestAnimationFrame(tick); };
+      if (hero && 'IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          onScreen = entries[entries.length - 1].isIntersecting;
+          run();
+        }).observe(hero);
+      }
+      document.addEventListener('visibilitychange', run);
+      run();
     }
-    window.addEventListener('resize', () => { resize(); spawn(); });
+    // phones fire "resize" every time the address bar slides in or out: rebuild the
+    // particles only when the size really changed, and at most once per frame
+    let resizeQueued = false;
+    window.addEventListener('resize', () => {
+      if (resizeQueued) return;
+      resizeQueued = true;
+      requestAnimationFrame(() => {
+        resizeQueued = false;
+        if (notesCanvas.clientWidth === W && notesCanvas.clientHeight === H) return;
+        const widthChanged = notesCanvas.clientWidth !== W;
+        resize();
+        if (widthChanged) spawn();
+        if (reduceMotion) draw();
+      });
+    });
 
     // mouse parallax + spotlight
-    const hero = document.getElementById('hero');
     const glow = document.getElementById('heroGlow');
     if (hero && !isTouch) {
       hero.addEventListener('mousemove', (e) => {
@@ -546,7 +573,13 @@
     audio.addEventListener('pause', setRowState);
     audio.addEventListener('ended', () => load(current + 1)); // auto-advance
 
-    window.addEventListener('resize', drawAllStatic);
+    // redraw the waveforms at most once per frame while the window is being resized
+    let waveQueued = false;
+    window.addEventListener('resize', () => {
+      if (waveQueued) return;
+      waveQueued = true;
+      requestAnimationFrame(() => { waveQueued = false; drawAllStatic(); });
+    });
     drawAllStatic();
   }
 
